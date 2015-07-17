@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="bubble_error_loadpid_text" xml:space="preserve">
+    <value>The process {0} could not be loaded either due to a security issue or is not in the expected format.
+
+If you are running on Vista/7 then please start the program in administrator mode.</value>
+  </data>
+  <data name="bubble_error_loadpid_title" xml:space="preserve">
+    <value>Unable to load {0}</value>
+  </data>
+  <data name="bubble_warn_clickthru_text" xml:space="preserve">
+    <value>You have disabled interaction with the map. To lift this restriction, uncheck "Click Through" from the main tray icon.</value>
+  </data>
+  <data name="bubble_warn_clickthru_title" xml:space="preserve">
+    <value>Click-through</value>
+  </data>
+  <data name="bubble_warn_nogames_text" xml:space="preserve">
+    <value>There are no valid games running to interact with. Please run a new game instance and click refresh from the context menu.</value>
+  </data>
+  <data name="bubble_warn_nogames_title" xml:space="preserve">
+    <value>No Games Detected</value>
+  </data>
+  <data name="button_cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="button_defaults" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="button_ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="button_reset" xml:space="preserve">
+    <value>Reset</value>
+  </data>
+  <data name="config_appear_claim_line_color" xml:space="preserve">
+    <value>Claim line color</value>
+  </data>
+  <data name="config_appear_enemy_color" xml:space="preserve">
+    <value>Enemy color</value>
+  </data>
+  <data name="config_appear_glow_color" xml:space="preserve">
+    <value>Text glow color</value>
+  </data>
+  <data name="config_appear_grid_line_color" xml:space="preserve">
+    <value>Grid line color</value>
+  </data>
+  <data name="config_appear_grid_size" xml:space="preserve">
+    <value>Grid size</value>
+  </data>
+  <data name="config_appear_grid_tick_color" xml:space="preserve">
+    <value>Grid tick color</value>
+  </data>
+  <data name="config_appear_group_color" xml:space="preserve">
+    <value>Party member outline color</value>
+  </data>
+  <data name="config_appear_hunt_line_color" xml:space="preserve">
+    <value>Hunt line color</value>
+  </data>
+  <data name="config_appear_npc_color" xml:space="preserve">
+    <value>NPC color</value>
+  </data>
+  <data name="config_appear_pet_line_color" xml:space="preserve">
+    <value>Pet/target line color</value>
+  </data>
+  <data name="config_appear_raid_color" xml:space="preserve">
+    <value>Alliance member outline color</value>
+  </data>
+  <data name="config_appear_range_color" xml:space="preserve">
+    <value>Radar range color</value>
+  </data>
+  <data name="config_map_scale_lines" xml:space="preserve">
+    <value>Scale map lines when zooming in</value>
+  </data>
+  <data name="config_appear_selected_color" xml:space="preserve">
+    <value>Line and text color for selected and targeted entities</value>
+  </data>
+  <data name="config_appear_show_claim_lines" xml:space="preserve">
+    <value>Show claim lines</value>
+  </data>
+  <data name="config_appear_show_grid_lines" xml:space="preserve">
+    <value>Show grid lines</value>
+  </data>
+  <data name="config_appear_show_grid_ticks" xml:space="preserve">
+    <value>Show grid ticks</value>
+  </data>
+  <data name="config_appear_show_hunt_lines" xml:space="preserve">
+    <value>Show hunt lines</value>
+  </data>
+  <data name="config_appear_show_pet_lines" xml:space="preserve">
+    <value>Show pet/target lines</value>
+  </data>
+  <data name="config_appear_show_range" xml:space="preserve">
+    <value>Show the radar range guide</value>
+  </data>
+  <data name="config_appear_use_glow" xml:space="preserve">
+    <value>Display a glow effect around selected or targetted entities</value>
+  </data>
+  <data name="config_appear_you_color" xml:space="preserve">
+    <value>Main player arrow color</value>
+  </data>
+  <data name="config_appear_you_fill_color" xml:space="preserve">
+    <value>Main player fill color</value>
+  </data>
+  <data name="config_appear_you_fill_enabled" xml:space="preserve">
+    <value>Display a solid shape behind the main player arrow</value>
+  </data>
+  <data name="config_depth_alpha_max" xml:space="preserve">
+    <value>Alpha Maximum</value>
+  </data>
+  <data name="config_depth_alpha_min" xml:space="preserve">
+    <value>Alpha Minimum</value>
+  </data>
+  <data name="config_depth_cutoff" xml:space="preserve">
+    <value>Depth Cutoff</value>
+  </data>
+  <data name="config_depth_distance" xml:space="preserve">
+    <value>Depth Distance</value>
+  </data>
+  <data name="config_depth_enable_line_filter" xml:space="preserve">
+    <value>Enable depth filter for map lines</value>
+  </data>
+  <data name="config_depth_enable_spawn_filter" xml:space="preserve">
+    <value>Enable depth filter for spawns</value>
+  </data>
+  <data name="config_depth_use_alpha" xml:space="preserve">
+    <value>Use alpha blending</value>
+  </data>
+  <data name="config_general_SIG_MY_ID" xml:space="preserve">
+    <value>My ID</value>
+  </data>
+  <data name="config_general_SIG_MY_TARGET" xml:space="preserve">
+    <value>My Target</value>
+  </data>
+  <data name="config_general_sig_restart_warning" xml:space="preserve">
+    <value>You must restart Mappy for any signature change to take effect.</value>
+  </data>
+  <data name="config_general_SIG_SPAWN_END" xml:space="preserve">
+    <value>Spawn List End</value>
+  </data>
+  <data name="config_general_SIG_SPAWN_START" xml:space="preserve">
+    <value>Spawn List Start</value>
+  </data>
+  <data name="config_general_sig_warning" xml:space="preserve">
+    <value>Warning: modifying these values may make Mappy inoperable.</value>
+  </data>
+  <data name="config_general_SIG_ZONE_ID" xml:space="preserve">
+    <value>Current Zone ID</value>
+  </data>
+  <data name="config_general_SIG_ZONE_SHORT" xml:space="preserve">
+    <value>Zone Names (short)</value>
+  </data>
+  <data name="config_map_alt_opacity" xml:space="preserve">
+    <value>Image opacity</value>
+  </data>
+  <data name="config_map_alt_show" xml:space="preserve">
+    <value>Enable the map pack</value>
+  </data>
+  <data name="config_map_alt_show_always" xml:space="preserve">
+    <value>Display the map image even when a vector map is available</value>
+  </data>
+  <data name="config_map_autosnap" xml:space="preserve">
+    <value>Auto fit the radar range after zoning</value>
+  </data>
+  <data name="config_map_fill_color" xml:space="preserve">
+    <value>Fill color</value>
+  </data>
+  <data name="config_map_fill_opacity" xml:space="preserve">
+    <value>Fill opacity</value>
+  </data>
+  <data name="config_map_info_all_enemies" xml:space="preserve">
+    <value>Display enemy info at all times</value>
+  </data>
+  <data name="config_map_info_all_npcs" xml:space="preserve">
+    <value>Display NPC info at all times</value>
+  </data>
+  <data name="config_map_info_all_players" xml:space="preserve">
+    <value>Display player info at all times</value>
+  </data>
+  <data name="config_map_info_template" xml:space="preserve">
+    <value>Info Template</value>
+  </data>
+  <data name="config_map_info_template_help" xml:space="preserve">
+    <value>The template determines what information is displayed for spawns.
+
+Use the following tokens to customize the display:
+{name} : the spawn name
+{hpp} : the current health percent
+{distance} : how far the spawn is from the players location
+{br} : a line break
+{id}: the id of the spawn</value>
+  </data>
+  <data name="config_map_mappackpath" xml:space="preserve">
+    <value>Map pack image path</value>
+  </data>
+  <data name="config_map_mappath" xml:space="preserve">
+    <value>Data path</value>
+  </data>
+  <data name="config_map_pollfreq" xml:space="preserve">
+    <value>Poll Frequency</value>
+  </data>
+  <data name="dialog_config" xml:space="preserve">
+    <value>Preferences</value>
+  </data>
+  <data name="menu_add_ashunt" xml:space="preserve">
+    <value>Add {0} As New Hunt by...</value>
+  </data>
+  <data name="menu_edit_hunts" xml:space="preserve">
+    <value>Edit Hunts...</value>
+  </data>
+  <data name="menu_edit_map" xml:space="preserve">
+    <value>Edit Map...</value>
+  </data>
+  <data name="menu_exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="menu_new_label" xml:space="preserve">
+    <value>New Label...</value>
+  </data>
+  <data name="menu_preferences" xml:space="preserve">
+    <value>Preferences...</value>
+  </data>
+  <data name="menu_refresh_games" xml:space="preserve">
+    <value>Refresh Instances</value>
+  </data>
+  <data name="menu_reload_map" xml:space="preserve">
+    <value>Reload Map</value>
+  </data>
+  <data name="menu_save_map" xml:space="preserve">
+    <value>Save Map</value>
+  </data>
+  <data name="menu_show_hidden" xml:space="preserve">
+    <value>Show Hidden Spawns</value>
+  </data>
+  <data name="menu_show_labels" xml:space="preserve">
+    <value>Show Labels</value>
+  </data>
+  <data name="menu_show_lines" xml:space="preserve">
+    <value>Show Map Lines</value>
+  </data>
+  <data name="menu_show_spawns" xml:space="preserve">
+    <value>Show Spawns</value>
+  </data>
+  <data name="menu_snap_range" xml:space="preserve">
+    <value>Snap to Range</value>
+  </data>
+  <data name="menu_toggle_clickthrough" xml:space="preserve">
+    <value>Click Through</value>
+  </data>
+  <data name="menu_toggle_draggable" xml:space="preserve">
+    <value>Draggable</value>
+  </data>
+  <data name="menu_toggle_resizable" xml:space="preserve">
+    <value>Resizable</value>
+  </data>
+  <data name="menu_toggle_topmost" xml:space="preserve">
+    <value>Always On Top</value>
+  </data>
+  <data name="msg_cancel_line_text" xml:space="preserve">
+    <value>Really cancel the current line? This operation is permanent.</value>
+  </data>
+  <data name="msg_cancel_line_title" xml:space="preserve">
+    <value>Confirm Cancel</value>
+  </data>
+  <data name="msg_config_pathchangeloss_text" xml:space="preserve">
+    <value>You will permanently lose all unsaved changes made to the map if you change the map path.
+
+Do you still wish to continue?</value>
+  </data>
+  <data name="msg_config_pathchangeloss_title" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="msg_confirm_sigreset_text" xml:space="preserve">
+    <value>This will change all signatures to the internally built values.
+
+Are you sure you want to do this?</value>
+  </data>
+  <data name="msg_confirm_sigreset_title" xml:space="preserve">
+    <value>Confirm Reset</value>
+  </data>
+  <data name="msg_invalid_sig_text" xml:space="preserve">
+    <value>A required memory signature could not be located in the process {0}. If FFXI has been recently patched then you will need to wait until new signatures are published. If you know what you are doing, you may input new signatures on the Signature tab within the preferences window.
+
+Current Signature Addresses:
+{1}</value>
+  </data>
+  <data name="msg_invalid_sig_title" xml:space="preserve">
+    <value>Invalid Signature</value>
+  </data>
+  <data name="msg_mappack_invalid_text" xml:space="preserve">
+    <value>No map pack could be found in {0}.
+
+If you do not have a map pack, press the "Download" button to get one.
+If your map pack is in another location, you may choose the folder now by pressing "Browse".
+Otherwise press "Ignore" to continue.</value>
+  </data>
+  <data name="msg_mappack_invalid_title" xml:space="preserve">
+    <value>Map pack could not be found</value>
+  </data>
+  <data name="msg_mappath_invalid_text" xml:space="preserve">
+    <value>The data path {0} no longer exists. You will be unable access or save maps, hunts, and points of interest.
+
+Press "Browse" to choose a new data path now or "Ignore" if you do not wish to set one right now.</value>
+  </data>
+  <data name="msg_mappath_invalid_title" xml:space="preserve">
+    <value>Data path not found</value>
+  </data>
+  <data name="msg_unsaved_reload_text" xml:space="preserve">
+    <value>You have unsaved map data. This includes things such as lines, labels, and permanent hunts. If you reload the map you will permanently lose these changes.
+
+Do you still wish to continue?</value>
+  </data>
+  <data name="msg_unsaved_reload_title" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="msg_unsaved_text" xml:space="preserve">
+    <value>You have unsaved map data. This includes things such as lines, labels, and permanent hunts. Would you like to save these now?
+
+If you choose no, all changes made will be permanently lost.</value>
+  </data>
+  <data name="msg_unsaved_title" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="tab_appearance" xml:space="preserve">
+    <value>Appearance</value>
+  </data>
+  <data name="tab_depthfilter" xml:space="preserve">
+    <value>Depth Filter</value>
+  </data>
+  <data name="tab_sig" xml:space="preserve">
+    <value>Signatures</value>
+  </data>
+  <data name="tab_map" xml:space="preserve">
+    <value>Map</value>
+  </data>
+  <data name="config_group_behavior" xml:space="preserve">
+    <value>Behavior</value>
+  </data>
+  <data name="config_group_mappack" xml:space="preserve">
+    <value>Map Pack</value>
+  </data>
+  <data name="config_group_spawninfo" xml:space="preserve">
+    <value>Spawn Information</value>
+  </data>
+  <data name="dialog_about" xml:space="preserve">
+    <value>About {0}</value>
+  </data>
+  <data name="menu_about" xml:space="preserve">
+    <value>About...</value>
+  </data>
+  <data name="config_general_sig_no_active_pid" xml:space="preserve">
+    <value>Note: there are no running instances of FFXI, so some feedback and validation elements will not be available to you while modifying these values.</value>
+  </data>
+  <data name="button_browse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="button_download" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="button_ignore" xml:space="preserve">
+    <value>Ignore</value>
+  </data>
+  <data name="msg_mappack_badsel_text" xml:space="preserve">
+    <value>The path {0} is invalid because it does not contain the required {1} file.</value>
+  </data>
+  <data name="msg_mappack_badsel_text_alt" xml:space="preserve">
+    <value>The path {0} is invalid because it does not contain the required {1} file.
+
+Would you like to choose another path?</value>
+  </data>
+  <data name="msg_mappack_badsel_title" xml:space="preserve">
+    <value>Invalid Map Pack Path</value>
+  </data>
+  <data name="msg_donotshow" xml:space="preserve">
+    <value>Do not show again</value>
+  </data>
+  <data name="menu_show_map_image" xml:space="preserve">
+    <value>Show Map Image</value>
+  </data>
+  <data name="button_decline" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="button_enable" xml:space="preserve">
+    <value>Enable</value>
+  </data>
+  <data name="msg_hotkey_enable_text" xml:space="preserve">
+    <value>Mappy can listen for hotkeys regardless of what application has focus, but is not enabled by default.
+Since hotkey processing uses a hook, some AV software may flag this type of behavior as potentially malicious.
+
+Would you like to enable this feature?
+
+If not, be sure to check the "Do not show" box or you will be asked again the next time you start Mappy.
+You may also enable/disable hotkey filtering in the preferences dialog at any time.</value>
+  </data>
+  <data name="msg_hotkey_enable_title" xml:space="preserve">
+    <value>Enable global hotkeys?</value>
+  </data>
+  <data name="msg_pack_afterdownload_text" xml:space="preserve">
+    <value>After downloading and extracting the pack, be sure to open the preferences dialog and update the location to where your map pack is located.</value>
+  </data>
+  <data name="msg_pack_afterdownload_title" xml:space="preserve">
+    <value>Reminder</value>
+  </data>
+  <data name="msg_sig_warning_text" xml:space="preserve">
+    <value>Please note that your manual changes made to the signatures will be automatically overwritten should you upgrade or downgrade your version of Mappy in the future.</value>
+  </data>
+  <data name="msg_sig_warning_title" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="config_general_sig_help" xml:space="preserve">
+    <value>* Signatures must be in hexidecimal string format.
+* Use ?? to represent a single wildcard byte.
+* Prefixes may be used to control where the pointer is read from.
+* By default, the pointer is read from the first wildcard byte or the bytes following the match if no wildcard is used.
+* A checkmark does not necessarily indicate a usable signature, but only that the byte pattern was found in memory.
+
+Prefixes:
+&lt;&lt; Use the 32bit integer preceeding a match
+&gt;&gt; Use the 32bit integer following the match regardless of wildcards.</value>
+  </data>
+  <data name="config_hk_action_key" xml:space="preserve">
+    <value>Action Key</value>
+  </data>
+  <data name="config_hk_enable_filtering" xml:space="preserve">
+    <value>Enable global hot-key and mouse filtering</value>
+  </data>
+  <data name="tab_hotkeys" xml:space="preserve">
+    <value>Hot Keys</value>
+  </data>
+  <data name="config_hk_action_key_help" xml:space="preserve">
+    <value>Holding the action key down temporarily does the following:
+* Disables click-through mode
+* Changes the background opacity to 100%
+* Allows the mouse wheel to increase/decrease zoom regardless of application focus</value>
+  </data>
+  <data name="config_hk_allow_cancel" xml:space="preserve">
+    <value>Do not allow other applications to process a handled action (does not always  work)</value>
+  </data>
+  <data name="config_hk_help" xml:space="preserve">
+    <value>To assign a key, highlight the action then press the desired key combination.
+To unassign an action, press the escape key or choose unbind from the context menu.</value>
+  </data>
+  <data name="config_hk_col_action_binding" xml:space="preserve">
+    <value>Assigned Hot Key</value>
+  </data>
+  <data name="config_hk_col_action_name" xml:space="preserve">
+    <value>Action</value>
+  </data>
+  <data name="hotkey_center" xml:space="preserve">
+    <value>Center View</value>
+  </data>
+  <data name="hotkey_exit" xml:space="preserve">
+    <value>Exit Application</value>
+  </data>
+  <data name="hotkey_openprefs" xml:space="preserve">
+    <value>Open Preferences</value>
+  </data>
+  <data name="hotkey_snap" xml:space="preserve">
+    <value>Snap to Range</value>
+  </data>
+  <data name="hotkey_toggleclickthru" xml:space="preserve">
+    <value>Toggle Click-Through</value>
+  </data>
+  <data name="hotkey_togglegrid" xml:space="preserve">
+    <value>Toggle Grid</value>
+  </data>
+  <data name="hotkey_togglehidden" xml:space="preserve">
+    <value>Toggle Hidden Spawns</value>
+  </data>
+  <data name="hotkey_togglelabels" xml:space="preserve">
+    <value>Toggle Map Labels</value>
+  </data>
+  <data name="hotkey_togglelines" xml:space="preserve">
+    <value>Toggle Map Lines</value>
+  </data>
+  <data name="hotkey_togglemapimage" xml:space="preserve">
+    <value>Toggle Map Image</value>
+  </data>
+  <data name="hotkey_edit_add" xml:space="preserve">
+    <value>Add Point to Map Line</value>
+  </data>
+  <data name="hotkey_edit_cancel" xml:space="preserve">
+    <value>Cancel Map Line</value>
+  </data>
+  <data name="hotkey_edit_remove" xml:space="preserve">
+    <value>Remove Point from Map Line</value>
+  </data>
+  <data name="hotkey_edit_start" xml:space="preserve">
+    <value>Start New Map Line</value>
+  </data>
+  <data name="config_appear_use_player_color" xml:space="preserve">
+    <value>Override player color with:</value>
+  </data>
+  <data name="config_appear_spawn_group_size" xml:space="preserve">
+    <value>Add to size when player is in the same group or alliance</value>
+  </data>
+  <data name="config_appear_spawn_hunt_size" xml:space="preserve">
+    <value>Add to size when spawn matches a hunt pattern</value>
+  </data>
+  <data name="config_appear_spawn_select_size" xml:space="preserve">
+    <value>Add to size when selected or targeted</value>
+  </data>
+  <data name="config_appear_player_size" xml:space="preserve">
+    <value>Base size for players</value>
+  </data>
+  <data name="config_appear_hunt_locked_line_color" xml:space="preserve">
+    <value>When hunt is dead / claimed / not an attackable enemy</value>
+  </data>
+  <data name="config_appear_section_grid" xml:space="preserve">
+    <value>Grid</value>
+  </data>
+  <data name="config_appear_section_lines" xml:space="preserve">
+    <value>Connection Lines</value>
+  </data>
+  <data name="config_appear_section_spawn" xml:space="preserve">
+    <value>Spawns</value>
+  </data>
+  <data name="config_appear_player_info_color" xml:space="preserve">
+    <value>Player Info Color</value>
+  </data>
+  <data name="config_appear_player_info_font" xml:space="preserve">
+    <value>Player Info Font:</value>
+  </data>
+  <data name="config_appear_enemy_info_color" xml:space="preserve">
+    <value>Enemy Info Color</value>
+  </data>
+  <data name="config_appear_enemy_info_font" xml:space="preserve">
+    <value>Enemy Info Font:</value>
+  </data>
+  <data name="config_appear_enemy_size" xml:space="preserve">
+    <value>Base size for enemies</value>
+  </data>
+  <data name="config_appear_npc_info_color" xml:space="preserve">
+    <value>NPC Info Color</value>
+  </data>
+  <data name="config_appear_npc_info_font" xml:space="preserve">
+    <value>NPC Info Font:</value>
+  </data>
+  <data name="config_appear_npc_size" xml:space="preserve">
+    <value>Base size for NPCs</value>
+  </data>
+  <data name="config_appear_draw_heading_lines" xml:space="preserve">
+    <value>Draw heading lines at all times</value>
+  </data>
+  <data name="config_appear_heading_line_color" xml:space="preserve">
+    <value>Heading line color</value>
+  </data>
+  <data name="hotkey_zoom_decrease" xml:space="preserve">
+    <value>Zoom Out</value>
+  </data>
+  <data name="hotkey_zoom_increase" xml:space="preserve">
+    <value>Zoom In</value>
+  </data>
+  <data name="menu_mode" xml:space="preserve">
+    <value>Mode</value>
+  </data>
+  <data name="mode_imagemapeditor" xml:space="preserve">
+    <value>Image Map Editor</value>
+  </data>
+  <data name="mode_navigator" xml:space="preserve">
+    <value>Navigation</value>
+  </data>
+  <data name="button_no" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="button_yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
+  <data name="msg_alwaysoverwrite" xml:space="preserve">
+    <value>Always overwrite the file without asking</value>
+  </data>
+  <data name="msg_iniclobber_text" xml:space="preserve">
+    <value>Warning: comments, formatting, and range ordering will not be preserved in the existing file.
+
+Do you really want to overwrite the current ini file?</value>
+  </data>
+  <data name="msg_iniclobber_title" xml:space="preserve">
+    <value>Overwrite?</value>
+  </data>
+  <data name="menu_add_asreplacement" xml:space="preserve">
+    <value>Add {0} As Mob to Replace by...</value>
+  </data>
+  <data name="menu_edit_replacements" xml:space="preserve">
+    <value>Edit Replacements...</value>
+  </data>
+  <data name="id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="menu_center_view" xml:space="preserve">
+    <value>Center View</value>
+  </data>
+  <data name="name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="config_appear_player_position_color" xml:space="preserve">
+    <value>Player position color</value>
+  </data>
+  <data name="config_appear_show_player_position" xml:space="preserve">
+    <value>Show the player position</value>
+  </data>
+</root>

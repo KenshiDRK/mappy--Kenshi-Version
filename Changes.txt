@@ -1,0 +1,151 @@
+0.1.44
+* Changed Icon to match the exe icon
+* Will no longer require "Run as admin"
+* Added a setting for default instance
+
+0.1.43
+* Fixed support for Adoulin zones
+
+0.1.42
+* Updated following the March 13 update
+
+0.1.41
+* Updated following the December 12 update
+
+0.1.40
+* Updated Hunts to support the use of ID's (_Noob_)
+* Added support for displaying the players position (Winter)
+* Updated config screen Spawn Information Template to show {id}
+* Added new config for displaying players position
+* Added Hunt by Id and Name to the right click menu for a selected mob
+* Added new Replacement system to replace mobs names via Id or Name
+* Fixed smalll bug with hunts on ???, currently can't search for it as it causes Regex issues
+* Added a temporary new icon
+
+0.1.35
+* updated SIG_ZONE_ID (h1pp0) 
+* fixed: wrong config pool for manually configured signatures (profile vs global)
+* fixed: bad sig display in options dialog (hack)
+* fixed: app will no longer crash if there is a bad sig (InstanceException)
+
+0.1.34
+* Fixes zone processing for those IDs in excess of 255 (ex: mog house) (_Noob_)
+
+0.1.33
+* Fixes issues introduced bt Jul 2011 patch (Zer0Blues)
+* The info display can now be updated to display the mob id. Use {id} in the info template to enable.
+
+0.1.32
+* Fixes issues introduced by Feb 14th 2011 patch (Jetsam)
+* Support for high resolution map images
+* Removed adjustment from map image placement logic
+* Map image cache will now be released upon zoning
+* New modular editor architecture. Could this be the start of plugins?
+* Spawns are now properly updated when zoning into the same zone (warp at hp, tractor, etc)
+* New Maps: Kazham, South Sandoria
+
+0.1.31
+* fixed auto snap on zone regression
+
+0.1.30
+* Spawns will now display the direction they are facing. This may optionally be reduced to just the selected/hunt targets if desired
+* The action key no longer gives the map window focus
+* New hotkeys bindings added for zoom in and zoom out
+* Players participating in campaign will no longer display the campaign icon
+* Fixed instance switching
+* Highlighted spawns will now display regardless show spawn option
+* Potentially fixes european issues
+* Fixed alpha transparency issues with the image map when using Windows 7
+* Map data will now only fire the DataChanged event if something actually changed
+* Map window no longer uses a system timer because the handler was being calling from a thread pool
+* Fixed zoom being adjusted after a zone from the initial barrage of spawn updates
+* Map image files will no longer be loaded if the map pack overlay system has been turned off
+
+0.1.29
+* resolved Windows XP issue.
+* opacity and click-through will no longer be reset when opening the context menu
+* the player spawn color may now be overridden with a user-specified color
+* spawn sizes may now be customized
+* font and colors may now be specified based on the spawn type
+* rearranged some configuration options and groupd them into common areas
+* rewrote some configuration option descriptions to be more informative
+
+0.1.28
+* new feature: global hotkey filtering
+* map pack path is now decoupled from the normal file data path
+* users may no longer set a map pack path that does not contain the map.ini file
+* mappy will now complain if the map.ini file exists but is invalid
+* renamed "map alternative" to "map pack" to alleviate confusion
+* added signature tab in preferences with the ability to edit signatures without recompiling
+* refactored signature initialization code
+* a message will now be displayed when a signature cannot be located detailing which signatures lived/died
+* polling will now automatically stop in light of an error instead of hosing the app
+* the hunt window will now be correctly updated if zoning while opened
+* changed how the invalid file path dialogs are presented to the user to alleviate confusion
+
+0.1.27 RC3
+* emergency fix due to march patch (SIG_MY_TARGET blew up :o)
+
+0.1.27 RC2
+* finished localization for all config options
+* added show spawn/lines/label options to context menus
+* created a new setup project
+
+0.1.26 RC1
+* new feature: target/pet chains. (player targets and normal pets)
+* lots more options surfaced to the config screen
+* spawn info changed to use a customizable template
+* info text now dismisses when quickly moving the mouse out of the window
+
+0.1.25
+* new feature: spawn depth filtering
+* added many new appearance customization options
+* optimized spawn rendering code
+* optimized pen and brush usage
+* added distance display to spawn info text
+* added polling interval to options
+* panning offset is now automatically cleared upon zoning
+
+0.1.24
+* new feature: vector map line depth filtering
+* new feature: auto range snap. Autofits the player bubble to the window.
+* new config: auto snap on zone
+* fixed incorrect map displayed on zones with multiple maps (dumb xzy format)
+* refactored config to split out options to separate tabs
+
+0.1.23
+* support for FFAssist style map packs
+* surfaced show hidden spawns to ui
+* fixed hover/selection for hidden spawns when displayed
+
+0.1.22
+* added "Save map" option to the map context menu
+* preferences may now be opened even if there are no active instances
+* added icons to some context menu items
+* added multi-lingual support
+* moved most ui text to the language resource file
+* modified map config tab to auto scroll when necessary
+* add as hunt no longer displays for unnamed npcs
+
+0.1.21
+* refactored hunt system to distingush from permanent and temporary hunts
+* added UI to add/edit hunts
+* new feature: center view
+* new feature: "add spawn as hunt" when right-clicking a spawn
+* zoom is now saved to the config profile
+* last chance save when zoning has been moved to a separate thread
+* refactored dirty state for map data
+* fixed map not saving properly in some cases
+
+0.1.18
+* added configuration core
+* expanded options dialog to include more map customization options
+* added a last chance dialog that allows the user to save any outstanding map changes upon zone/exit
+
+0.1.16
+* major engine overhaul
+* improved namespacing and separation to faciliate future projects
+* core map code moved into a component, as os managed controls cannot render on UWA layered windows
+* implemented the layered window code (true alpha blending)
+
+All prior versions are internal builds only.
