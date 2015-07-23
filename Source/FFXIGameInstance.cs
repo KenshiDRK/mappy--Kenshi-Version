@@ -842,7 +842,7 @@ namespace mappy
                 {
                     base.Icon = MapRes.Conveyor;
                 }
-                else if (base.Type == SpawnType.NPC && (info.DisplayName == "Treasure Chest" || info.DisplayName == "Treasure Coffer" || info.DisplayName == "Treasure Casket" || info.DisplayName == "Ancient Lockbox"))
+                else if (base.Type == SpawnType.NPC && (info.DisplayName == "Treasure Chest" || info.DisplayName == "Treasure Coffer" || info.DisplayName == "Treasure Casket" || info.DisplayName == "Ancient Lockbox" || info.DisplayName == "Armoury Crate" || info.DisplayName == "Riftworn Pyxis" || info.DisplayName == "Sturdy Pyxis"))
                 {
                     base.Icon = MapRes.StatusTreasure;
                 }

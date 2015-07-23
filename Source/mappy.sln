@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+# Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mappy", "mappy.csproj", "{E763C3EA-1323-41E6-A54D-5BB588C80FFD}"
 EndProject
 Global
@@ -14,8 +14,8 @@ Global
 		{E763C3EA-1323-41E6-A54D-5BB588C80FFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E763C3EA-1323-41E6-A54D-5BB588C80FFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E763C3EA-1323-41E6-A54D-5BB588C80FFD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E763C3EA-1323-41E6-A54D-5BB588C80FFD}.Web Release|Any CPU.ActiveCfg = Web Release|Any CPU
-		{E763C3EA-1323-41E6-A54D-5BB588C80FFD}.Web Release|Any CPU.Build.0 = Web Release|Any CPU
+		{E763C3EA-1323-41E6-A54D-5BB588C80FFD}.Web Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E763C3EA-1323-41E6-A54D-5BB588C80FFD}.Web Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
