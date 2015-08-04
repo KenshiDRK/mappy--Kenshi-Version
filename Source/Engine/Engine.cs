@@ -1773,8 +1773,8 @@ namespace MapEngine
                 }
             }
             
-            if (m_game.Target != null && m_game.Target != m_game.Player)     //current in-game target has highest precidence of anything
-                DrawSpawn(g, m_game.Target);
+            if (m_game.Player != null)                                       //YOU the player is placed above all other normal spawns
+                DrawPlayer(g, m_game.Player);
 
             //draw each spawn
             foreach (KeyValuePair<uint, GameSpawn> pair in m_game.Spawns)
@@ -1782,7 +1782,7 @@ namespace MapEngine
                 
                 GameSpawn spawn = pair.Value;
                 //do not draw the target/player/selected spawns. these will be drawn later to give them higher viewing priority
-                if (spawn != m_game.Player && spawn != m_game.Selected)
+                if (spawn != m_game.Player && (spawn != m_game.Selected || spawn != m_game.Target))
                 {
                     //if spawn depth filtering is turned on then then determine if the spawn should be displayed
                     if (m_depthFilterSpawn && m_game.Player != null)
@@ -1794,9 +1794,6 @@ namespace MapEngine
                     }
                     DrawSpawn(g, spawn);
                 }
-                
-                if (m_game.Player != null)                                       //YOU the player is placed above all other normal spawns
-                    DrawPlayer(g, m_game.Player);
                 
             }
             
@@ -1810,10 +1807,20 @@ namespace MapEngine
                    CalcClientCoordY(m_game.Target.Location.Y)
                 );
             }
+            if (m_game.Player != null && m_game.Selected != null && (!m_game.Selected.Hidden || m_showHiddenSpawn))
+            {
+                g.DrawLine(pSelected,
+                   CalcClientCoordX(m_game.Player.Location.X),
+                   CalcClientCoordY(m_game.Player.Location.Y),
+                   CalcClientCoordX(m_game.Selected.Location.X),
+                   CalcClientCoordY(m_game.Selected.Location.Y)
+                );
+            }
             
+            if (m_game.Player != null)                                       //YOU the player is placed above all other normal spawns
+                    DrawPlayer(g, m_game.Player);
             if (m_game.Selected != null && m_game.Selected != m_game.Player) //selection has a higher precidence than YOU
-                DrawSpawn(g, m_game.Selected);
-                
+                DrawSpawn(g, m_game.Selected);  
             if (m_game.Target != null && m_game.Target != m_game.Player)     //current in-game target has highest precidence of anything
                 DrawSpawn(g, m_game.Target);
             
