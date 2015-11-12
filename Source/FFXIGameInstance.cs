@@ -327,6 +327,10 @@ namespace mappy
                     {
                         ZoneID = 0x124;
                     }
+                    else if (ZoneID == 0x2DE) //Desuetia - Empyreal Paradox conflicting with bastok mog house (0x2DE-0x1BC=0x122)
+                    {
+                        ZoneID = 0x2DE;
+                    }
                     else
                     {
                         ZoneID = ZoneID - 0x1BC;
