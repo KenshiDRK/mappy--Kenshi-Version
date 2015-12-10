@@ -539,17 +539,15 @@ namespace mappy
         public UInt32 Unk05;                // 0x64
         public float Heading;               // Yaw
         public UInt32 PetOwnerID;          //only for permanent pets. charmed mobs do not fill this.
-        public UInt32 PetTP;
         public byte HealthPercent;
         public byte Unk06;
-        public byte Unk07;
         public byte ModelType;
         public byte Race;
-        public byte Unk08;
-        public UInt16 Unk09;                // Some type of timer..
-        public UInt16 Unk10;                // Deals with model update..
+        public byte Unk07;
+        public UInt16 Unk08;                // Some type of timer..
+        public byte Unk09;                // Deals with model update..
         public byte ModelFade;              // Updates the entity model. (Blinking)
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 9)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 7)]
         public byte[] Unk13;
         public UInt16 ModelFace;
         public UInt16 ModelHead;
@@ -646,9 +644,11 @@ namespace mappy
         public byte PankrationFlagFlip;     // Determines which side each flag is on.
         public UInt16 Unk34;                // Deals with current action..
         public float ModelSize;
-        public UInt32 Unk35;
-        public UInt16 MonstrosityFlag;      // 01 Sets the entity name to a status icon of a black cat..    
+        public UInt32 Unk35;    
         public UInt16 Unk36;
+        public UInt16 Unk37;
+        public UInt16 MonstrosityFlag;      // 01 Sets the entity name to a status icon of a black cat..
+        public UInt16 Unk38;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 36)]
         public string MonstrosityName;
     }
@@ -846,7 +846,7 @@ namespace mappy
                 {
                     base.Icon = MapRes.Conveyor;
                 }
-                else if (base.Type == SpawnType.NPC && (info.DisplayName == "Treasure Chest" || info.DisplayName == "Treasure Coffer" || info.DisplayName == "Treasure Casket" || info.DisplayName == "Ancient Lockbox" || info.DisplayName == "Armoury Crate" || info.DisplayName == "Riftworn Pyxis" || info.DisplayName == "Sturdy Pyxis"))
+                else if (base.Type == SpawnType.NPC && (info.DisplayName == "Treasure Chest" || info.DisplayName == "Treasure Coffer" || info.DisplayName == "Treasure Casket" || info.DisplayName == "Ancient Lockbox" || info.DisplayName == "Armoury Crate" || info.DisplayName == "Riftworn Pyxis" || info.DisplayName == "Sturdy Pyxis" || info.DisplayName == "Emblazoned Reliquary"))
                 {
                     base.Icon = MapRes.StatusTreasure;
                 }
