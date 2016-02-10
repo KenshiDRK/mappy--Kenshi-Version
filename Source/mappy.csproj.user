@@ -16,4 +16,7 @@
     <VerifyUploadedFiles>true</VerifyUploadedFiles>
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
+    <StartWorkingDirectory>C:\Users\Jacinto\Desktop\mappy-master(KenshiVersion)\Release\</StartWorkingDirectory>
+  </PropertyGroup>
 </Project>

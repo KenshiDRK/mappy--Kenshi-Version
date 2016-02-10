@@ -61,7 +61,7 @@ namespace mappy.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a https://github.com/Ihellmasker/mappy.
+        ///   Busca una cadena traducida similar a https://github.com/KenshiDRK/mappy--Kenshi-Version.
         /// </summary>
         internal static string config_app_url {
             get {

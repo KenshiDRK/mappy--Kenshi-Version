@@ -1,3 +1,19 @@
+0.1.47
+* Update Entity structure for February 10, 2016 update
+* Added icons for mining, logging and harvesting points
+* Fixed a bug where the moogle from the mog house was showing on the city as spawned
+
+
+0.1.46
+* Fixed an issue with new icons being out of place when targeted or selected
+* Fixed small bug when showhiddenspawns and in Mog houses
+
+0.1.45
+* Added the target lines back
+* Added Depth Filter for labels
+* Added support for mog house
+* Added unused icons and a bunch of new ones
+
 0.1.44
 * Changed Icon to match the exe icon
 * Will no longer require "Run as admin"

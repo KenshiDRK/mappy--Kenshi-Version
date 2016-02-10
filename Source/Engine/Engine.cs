@@ -1340,9 +1340,9 @@ namespace MapEngine
                     DrawLinesFiltered(surface);
                 else
                     DrawLines(surface);
-                DrawLabels(surface);
-                DrawSpawns(surface);
-                DrawLoc(surface); /// IHM EDIT
+                    DrawLabels(surface);
+                    DrawSpawns(surface);
+                    DrawLoc(surface); /// IHM EDIT
             }
             catch (Exception ex)
             {
@@ -1772,10 +1772,10 @@ namespace MapEngine
                     }
                 }
             }
-            
+
             if (m_game.Player != null)                                       //YOU the player is placed above all other normal spawns
                 DrawPlayer(g, m_game.Player);
-
+            
             //draw each spawn
             foreach (KeyValuePair<uint, GameSpawn> pair in m_game.Spawns)
             {
@@ -1816,14 +1816,15 @@ namespace MapEngine
                    CalcClientCoordY(m_game.Selected.Location.Y)
                 );
             }
-            
+
+            //draw the player/target/selected spawns after everything else so that they are always visible above anything else
             if (m_game.Player != null)                                       //YOU the player is placed above all other normal spawns
-                    DrawPlayer(g, m_game.Player);
+                DrawPlayer(g, m_game.Player);
             if (m_game.Selected != null && m_game.Selected != m_game.Player) //selection has a higher precidence than YOU
-                DrawSpawn(g, m_game.Selected);  
+                DrawSpawn(g, m_game.Selected);
             if (m_game.Target != null && m_game.Target != m_game.Player)     //current in-game target has highest precidence of anything
                 DrawSpawn(g, m_game.Target);
-            
+
         }
 
         //renders the special player graphic to the buffer
@@ -1873,7 +1874,7 @@ namespace MapEngine
             //cache certain applicability checks
             bool STH = spawn == m_game.Target || spawn == m_game.Highlighted || spawn == m_game.Selected;
             bool STHAH = STH || spawn.Alert || spawn.Hunt;
-            bool STHP = spawn == m_game.Player || STH;
+            bool STHP = STH;
 
             if ((m_showSpawns || STHAH) && (!spawn.Hidden || m_showHiddenSpawn))
             {
@@ -2021,15 +2022,15 @@ namespace MapEngine
                         output = rxInfoName.Replace(output, spawn.RepName);
                     else
                         output = rxInfoName.Replace(output, spawn.Name);
-                    output = rxInfoHpp.Replace(output, spawn.HealthPercent.ToString());
-                    output = rxInfoDistance.Replace(output, spawn.Distance.ToString("0.##"));
-                    output = rxNewLine.Replace(output, "\n");
-                    output = rxInfoID.Replace(output, spawn.ID.ToString("X")); /// IHM EDIT
+                        output = rxInfoHpp.Replace(output, spawn.HealthPercent.ToString());
+                        output = rxInfoDistance.Replace(output, spawn.Distance.ToString("0.##"));
+                        output = rxNewLine.Replace(output, "\n");
+                        output = rxInfoID.Replace(output, spawn.ID.ToString("X")); /// IHM EDIT
 
                     //if debugging and a debug string is set on the spawn, then append it to the info text regardless of the template
 #if DEBUG
-                  if (spawn.DEBUG != "")
-                     output += (output == "" ? "" : "\n") + spawn.DEBUG;
+                    if (spawn.DEBUG != "")
+                        output += (output == "" ? "" : "\n") + spawn.DEBUG;
 #endif
 
                     //measure the string and draw it on to the buffer
