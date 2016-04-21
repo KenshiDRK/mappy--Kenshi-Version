@@ -1,0 +1,869 @@
+<HTML>
+  <HEAD>
+    <META http-equiv="FFXI map ini Coordinates" content="no">
+    <SCRIPT language="JavaScript">
+<!--
+var AreaID = "32_0";
+var pointX = 0;
+var pointY = 0;
+var pointZ = 0;
+var DIR = "..\\";
+
+// AreaID&#12434;&#12475;&#12483;&#12488;
+function setAreaID() {
+  AreaID = document.imagecalc.areaid.value;
+  // IE &#12391; bmp &#12364;&#34920;&#31034;&#20986;&#26469;&#12394;&#12356;?!
+  document.images[0].src= DIR + AreaID + ".gif";
+  //document.images[1].src= AreaID + ".bmp";
+  //document.images[2].src= AreaID + ".jpg";
+}
+// &#20837;&#21147;&#12373;&#12428;&#12390;&#12509;&#12452;&#12531;&#12488;&#12434;&#22793;&#25968;&#12408;&#12475;&#12483;&#12488;
+function setPoint() {
+  pointX = document.imagecalc.x.value;
+  pointY = document.imagecalc.y.value;
+  pointZ = document.imagecalc.z.value;
+  pointX1 = document.imagecalc.xr1.value;
+  pointY1 = document.imagecalc.yr1.value;
+  pointZ1 = document.imagecalc.zr1.value;
+  pointX2 = document.imagecalc.xr2.value;
+  pointY2 = document.imagecalc.yr2.value;
+  pointZ2 = document.imagecalc.zr2.value;
+  AreaType = document.imagecalc.type.value
+}
+// &#30011;&#20687;&#12434;&#34920;&#31034;&#12377;&#12427;
+function viewImage() {
+  gif = "<img src=\"" + DIR + AreaID + ".gif\" onmousemove=\"document.imagecalc.zahyou.value='2D x:'+event.offsetX+'  2D z:'+event.offsetY\" onmouseout=\"document.imagecalc.zahyou.value=''\" onClick=\"po()\"> <br>\n";
+  //bmp = "<img src=\"" + AreaID + ".bmp\" onmousemove=\"document.imagecalc.zahyou.value='X:'+event.offsetX+'  Y:'+event.offsetY\" onmouseout=\"document.imagecalc.zahyou.value=''\" onClick=\"po()\"> <br>\n";
+  //jpg = "<img src=\"" + AreaID + ".jpg\" onmousemove=\"document.imagecalc.zahyou.value='X:'+event.offsetX+'  Y:'+event.offsetY\" onmouseout=\"document.imagecalc.zahyou.value=''\" onClick=\"po()\"> <br>\n";
+  images = gif;
+//images = gif + bmp + jpg;  
+  return images;
+}
+// &#12509;&#12452;&#12531;&#12488;&#12373;&#12428;&#12383;&#22580;&#25152;&#12398;&#35336;&#31639;&#32080;&#26524;&#12434;&#34920;&#31034;&#12377;&#12427;
+function po() {
+  setPoint();
+  //prefix = ",-10000,-10000,-10000,10000,10000,10000";
+  imgX = (event.offsetX / 2);
+  imgY = (event.offsetY / 2);
+  fielA = 0.1;
+  fielB = (imgX - (AreaType * pointX)).toFixed(1);
+  fielC = -0.1;
+  fielD = (imgY + (AreaType * pointZ)).toFixed(1);
+  dungA = 0.2;
+  dungB = (imgX - (AreaType * pointX)).toFixed(1);
+  dungC = -0.2;
+  dungD = (imgY + (AreaType * pointZ)).toFixed(1);
+  townA = 0.4;
+  townB = (imgX - (AreaType * pointX)).toFixed(1);
+  townC = -0.4;
+  townD = (imgY + (AreaType * pointZ)).toFixed(1);
+
+  result = " " + AreaID + "=" + AreaType + "," + fielB + "," + "-" + AreaType + "," + fielD + "," + pointX1 + "," + pointY1 + "," + pointZ1 + "," + pointX2 + "," + pointY2 + "," + pointZ2;
+//  resultDung = AreaID + "=" + dungA + "," + dungB + "," + dungC + "," + dungD + "," + pointX1 + "," + pointY1 + "," + pointZ1 + "," + pointX2 + "," + pointY2 + "," + pointZ2;
+//  resultTown = AreaID + "=" + townA + "," + townB + "," + townC + "," + townD + "," + pointX1 + "," + pointY1 + "," + pointZ1 + "," + pointX2 + "," + pointY2 + "," + pointZ2;
+
+  document.imagecalc.point.value = result;
+//  document.imagecalc.point2.value = resultDung;
+//  document.imagecalc.point3.value = resultTown;
+}
+//-->
+  </SCRIPT>
+  	<title>Generate FFXI map.ini Coordinates</title>
+  </HEAD>
+  <BODY BGCOLOR="#222255" COLOR="#ffffff" topmargin="0">
+  <FORM name="imagecalc">
+  <font color="#663300" size="1" face="Arial">
+		
+		</font><b><font face="Arial" color="#FFFFFF" style="font-size: 3pt">&nbsp;&nbsp;&nbsp;
+	<br>
+	</font><font face="Arial" color="#FFFFFF" size="4">&nbsp;&nbsp; Line for Map.ini</font></b><font color="#663300" size="3" face="Arial"><b><font color="#FFFFFF" size="4" face="Arial">
+	</font></b>&nbsp;
+		<input name="point" size="80" style="border:2px solid #000080; font-weight: 700; background-color:#CCCCFF"><br>
+	</font>
+  <font color="#663300" face="Arial">
+		
+		<font color="#663300" style="font-size: 2pt">
+		&nbsp;</font><font color="#663300" size="3" face="Arial"><table border="0" id="table2" bgcolor="#E4C47C" cellspacing="5">
+		
+			<td width="500" valign="top">
+      	<span style="font-size: 3pt"><br>
+      	</b></font>
+		</span><b><font color="#FFFFFF">&nbsp;
+		<span style="background-color: #222255">&nbsp;STEP 1.&nbsp;&nbsp;&nbsp; 
+		Define Area </span>
+		<span style="font-size: 4pt; background-color: #000080"><br>
+		</span></font></b>
+		<font face="Times New Roman"><span style="font-size: 4pt"><br>
+		</span><font color="#663300"><b>&nbsp; 
+		<span style="background-color: #E4C47C">&nbsp;Select AreaID:</span></b></font></font><font color="#663300"><span style="background-color: #E4C47C"></b></span></font><span style="background-color: #E4C47C">
+		</span>
+		<font color="#663300" size="3" face="Arial">
+		<select size="1" name="areaid" onclick="setAreaID()" onchange="setAreaID()" style="font-weight: bold; color:#663300">
+
+<option value="32_0" selected>Aht Urhgan Whitegate</option>
+<option value="e0_0">Airship - Jeuno-Bastok</option>
+<option value="e2_0">Airship - Jeuno-Kazham</option>
+<option value="df_0">Airship - Jeuno-SandOria</option>
+<option value="e1_0">Airship - Jeuno-Windurst</option>
+<option value="d6_0">Al Zhabi Residential Area</option>
+<option value="30_0">Al Zhabi</option>
+<option value="21_0">Al'Taieu</option>
+<option value="98_0">Altar Room</option>
+<option value="48_0">Alzadaal Undersea Ruins 1</option>
+<option value="48_9">Alzadaal Undersea Ruins 10</option>
+<option value="48_10">Alzadaal Undersea Ruins 11</option>
+<option value="48_11">Alzadaal Undersea Ruins 12</option>
+<option value="48_1">Alzadaal Undersea Ruins 2</option>
+<option value="48_2">Alzadaal Undersea Ruins 3</option>
+<option value="48_3">Alzadaal Undersea Ruins 4</option>
+<option value="48_4">Alzadaal Undersea Ruins 5</option>
+<option value="48_5">Alzadaal Undersea Ruins 6</option>
+<option value="48_6">Alzadaal Undersea Ruins 7</option>
+<option value="48_7">Alzadaal Undersea Ruins 8</option>
+<option value="48_8">Alzadaal Undersea Ruins 9</option>
+<option value="26_6">Apollyon-CN</option>
+<option value="26_7">Apollyon-CS</option>
+<option value="26_0">Apollyon-Entrance-SE</option>
+<option value="26_1">Apollyon-Entrance-SW</option>
+<option value="26_2">Apollyon-NE</option>
+<option value="26_3">Apollyon-NW</option>
+<option value="26_4">Apollyon-SE</option>
+<option value="26_5">Apollyon-SW</option>
+<option value="36_0">Arrapago Reef 1</option>
+<option value="36_9">Arrapago Reef 10</option>
+<option value="36_10">Arrapago Reef 11</option>
+<option value="36_1">Arrapago Reef 2</option>
+<option value="36_2">Arrapago Reef 3</option>
+<option value="36_3">Arrapago Reef 4</option>
+<option value="36_4">Arrapago Reef 5</option>
+<option value="36_5">Arrapago Reef 6</option>
+<option value="36_6">Arrapago Reef 7</option>
+<option value="36_7">Arrapago Reef 8</option>
+<option value="36_8">Arrapago Reef 9</option>
+<option value="4a_0">Arrapago Remnants 1</option>
+<option value="4a_1">Arrapago Remnants 2</option>
+<option value="4a_2">Arrapago Remnants 3</option>
+<option value="4a_3">Arrapago Remnants 4</option>
+<option value="4a_4">Arrapago Remnants 5</option>
+<option value="4a_5">Arrapago Remnants 6</option>
+<option value="4a_6">Arrapago Remnants 7</option>
+<option value="07_0">Attohwa Chasm</option>
+<option value="44_0">Aydeewa Subterrane 1</option>
+<option value="44_1">Aydeewa Subterrane 2</option>
+<option value="44_2">Aydeewa Subterrane 3</option>
+<option value="44_3">Aydeewa Subterrane 4</option>
+<option value="44_4">Aydeewa Subterrane 5</option>
+<option value="44_5">Aydeewa Subterrane 6</option>
+<option value="44_6">Aydeewa Subterrane 7</option>
+<option value="92_0">Balga's Dais</option>
+<option value="57_0">Bastok Markets [S]</option>
+<option value="eb_0">Bastok Markets</option>
+<option value="ea_0">Bastok Mines</option>
+<option value="d9_0">Bastok Residential Area</option>
+<option value="54_0">Batallia Downs [S]</option>
+<option value="69_0">Batallia Downs</option>
+<option value="5c_0">Beadeaux 1 [S]</option>
+<option value="93_0">Beadeaux 1</option>
+<option value="5c_1">Beadeaux 2 [S]</option>
+<option value="93_1">Beadeaux 2</option>
+<option value="88_0">Beaucedine Glacier [S]</option>
+<option value="6f_0">Beaucedine Glacier</option>
+<option value="7f_0">Behemoth's Dominion</option>
+<option value="4b_0">Bhaflau Remnants 1</option>
+<option value="4b_1">Bhaflau Remnants 2</option>
+<option value="4b_2">Bhaflau Remnants 3</option>
+<option value="4b_3">Bhaflau Remnants 4</option>
+<option value="4b_4">Bhaflau Remnants 5</option>
+<option value="34_0">Bhaflau Thickets 1</option>
+<option value="34_1">Bhaflau Thickets 2</option>
+<option value="04_0">Bibiki Bay</option>
+<option value="08_0">Boneyard Gully</option>
+<option value="a7_0">Bostaunieux Oubliette 1</option>
+<option value="a7_1">Bostaunieux Oubliette 2</option>
+<option value="a7_2">Bostaunieux Oubliette 3</option>
+<option value="76_0">Buburimu Peninsula</option>
+<option value="4f_0">Caedarva Mire 1</option>
+<option value="4f_1">Caedarva Mire 2</option>
+<option value="4f_2">Caedarva Mire 3</option>
+<option value="4f_3">Caedarva Mire 4</option>
+<option value="71_0">Cape Teriggan</option>
+<option value="02_0">Carpenters' Landing 1</option>
+<option value="02_1">Carpenters' Landing 2</option>
+<option value="63_0">Castle Oztroja 1 [S]</option>
+<option value="97_0">Castle Oztroja 1</option>
+<option value="63_1">Castle Oztroja 2 [S]</option>
+<option value="97_1">Castle Oztroja 2</option>
+<option value="63_2">Castle Oztroja 3 [S]</option>
+<option value="97_2">Castle Oztroja 3</option>
+<option value="63_3">Castle Oztroja 4 [S]</option>
+<option value="97_3">Castle Oztroja 4</option>
+<option value="63_4">Castle Oztroja 5 [S]</option>
+<option value="97_4">Castle Oztroja 5</option>
+<option value="63_5">Castle Oztroja 6 [S]</option>
+<option value="97_5">Castle Oztroja 6</option>
+<option value="97_6">Castle Oztroja 7</option>
+<option value="8a_0">Castle Zvahl Baileys 1 [S]</option>
+<option value="a1_0">Castle Zvahl Baileys 1</option>
+<option value="8a_1">Castle Zvahl Baileys 2 [S]</option>
+<option value="a1_1">Castle Zvahl Baileys 2</option>
+<option value="8a_2">Castle Zvahl Baileys 3 [S]</option>
+<option value="a1_2">Castle Zvahl Baileys 3</option>
+<option value="8a_3">Castle Zvahl Baileys 4 [S]</option>
+<option value="a1_3">Castle Zvahl Baileys 4</option>
+<option value="9b_0">Castle Zvahl Keep 1 [S]</option>
+<option value="a2_0">Castle Zvahl Keep 1</option>
+<option value="9b_1">Castle Zvahl Keep 2 [S]</option>
+<option value="a2_1">Castle Zvahl Keep 2</option>
+<option value="9b_2">Castle Zvahl Keep 3 [S]</option>
+<option value="a2_2">Castle Zvahl Keep 3</option>
+<option value="9b_3">Castle Zvahl Keep 4 [S]</option>
+<option value="a2_3">Castle Zvahl Keep 4</option>
+<option value="a8_0">Chamber of Oracles</option>
+<option value="e9_0">Chateau d'Oraguille</option>
+<option value="46_0">Chocobo Circuit 1</option>
+<option value="46_1">Chocobo Circuit 2</option>
+<option value="46_2">Chocobo Circuit 3</option>
+<option value="46_3">Chocobo Circuit 4</option>
+<option value="46_4">Chocobo Circuit 5</option>
+<option value="46_5">Chocobo Circuit 6</option>
+<option value="46_6">Chocobo Circuit 7</option>
+<option value="cf_0">Cloister of Flames</option>
+<option value="cb_0">Cloister of Frost</option>
+<option value="c9_0">Cloister of Gales</option>
+<option value="ca_0">Cloister of Storms</option>
+<option value="d3_0">Cloister of Tides</option>
+<option value="d1_0">Cloister of Tremors</option>
+<option value="ab_0">Crawlers Nest 1 [S]</option>
+<option value="c5_0">Crawlers' Nest 1</option>
+<option value="ab_1">Crawlers Nest 2 [S]</option>
+<option value="c5_1">Crawlers' Nest 2</option>
+<option value="c5_2">Crawlers' Nest 3</option>
+<option value="c5_3">Crawlers' Nest Unknown</option>
+<option value="bf_0">Dangruf Wadi a</option>
+<option value="bf_1">Dangruf Wadi b</option>
+<option value="55_0">Davoi [S]</option>
+<option value="95_0">Davoi</option>
+<option value="b8_3">Delkfutt's Tower 0</option>
+<option value="b8_0">Delkfutt's Tower 1</option>
+<option value="9e_0">Delkfutt's Tower 10</option>
+<option value="9e_1">Delkfutt's Tower 11</option>
+<option value="9e_2">Delkfutt's Tower 12</option>
+<option value="9e_3">Delkfutt's Tower 13</option>
+<option value="9e_4">Delkfutt's Tower 14</option>
+<option value="9e_5">Delkfutt's Tower 15</option>
+<option value="b8_1">Delkfutt's Tower 2</option>
+<option value="b8_2">Delkfutt's Tower 3</option>
+<option value="9d_0">Delkfutt's Tower 4</option>
+<option value="9d_1">Delkfutt's Tower 5</option>
+<option value="9d_2">Delkfutt's Tower 6</option>
+<option value="9d_3">Delkfutt's Tower 7</option>
+<option value="9d_4">Delkfutt's Tower 8</option>
+<option value="9d_5">Delkfutt's Tower 9</option>
+<option value="a0_0">Den of Rancor 1</option>
+<option value="a0_1">Den of Rancor 2</option>
+<option value="a0_2">Den of Rancor 3</option>
+<option value="a0_3">Den of Rancor 4</option>
+<option value="a0_4">Den of Rancor 5</option>
+<option value="a0_5">Den of Rancor 6</option>
+<option value="a0_6">Den of Rancor 7</option>
+<option value="a0_7">Den of Rancor 8</option>
+<option value="a0_8">Den of Rancor 9</option>
+<option value="2b_0">Diorama Abdhaljs-Ghelsba</option>
+<option value="2c_0">Diorama Abdhaljs-Purgonorgo Isle</option>
+<option value="9a_0">Dragon's Aery</option>
+<option value="ba_0">Dynamis - Bastok</option>
+<option value="86_0">Dynamis - Beaucedine</option>
+<option value="28_0">Dynamis - Buburimu</option>
+<option value="bc_0">Dynamis - Jeuno</option>
+<option value="29_0">Dynamis - Qufim</option>
+<option value="b9_0">Dynamis - San d'Oria</option>
+<option value="2a_0">Dynamis - Tavnazia 1</option>
+<option value="2a_1">Dynamis - Tavnazia 2</option>
+<option value="2a_2">Dynamis - Tavnazia 3</option>
+<option value="27_0">Dynamis - Valkurm</option>
+<option value="bb_0">Dynamis - Windurst</option>
+<option value="87_0">Dynamis - Xarcabard</option>
+<option value="51_0">East Ronfaure [S]</option>
+<option value="65_0">East Ronfaure</option>
+<option value="74_0">East Sarutabaruta</option>
+<option value="72_0">Eastern Altepa Desert</option>
+<option value="af_0">Eldieme Necropolis 1 [S]</option>
+<option value="af_1">Eldieme Necropolis 2 [S]</option>
+<option value="af_2">Eldieme Necropolis 3 [S]</option>
+<option value="24_0">Empyreal Paradox</option>
+<option value="56_0">Everbloom Hollow 1</option>
+<option value="56_9">Everbloom Hollow 10</option>
+<option value="56_10">Everbloom Hollow 11</option>
+<option value="56_11">Everbloom Hollow 12</option>
+<option value="56_12">Everbloom Hollow 13</option>
+<option value="56_13">Everbloom Hollow 14</option>
+<option value="56_14">Everbloom Hollow 15</option>
+<option value="56_15">Everbloom Hollow 16</option>
+<option value="56_16">Everbloom Hollow 17</option>
+<option value="56_17">Everbloom Hollow 18</option>
+<option value="56_1">Everbloom Hollow 2</option>
+<option value="56_2">Everbloom Hollow 3</option>
+<option value="56_3">Everbloom Hollow 4</option>
+<option value="56_4">Everbloom Hollow 5</option>
+<option value="56_5">Everbloom Hollow 6</option>
+<option value="56_6">Everbloom Hollow 7</option>
+<option value="56_7">Everbloom Hollow 8</option>
+<option value="56_8">Everbloom Hollow 9</option>
+<option value="cc_0">Fei'Yin 1</option>
+<option value="cc_1">Fei'Yin 2</option>
+<option value="2e_0">Ferry - Mhaura-AlZahbi 1</option>
+<option value="2f_0">Ferry - Mhaura-AlZahbi 2</option>
+<option value="3a_0">Ferry - Nashmau-AlZahbi 1</option>
+<option value="3b_0">Ferry - Nashmau-AlZahbi 2</option>
+<option value="dc_0">Ferry - Selbina-Mhaura 1</option>
+<option value="e3_0">Ferry - Selbina-Mhaura 2</option>
+<option value="dd_0">Ferry - Selbina-Mhaura 3</option>
+<option value="e4_0">Ferry - Selbina-Mhaura 4</option>
+<option value="8d_0">Fort Ghelsba</option>
+<option value="60_0">Fort Karugo-Narugo 1</option>
+<option value="60_1">Fort Karugo-Narugo 2</option>
+<option value="aa_0">Full Moon Fountain</option>
+<option value="a4_0">Garlaige Citadel 1 [S]</option>
+<option value="c8_0">Garlaige Citadel 1</option>
+<option value="a4_1">Garlaige Citadel 2 [S]</option>
+<option value="c8_1">Garlaige Citadel 2</option>
+<option value="a4_2">Garlaige Citadel 3 [S]</option>
+<option value="c8_2">Garlaige Citadel 3</option>
+<option value="a4_3">Garlaige Citadel 4 [S]</option>
+<option value="c8_3">Garlaige Citadel 4</option>
+<option value="8c_0">Ghelsba Outpost 1</option>
+<option value="8c_1">Ghelsba Outpost 2</option>
+<option value="81_0">Ghoyus Reverie 1</option>
+<option value="81_9">Ghoyus Reverie 10</option>
+<option value="81_10">Ghoyus Reverie 11</option>
+<option value="81_11">Ghoyus Reverie 12</option>
+<option value="81_12">Ghoyus Reverie 13</option>
+<option value="81_13">Ghoyus Reverie 14</option>
+<option value="81_14">Ghoyus Reverie 15</option>
+<option value="81_15">Ghoyus Reverie 16</option>
+<option value="81_16">Ghoyus Reverie 17</option>
+<option value="81_17">Ghoyus Reverie 18</option>
+<option value="81_1">Ghoyus Reverie 2</option>
+<option value="81_2">Ghoyus Reverie 3</option>
+<option value="81_3">Ghoyus Reverie 4</option>
+<option value="81_4">Ghoyus Reverie 5</option>
+<option value="81_5">Ghoyus Reverie 6</option>
+<option value="81_6">Ghoyus Reverie 7</option>
+<option value="81_7">Ghoyus Reverie 8</option>
+<option value="81_8">Ghoyus Reverie 9</option>
+<option value="91_0">Giddeus 1</option>
+<option value="91_1">Giddeus 2</option>
+<option value="22_0">Grand Palace of Hu'Xzoi 1</option>
+<option value="22_1">Grand Palace of Hu'Xzoi 2</option>
+<option value="22_2">Grand Palace of Hu'Xzoi 3</option>
+<option value="59_0">Grauberg</option>
+<option value="c4_0">Gusgen Mines 1</option>
+<option value="c4_1">Gusgen Mines 2 a</option>
+<option value="c4_4">Gusgen Mines 2 b</option>
+<option value="c4_2">Gusgen Mines 3</option>
+<option value="c4_3">Gusgen Mines 4</option>
+<option value="d4_0">Gustav Tunnel 1</option>
+<option value="d4_1">Gustav Tunnel 2</option>
+<option value="fb_0">Hall of the Gods</option>
+<option value="0e_0">Hall of Transference 1</option>
+<option value="0e_1">Hall of Transference 2</option>
+<option value="0e_2">Hall of Transference 3</option>
+<option value="3e_0">Halvung 1</option>
+<option value="3e_1">Halvung 2</option>
+<option value="3e_2">Halvung 3</option>
+<option value="3e_3">Halvung 4</option>
+<option value="f2_0">Heavens Tower 1</option>
+<option value="f2_1">Heavens Tower 2</option>
+<option value="f2_2">Heavens Tower 3</option>
+<option value="f2_3">Heavens Tower 4</option>
+<option value="8b_0">Horlais Peak</option>
+<option value="c0_0">Horutoto Ruins 1</option>
+<option value="c0_1">Horutoto Ruins 2</option>
+<option value="c0_2">Horutoto Ruins 3</option>
+<option value="c0_3">Horutoto Ruins 4</option>
+<option value="c2_0">Horutoto Ruins 5</option>
+<option value="c2_1">Horutoto Ruins 6</option>
+<option value="c2_2">Horutoto Ruins 7</option>
+<option value="c2_3">Horutoto Ruins 8</option>
+<option value="c2_4">Horutoto Ruins 9 a</option>
+<option value="c2_5">Horutoto Ruins 9 b</option>
+<option value="cd_0">Ifrit's Cauldron 1</option>
+<option value="cd_1">Ifrit's Cauldron 2</option>
+<option value="cd_2">Ifrit's Cauldron 3</option>
+<option value="cd_3">Ifrit's Cauldron 4</option>
+<option value="cd_4">Ifrit's Cauldron 5</option>
+<option value="cd_5">Ifrit's Cauldron 6</option>
+<option value="cd_6">Ifrit's Cauldron 7</option>
+<option value="cd_7">Ifrit's Cauldron 8</option>
+<option value="37_0">Ilrusi Atoll 1</option>
+<option value="37_9">Ilrusi Atoll 10</option>
+<option value="37_1">Ilrusi Atoll 2</option>
+<option value="37_2">Ilrusi Atoll 3</option>
+<option value="37_3">Ilrusi Atoll 4</option>
+<option value="37_4">Ilrusi Atoll 5</option>
+<option value="37_5">Ilrusi Atoll 6</option>
+<option value="37_6">Ilrusi Atoll 7</option>
+<option value="37_7">Ilrusi Atoll 8</option>
+<option value="37_8">Ilrusi Atoll 9</option>
+<option value="43_0">Jade Sepulcher</option>
+<option value="d7_0">Jeuno Residential Area</option>
+<option value="52_0">Jugner Forest [S]</option>
+<option value="68_0">Jugner Forest</option>
+<option value="fa_0">Kazham</option>
+<option value="be_0">King Ranperre's Tomb 1</option>
+<option value="be_1">King Ranperre's Tomb 2</option>
+<option value="0f_0">Konschtat Highlands [A]</option>
+<option value="6c_0">Konschtat Highlands</option>
+<option value="ad_0">Korroloka Tunnel 1</option>
+<option value="ad_1">Korroloka Tunnel 2</option>
+<option value="ad_2">Korroloka Tunnel 3</option>
+<option value="ad_3">Korroloka Tunnel 4</option>
+<option value="ad_4">Korroloka Tunnel 5</option>
+<option value="ae_0">Kuftal Tunnel 1</option>
+<option value="ae_1">Kuftal Tunnel 2</option>
+<option value="ae_2">Kuftal Tunnel 3</option>
+<option value="ae_3">Kuftal Tunnel 4</option>
+<option value="84_0">La Theine Plateau [A]</option>
+<option value="66_0">La Theine Plateau</option>
+<option value="d5_0">Labyrinth of Onzozo</option>
+<option value="b4_0">La'Loff Amphitheater</option>
+<option value="3f_0">Lebros Cavern 1</option>
+<option value="3f_9">Lebros Cavern 10</option>
+<option value="3f_1">Lebros Cavern 2</option>
+<option value="3f_2">Lebros Cavern 3</option>
+<option value="3f_3">Lebros Cavern 4</option>
+<option value="3f_4">Lebros Cavern 5</option>
+<option value="3f_5">Lebros Cavern 6</option>
+<option value="3f_6">Lebros Cavern 7</option>
+<option value="3f_7">Lebros Cavern 8</option>
+<option value="3f_8">Lebros Cavern 9</option>
+<option value="45_0">Leujaoam Sanctum 1</option>
+<option value="45_9">Leujaoam Sanctum 10</option>
+<option value="45_1">Leujaoam Sanctum 2</option>
+<option value="45_2">Leujaoam Sanctum 3</option>
+<option value="45_3">Leujaoam Sanctum 4</option>
+<option value="45_4">Leujaoam Sanctum 5</option>
+<option value="45_5">Leujaoam Sanctum 6</option>
+<option value="45_6">Leujaoam Sanctum 7</option>
+<option value="45_7">Leujaoam Sanctum 8</option>
+<option value="45_8">Leujaoam Sanctum 9</option>
+<option value="f5_0">Lower Jeuno</option>
+<option value="18_0">Lufaise Meadows</option>
+<option value="41_0">Mamook 1</option>
+<option value="41_1">Mamook 2</option>
+<option value="41_2">Mamook 3</option>
+<option value="42_0">Mamool Ja Training Grounds 1</option>
+<option value="42_9">Mamool Ja Training Grounds 10</option>
+<option value="42_1">Mamool Ja Training Grounds 2</option>
+<option value="42_2">Mamool Ja Training Grounds 3</option>
+<option value="42_3">Mamool Ja Training Grounds 4</option>
+<option value="42_4">Mamool Ja Training Grounds 5</option>
+<option value="42_5">Mamool Ja Training Grounds 6</option>
+<option value="42_6">Mamool Ja Training Grounds 7</option>
+<option value="42_7">Mamool Ja Training Grounds 8</option>
+<option value="42_8">Mamool Ja Training Grounds 9</option>
+<option value="03_0">Manaclipper</option>
+<option value="c6_0">Maze of Shakhrami 1</option>
+<option value="c6_1">Maze of Shakhrami 2</option>
+<option value="c6_2">Maze of Shakhrami Unknown</option>
+<option value="61_0">Meriphataud Mountains [S]</option>
+<option value="77_0">Meriphataud Mountains</option>
+<option value="ed_0">Metalworks</option>
+<option value="f9_0">Mhaura</option>
+<option value="0d_0">Mine Shaft #2716</option>
+<option value="19_0">Misareaux Coast</option>
+<option value="1f_0">Monarch Linn</option>
+<option value="96_0">Monastic Cavern</option>
+<option value="83_0">Mordion Gaol</option>
+<option value="3d_0">Mount Zhayolm</option>
+<option value="35_0">Nashmau</option>
+<option value="0c_0">Newton Movalpolos</option>
+<option value="fc_0">Norg</option>
+<option value="58_0">North Gustaberg [S]</option>
+<option value="6a_0">North Gustaberg</option>
+<option value="e7_0">Northern San d'Oria</option>
+<option value="4d_0">Nyzul Isle 1</option>
+<option value="4d_1">Nyzul Isle 2</option>
+<option value="4d_2">Nyzul Isle 3</option>
+<option value="4d_3">Nyzul Isle 4</option>
+<option value="4d_4">Nyzul Isle 5</option>
+<option value="4d_5">Nyzul Isle 6</option>
+<option value="4d_6">Nyzul Isle 7</option>
+<option value="4d_7">Nyzul Isle 8</option>
+<option value="0b_0">Oldton Movalpolos</option>
+<option value="c1_0">Ordelle's Caves 1 a</option>
+<option value="c1_3">Ordelle's Caves 1 b</option>
+<option value="c1_1">Ordelle's Caves 2</option>
+<option value="c1_2">Ordelle's Caves 3</option>
+<option value="8f_0">Palborough Mines 1</option>
+<option value="8f_1">Palborough Mines 2</option>
+<option value="8f_2">Palborough Mines 3</option>
+<option value="5a_0">Pashhow Marshlands [S]</option>
+<option value="6d_0">Pashhow Marshlands</option>
+<option value="38_0">Periqia 1</option>
+<option value="38_9">Periqia 10</option>
+<option value="38_1">Periqia 2</option>
+<option value="38_2">Periqia 3</option>
+<option value="38_3">Periqia 4</option>
+<option value="38_4">Periqia 5</option>
+<option value="38_5">Periqia 6</option>
+<option value="38_6">Periqia 7</option>
+<option value="38_7">Periqia 8</option>
+<option value="38_8">Periqia 9</option>
+<option value="01_0">Phanauet Channel</option>
+<option value="1b_0">Phomiuna Aqueducts 1</option>
+<option value="1b_1">Phomiuna Aqueducts 2</option>
+<option value="1b_2">Phomiuna Aqueducts 3</option>
+<option value="ec_0">Port Bastok</option>
+<option value="f6_0">Port Jeuno</option>
+<option value="e8_0">Port San d'Oria</option>
+<option value="f0_0">Port Windurst</option>
+<option value="12_0">Promyvion - Dem</option>
+<option value="10_0">Promyvion - Holla</option>
+<option value="14_0">Promyvion - Mea</option>
+<option value="16_0">Promyvion - Vahzl</option>
+<option value="09_0">Pso'Xja 1</option>
+<option value="09_9">Pso'Xja 10</option>
+<option value="09_10">Pso'Xja 11</option>
+<option value="09_11">Pso'Xja 12</option>
+<option value="09_12">Pso'Xja 13</option>
+<option value="09_13">Pso'Xja 14</option>
+<option value="09_14">Pso'Xja 15</option>
+<option value="09_15">Pso'Xja 16</option>
+<option value="09_16">Pso'Xja 17</option>
+<option value="09_17">Pso'Xja 18</option>
+<option value="09_18">Pso'Xja 19</option>
+<option value="09_1">Pso'Xja 2</option>
+<option value="09_19">Pso'Xja 20</option>
+<option value="09_20">Pso'Xja 21</option>
+<option value="09_2">Pso'Xja 3</option>
+<option value="09_3">Pso'Xja 4</option>
+<option value="09_4">Pso'Xja 5</option>
+<option value="09_5">Pso'Xja 6</option>
+<option value="09_6">Pso'Xja 7</option>
+<option value="09_7">Pso'Xja 8</option>
+<option value="09_8">Pso'Xja 9</option>
+<option value="04_1">Purgonorgo Isle</option>
+<option value="ce_0">Qu'Bia Arena</option>
+<option value="7e_0">Qufim Island</option>
+<option value="d0_0">Quicksand Caves 1</option>
+<option value="d0_1">Quicksand Caves 2</option>
+<option value="d0_2">Quicksand Caves 3</option>
+<option value="d0_3">Quicksand Caves 4</option>
+<option value="d0_4">Quicksand Caves 5</option>
+<option value="d0_5">Quicksand Caves 6</option>
+<option value="d0_6">Quicksand Caves 7</option>
+<option value="d0_7">Quicksand Caves 8</option>
+<option value="94_0">Qulun Dome</option>
+<option value="f7_0">Rabao</option>
+<option value="a6_0">Ranguemont Pass</option>
+<option value="1e_0">Riverne - Site #A01 a</option>
+<option value="1e_1">Riverne - Site #A01 b</option>
+<option value="1d_0">Riverne - Site #B01 a</option>
+<option value="1d_1">Riverne - Site #B01 b</option>
+<option value="5b_0">Rolanberry Fields [S]</option>
+<option value="6e_0">Rolanberry Fields</option>
+<option value="7a_0">Ro'Maeve</option>
+<option value="82_0">Ru'Aun Gardens</option>
+<option value="f3_0">Ru'Lude Gardens</option>
+<option value="5d_0">Ruthotz Silvermines 1</option>
+<option value="5d_9">Ruthotz Silvermines 10</option>
+<option value="5d_10">Ruthotz Silvermines 11</option>
+<option value="5d_11">Ruthotz Silvermines 12</option>
+<option value="5d_12">Ruthotz Silvermines 13</option>
+<option value="5d_13">Ruthotz Silvermines 14</option>
+<option value="5d_14">Ruthotz Silvermines 15</option>
+<option value="5d_15">Ruthotz Silvermines 16</option>
+<option value="5d_16">Ruthotz Silvermines 17</option>
+<option value="5d_17">Ruthotz Silvermines 18</option>
+<option value="5d_1">Ruthotz Silvermines 2</option>
+<option value="5d_2">Ruthotz Silvermines 3</option>
+<option value="5d_3">Ruthotz Silvermines 4</option>
+<option value="5d_4">Ruthotz Silvermines 5</option>
+<option value="5d_5">Ruthotz Silvermines 6</option>
+<option value="5d_6">Ruthotz Silvermines 7</option>
+<option value="5d_7">Ruthotz Silvermines 8</option>
+<option value="5d_8">Ruthotz Silvermines 9</option>
+<option value="1c_0">Sacrarium 1</option>
+<option value="1c_1">Sacrarium 2</option>
+<option value="a3_0">Sacrificial Chamber</option>
+<option value="d8_0">San d'Oria Residential Area</option>
+<option value="62_0">Sauromugue Champaign [S]</option>
+<option value="78_0">Sauromugue Champaign</option>
+<option value="b0_0">Sea Serpent Grotto 1</option>
+<option value="b0_1">Sea Serpent Grotto 2</option>
+<option value="b0_2">Sea Serpent Grotto 3</option>
+<option value="b0_3">Sea Serpent Grotto 4</option>
+<option value="b0_4">Sea Serpent Grotto 5</option>
+<option value="20_0">Sealion's Den</option>
+<option value="f8_0">Selbina</option>
+<option value="4c_0">Silver Sea Remnants 1</option>
+<option value="4c_1">Silver Sea Remnants 2</option>
+<option value="4c_2">Silver Sea Remnants 3</option>
+<option value="4c_3">Silver Sea Remnants 4</option>
+<option value="4c_4">Silver Sea Remnants 5</option>
+<option value="6b_0">South Gustaberg</option>
+<option value="50_0">Southern San d'Oria [S]</option>
+<option value="e6_0">Southern San d'Oria</option>
+<option value="13_0">Spire of Dem</option>
+<option value="11_0">Spire of Holla</option>
+<option value="15_0">Spire of Mea</option>
+<option value="17_0">Spire of Vahzl</option>
+<option value="b3_0">Stellar Fulcrum</option>
+<option value="2d_0">Tahrongi Canyon [A]</option>
+<option value="75_0">Tahrongi Canyon</option>
+<option value="39_0">Talacca Cove</option>
+<option value="1a_0">Tavnazian Safehold 1</option>
+<option value="1a_1">Tavnazian Safehold 2</option>
+<option value="1a_2">Tavnazian Safehold 3</option>
+<option value="25_21">Temenos-C1</option>
+<option value="25_22">Temenos-C2</option>
+<option value="25_23">Temenos-C3</option>
+<option value="25_24">Temenos-C4</option>
+<option value="25_25">Temenos-CB1</option>
+<option value="25_7">Temenos-E1</option>
+<option value="25_8">Temenos-E2</option>
+<option value="25_9">Temenos-E3</option>
+<option value="25_10">Temenos-E4</option>
+<option value="25_11">Temenos-E5</option>
+<option value="25_12">Temenos-E6</option>
+<option value="25_13">Temenos-E7</option>
+<option value="25_26">Temenos-Entrance</option>
+<option value="25_0">Temenos-N1</option>
+<option value="25_1">Temenos-N2</option>
+<option value="25_2">Temenos-N3</option>
+<option value="25_3">Temenos-N4</option>
+<option value="25_4">Temenos-N5</option>
+<option value="25_5">Temenos-N6</option>
+<option value="25_6">Temenos-N7</option>
+<option value="25_14">Temenos-W1</option>
+<option value="25_15">Temenos-W2</option>
+<option value="25_16">Temenos-W3</option>
+<option value="25_17">Temenos-W4</option>
+<option value="25_18">Temenos-W5</option>
+<option value="25_19">Temenos-W6</option>
+<option value="25_20">Temenos-W7</option>
+<option value="9f_0">Temple of Uggalepih 1</option>
+<option value="9f_1">Temple of Uggalepih 2</option>
+<option value="9f_2">Temple of Uggalepih 3</option>
+<option value="9f_3">Temple of Uggalepih 4</option>
+<option value="99_0">The Boyahda Tree 1</option>
+<option value="99_1">The Boyahda Tree 2</option>
+<option value="99_2">The Boyahda Tree 3</option>
+<option value="99_3">The Boyahda Tree 4</option>
+<option value="b5_0">The Celestial Nexus</option>
+<option value="47_0">The Colosseum 1</option>
+<option value="47_1">The Colosseum 2</option>
+<option value="c3_0">The Eldieme Necropolis 1</option>
+<option value="c3_1">The Eldieme Necropolis 2</option>
+<option value="c3_2">The Eldieme Necropolis 3</option>
+<option value="23_0">The Garden of Ru'Hmet 1</option>
+<option value="23_1">The Garden of Ru'Hmet 2</option>
+<option value="23_2">The Garden of Ru'Hmet 3</option>
+<option value="23_3">The Garden of Ru'Hmet 4</option>
+<option value="b7_0">The Last Stand</option>
+<option value="79_0">The Sanctuary of Zi'Tah</option>
+<option value="b2_0">The Shrine of Ru'Avitau 1</option>
+<option value="b2_1">The Shrine of Ru'Avitau 2</option>
+<option value="b2_2">The Shrine of Ru'Avitau 3</option>
+<option value="b2_3">The Shrine of Ru'Avitau 4</option>
+<option value="b2_4">The Shrine of Ru'Avitau 5</option>
+<option value="b2_5">The Shrine of Ru'Avitau 6</option>
+<option value="0a_0">The Shrouded Maw</option>
+<option value="a5_0">Throne Room</option>
+<option value="a9_0">Toraimarai Canal 1</option>
+<option value="a9_1">Toraimarai Canal 2</option>
+<option value="05_0">Uleguerand Range</option>
+<option value="f4_0">Upper Jeuno</option>
+<option value="67_0">Valkurm Dunes</option>
+<option value="80_0">Valley of Sorrows</option>
+<option value="b1_0">Ve'Lugannon Palace 1</option>
+<option value="b1_1">Ve'Lugannon Palace 2</option>
+<option value="b1_2">Ve'Lugannon Palace 3</option>
+<option value="b1_3">Ve'Lugannon Palace 4</option>
+<option value="b1_4">Ve'Lugannon Palace 5</option>
+<option value="b1_5">Ve'Lugannon Palace 6</option>
+<option value="b1_6">Ve'Lugannon Palace 7</option>
+<option value="b1_7">Ve'Lugannon Palace 8</option>
+<option value="b1_8">Ve'Lugannon Palace 9</option>
+<option value="53_0">Vunkerl Inlet</option>
+<option value="33_0">Wajaom Woodlands</option>
+<option value="b6_0">Walk of Echoes</option>
+<option value="90_0">Waughroon Shrine</option>
+<option value="64_0">West Ronfaure</option>
+<option value="73_0">West Sarutabaruta</option>
+<option value="5f_0">West Sarutaburuta [S]</option>
+<option value="7d_0">Western Altepa Desert</option>
+<option value="da_0">Windurst Residential Area</option>
+<option value="ef_0">Windurst Walls</option>
+<option value="5e_0">Windurst Waters 1 [S]</option>
+<option value="ee_0">Windurst Waters 1</option>
+<option value="5e_1">Windurst Waters 2 [S]</option>
+<option value="ee_1">Windurst Waters 2</option>
+<option value="f1_0">Windurst Woods</option>
+<option value="89_0">Xarcabard [S]</option>
+<option value="70_0">Xarcabard</option>
+<option value="7c_0">Yhoator Jungle</option>
+<option value="8e_0">Yughott Grotto 1</option>
+<option value="8e_1">Yughott Grotto 2</option>
+<option value="7b_0">Yuhtunga Jungle</option>
+<option value="ac_0">Zeruhn Mines </option>
+<option value="49_0">Zhayolm Remnants 1</option>
+<option value="49_1">Zhayolm Remnants 2</option>
+<option value="49_2">Zhayolm Remnants 3</option>
+<option value="49_3">Zhayolm Remnants 4</option>
+<option value="49_4">Zhayolm Remnants 5</option>
+<option value="49_5">Zhayolm Remnants 6</option>
+<option value="49_6">Zhayolm Remnants 7</option>
+
+
+		</select><b><font face="Times New Roman" color="#663300"><br>
+		</font>
+		</b></font><b>
+		<font color="#663300" face="Arial" style="font-size: 4pt">
+		<br>
+		</font>
+		</b><font face="Arial" color="#663300" style="font-size: 4pt">&nbsp;</font><font color="#663300" size="3" face="Arial"><b><font face="Times New Roman" color="#663300">&nbsp; 
+		<span style="background-color: #E4C47C">&nbsp;Select Type of Area:</span></font><span style="background-color: #E4C47C"><font color="#663300">
+		<input type="text" name="type" size="5"></font></span></b></font></b></font><font color="#663300" size="3" face="Arial"><br>
+&nbsp;&nbsp; </font><font color="#663300" size="2" face="Arial"><b>Town = 0.4&nbsp;&nbsp;&nbsp; 
+		Field = 0.1&nbsp;&nbsp; Dungeon = 0.2</b></font><font color="#663300" size="3" face="Arial"><p>
+		<b><font color="#FFFFFF">
+		<font color="#663300" size="1" face="Arial">
+		
+		&nbsp;</font><font size="3" face="Arial"> <span style="background-color: #222255">&nbsp;STEP 2.&nbsp;&nbsp;&nbsp; 
+		Define 3D Boundaries </span></font></font>
+		<font face="Arial" style="font-size: 11pt">
+		&nbsp; <br>
+		</font></b></font><font size="2">
+		
+		&nbsp; <font color="#000080"><span style="background-color: #E4C47C">&nbsp;<b>Define boundaries of a 3D box within the game environment. </b></span><b><br>
+&nbsp; <span style="background-color: #E4C47C">&nbsp;Use the<i> 
+		CoordinateDisp.dll</i> plugin. </span></b></font></font><font face="Times New Roman" style="font-size: 5pt"><br>
+		<br>
+		<br>
+		</font><b>
+  <font color="#663300" size="3" face="Times New Roman">
+		
+		&nbsp; <span style="background-color: #E4C47C">&nbsp;X Range (East <font size="4">-</font>10000 
+		to West 10000) </span> 
+		&nbsp;</font></b><font color="#663300" size="3" face="Times New Roman"><br>
+		&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span style="background-color: #E4C47C"> Enter 
+		lowest value first: &nbsp; </span> </font>
+		<span style="background-color: #E4C47C"></font>
+  		</span>
+  <font color="#663300" size="3" face="Arial">
+		
+		<font size="3" face="Times New Roman">
+		<span style="background-color: #E4C47C">&nbsp;&nbsp;&nbsp;
+		</span>
+		</font>
+			<font face="Times New Roman">
+		<input name="xr1" value="-10000" size="10" style="font-weight: bold; color:#663300" onclick= setPoint()></font><font size="3" face="Times New Roman">&nbsp;
+		</font>
+			<font face="Times New Roman">
+		
+		<input name="xr2" value="10000" size="10" style="font-weight: bold; color:#663300"></font></font><font color="#663300" size="3" face="Times New Roman">
+		<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		&nbsp;<br>
+&nbsp; <span style="background-color: #E4C47C">&nbsp;Y Height (On <font size="4">-</font>10000 
+		to Under 10000) </span> &nbsp;</b><br>
+		&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;<span style="background-color: #E4C47C"> Enter 
+		lowest value first: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span> </font>
+  <font color="#663300" size="3" face="Arial">
+		
+		<font face="Times New Roman">
+		<input name="yr1" value="-10000" size="10" style="font-weight: bold; color:#663300"></font><font size="3" face="Times New Roman">&nbsp;
+		</font>
+      
+		<font face="Times New Roman">
+		<input name="yr2" value="10000" size="10" style="font-weight: bold; color:#663300"></font><font color="#663300" size="3" face="Times New Roman">
+      
+      	<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		<br>
+&nbsp; <span style="background-color: #E4C47C">&nbsp;Z Range (North <font size="4">-</font>10000 to South 10000) </span>
+		&nbsp;</b><br>
+		&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+		&nbsp; <span style="background-color: #E4C47C">&nbsp;Enter lowest value first:
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+		</font> </font><font face="Times New Roman">
+		<input name="zr1" value="-10000" size="10" style="font-weight: bold; color:#663300"></font><font size="3" face="Times New Roman">&nbsp;
+		</font> <font face="Times New Roman">
+		<input name="zr2" value="10000" size="10" style="font-weight: bold; color:#663300"></font></p>
+		</font>
+  <font color="#663300" size="3" face="Arial">
+		
+		<b>
+  <font color="#FFFFFF" size="3" face="Arial">
+		
+		&nbsp; 
+		<span style="background-color: #222255">&nbsp;STEP 3.&nbsp;&nbsp;&nbsp; 
+		Define Reference Coordinate </span></font>
+		<font face="Times New Roman" style="font-size: 11pt">
+		&nbsp;</font></b></font><b><font color="#FFFFFF" style="font-size: 11pt" face="Times New Roman" size="3">&nbsp; </font>
+		<font color="#663300" size="3" face="Arial">
+		
+		<font face="Times New Roman" size="2" color="#663300">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+		&nbsp;</font><font face="Times New Roman" color="#663300"><br>
+		</font></font><font face="Times New Roman" color="#663300">
+		<font color="#663300" style="font-size: 3pt">
+		
+		<br>
+		</font><font color="#663300" size="3">
+		
+		&nbsp; <span style="background-color: #E4C47C">&nbsp;3D Coordinates in game (from 
+		<i>CoordinateDisp.dll</i>) </span> &nbsp;</font><font color="#663300" size="3" face="Arial">&nbsp; <br>
+		&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;<span style="background-color: #E4C47C">&nbsp;
+		</span> </font><span style="background-color: #E4C47C">x:&nbsp;&nbsp; 
+		</span> </font></b>
+		<font face="Times New Roman" size="3" color="#663300">
+		<input name="x" value="0" size="10" style="font-weight: 700; color:#663300"></font><b><font face="Times New Roman" color="#663300"><span style="background-color: #E4C47C">&nbsp;
+		</span>
+		</font></b><font color="#663300" face="Times New Roman">
+		
+		<b><span style="background-color: #E4C47C">y:&nbsp;&nbsp; </span> </b></font>
+		<font face="Times New Roman" size="3" color="#663300">
+		<input name="y" value="0" size="10" style="font-weight: 700; color:#663300"><b><span style="background-color: #E4C47C">&nbsp;
+		</span>
+		</b></font><font color="#663300" size="3" face="Arial">
+		
+		<font color="#663300" face="Arial">
+		
+		<b><font color="#663300" face="Times New Roman">
+		<span style="background-color: #E4C47C">z:&nbsp;&nbsp; </span> </font>
+		</b></font><font face="Times New Roman" size="3">
+		<input name="z" value="0" size="10" style="font-weight: 700; color:#663300"></font>
+     
+     	<font face="Times New Roman" color="#663300"><br>
+		</font></font>
+     
+     	<font face="Times New Roman" color="#663300">
+		<font color="#663300" style="font-size: 4pt">
+		
+		<br>
+		</font><font color="#663300" size="3">
+		
+		<b>&nbsp; <span style="background-color: #E4C47C">&nbsp;Click the 2D Coordinates on the map to the right.
+		</span> <br>
+&nbsp; </b><span style="background-color: #E4C47C">&nbsp;They <u>must</u> match the 3D location exactly.</span>&nbsp;<br>
+&nbsp;&nbsp;
+		</font></font><font color="#663300" size="3" face="Arial">
+		
+      <input name="zahyou" size="20" style="font-weight: bold; color:#663300"></td>
+			<td width="515" style="border-style:solid; border-width:1px; cursor:crosshair; padding-left:4px; padding-right:4px; padding-top:1px; padding-bottom:1px" bgcolor="#222255" bordercolor="#663300" bordercolorlight="#663300" bordercolordark="#663300" valign="top">
+				<p align="center"><b>
+				<font face="Arial" color="#663300" style="font-size: 3pt"><br>
+				</font>
+				<font face="Arial" size="2" color="#FFFFFF">Click on the map below to establish 
+			reference coordinate<br>MAP.INI line will be created above</font><font face="Arial" color="#FFFFFF" style="font-size: 4pt"><br>
+				</font></b><font style="font-size: 4pt" color="#FFFFFF">
+          <SCRIPT language="JavaScript">
+          <!--
+          document.write(viewImage());        
+          // -->
+          </SCRIPT>
+        		&nbsp;</font></p></td>
+		</tr>
+		</table>
+	</BODY>
+</HTML>

@@ -1,0 +1,349 @@
+-<Brehanin's Map Pack Mar. 9, 2014>-
+I take NO credit for these maps; I've just combined them together.
+I am thankful for all the work of JP, NA, and EU players who have contributed.
+
+Formally Sean's Map Pack, but I'll go by my in-game name now ...
+All maps were current from Mar 9, 2014.
+
+If you wish to replace any regular maps with the fully labeled ones in the subdirectories, 
+simply copy and paste them over the originals in the main folder.
+
+Please send me feedback if you find any errors or any maps that must be switched or renamed. 
+I will be posting this in the Windower forums at:
+http://forums.windower.net/index.php?/forum/14-third-party-programs/
+
+******************************************
+MAP.INI CAN BE FOUND HERE:
+http://forums.windower.net/index.php?/topic/233-201312290mapini-community-edition/
+******************************************
+
+
+___________________________
+Mar. 9, 2014
+___________________________
+- added in ini lines and maps for Outer Ra'Kaznar
+
+___________________________
+Jan. 24, 2014
+___________________________
+- edited Western and Eastern Adoulin maps so waypoints and Rala Waterways entrances are shown
+- newest map.ini (see link above) fixes coordinates for Kamhir Drifts
+
+___________________________
+Dec. 30, 2013
+___________________________
+- this pack will no longer include a map.ini
+- added in some new maps for SoA and Walk of Echoes (they are black and from the JP forums)
+- new map pack corresponds with the map.ini found here:
+http://forums.windower.net/index.php?/topic/233-201312290mapini-community-edition/
+
+___________________________
+Dec. 16, 2013
+___________________________
+- updated the map.ini from the JP forums
+- added in maps for SoA
+
+___________________________
+Mar. 14, 2011
+___________________________
+- updated the map.ini from the JP forums
+
+___________________________
+Dec. 18, 2010
+___________________________
+- added a new folder of simpler Abyssea maps that you can swap in if you want
+
+___________________________
+Dec. 10, 2010
+___________________________
+- updated the map.ini from the JP forums
+- updated maps for the new abyssea zones
+
+___________________________
+Sept. 25, 2010
+___________________________
+- updated the map.ini from the JP forums
+- updated maps for the new abyssea zones
+
+___________________________
+Sept. 12, 2010
+___________________________
+- updated the map.ini from the JP forums
+- added in 3 basic maps for the new abyssea zones
+
+___________________________
+July 9, 2010
+___________________________
+- updated the map.ini from the JP forums
+- updated the tools for creating your own ini lines
+- updated maps for the Abyssea zones
+- updated maps for Ruhotz Silvermines, Ghoyu's Reverie, and Everbloom Hollow
+
+___________________________
+June 29, 2010
+___________________________
+- updated the map.ini from the JP forums
+- added maps for the new Abyssea zones and one for the Walk of Echoes
+- ini line for Walk of Echoes is still incomplete
+
+___________________________
+Mar. 24, 2010
+___________________________
+- updated the map.ini from the JP forums
+
+___________________________
+Dec. 15, 2009
+___________________________
+- updated the map.ini from the JP forums
+
+___________________________
+Nov. 27, 2009
+___________________________
+- updated the map.ini from the JP forums
+
+___________________________
+Nov. 2, 2009
+___________________________
+- updated the map.ini from the JP forums
+
+___________________________
+Sept. 30, 2009
+___________________________
+- somehow some maps were lost when I uploaded the last pack, I have replaced them and 
+this pack should be complete
+- updated some of the Mog House pictures and provided No Map images for several areas
+- updated Dynamis Tavnazia labeled maps
+
+___________________________
+Sept. 16, 2009
+___________________________
+- updated map.ini from the JP forums
+- changed lines for Limbus, Pso'Xja, Ruthotz Silvermines, Ghoyu's Reverie, Everbloom Hollow, 
+Arrapago Reef, and Alzadaal Undersea Ruins to reflect correct map numbering (hex_dec.gif)
+- added new Limbus and Ghoyu's Reverie Maps
+
+___________________________
+June 27, 2009
+___________________________
+- update map.ini from the JP forums
+- updated the Xarcabard[S] and Beaucedine[S] maps
+
+___________________________
+May 22, 2009
+___________________________
+- updated map.ini from the JP forums
+- updated maps (many small additions to over 30 maps)
+- added locations for Field Manuals and Parchments
+- (Limbus map updating in progress - trying to do this myself ...)
+
+___________________________
+Dec 24, 2008
+___________________________
+- updated map.ini from the JP forums
+
+___________________________
+Oct 11, 2008
+___________________________
+- updated map.ini from the JP forums
+- updated maps to reflect the order and numbering from the black map pack
+
+___________________________
+July 25, 2008
+___________________________
+- updated map.ini from the JP forums
+- new maps and ini lines for Pso'Xja
+
+___________________________
+May 5, 2008
+___________________________
+- updated some maps and map.ini lines for Limbus
+- fixed the line to display La Vaule map
+
+___________________________
+April 5, 2008
+___________________________
+- updated some WotG maps
+- updated and added some map.ini lines
+
+___________________________
+January 23, 2008
+___________________________
+- updated some WotG and Salvage maps
+
+___________________________
+December 19, 2007
+___________________________
+- updated some map.ini lines
+
+___________________________
+December 9, 2007
+___________________________
+- updated some map.ini lines
+- fixed the Pashow Marshlands map
+
+___________________________
+November 24, 2007
+___________________________
+- added in lines for some new WotG areas
+- maps are current from FFXIAtlas.com (some are partially labeled)
+
+___________________________
+September 19, 2007
+___________________________
+- found a newly updated map.ini file with most coordinates (I hope) corrected so far 
+  (only a few Assaults are still missing)
+- many thanks to Neko_Mappigura for the map.ini
+- new/updated lines included for Chocobo Circuit, the Pit, Pso'Xja, Talacca Cove, and 
+  a few Assaults
+- new maps added for a few Assaults
+
+___________________________
+September 15, 2007
+___________________________
+- updated a few map.ini lines from th JP forums
+- new lines included for Chocobo Circuit, the Colosseum, Pso'Xja, Talacca Cove, and a few Assaults
+- included two directories for updated Pso'Xja Maps (I still need verification of the numbering)
+
+___________________________
+August 18, 2007
+___________________________
+- updated a few map.ini lines from th JP forums
+- included a directory for fully labeled Sacrarium Maze maps with small batch
+files to swap out maps for whatever day of the week is needed
+
+___________________________
+May 58, 2007
+___________________________
+- updated the map.ini file included with FFA2 b_17
+- corrected Tavnazian Safehold and Alzadaal Undersea Ruins labels
+___________________________
+May 3, 2007
+___________________________
+- many newly updated map.ini lines from the JP forum
+
+___________________________
+Apr. 17, 2007
+___________________________
+- updated labeled Sky path maps and labeled Sea Maps (thanks Ariane!)
+- labeled the Tavnazian Safehold maps
+- added in updated map.ini lines for Caedarva Mire
+- added in updated map.ini lines for Alzadaal Undersea Ruins
+- added in updated map.ini lines for Mamook
+- added in updated map.ini lines for Assaults
+
+___________________________
+Mar. 21, 2007
+___________________________
+- a few lines (based on the JP forum) have been updated for Assault
+- updated several Assault maps (with markers included)
+- updated several Salvage maps (with markers included)
+- included a subdirectory for Sky maps showing paths in the Shrine of Ru'Avitau to get to NMs
+- updated maps from FFXIAtlas.com
+- included maps for display during ferry and airship rides (they do not follow movement though)
+
+___________________________
+Jan 15, 2007
+___________________________
+- updated maps for Limbus; these colour maps were based off the black Limbus map pack which 
+the JP forum seems to be basing their ini lines on
+* Please note that some maps were not found in the black map pack and I tried to resize/center 
+them as best I could
+- map.ini lines for some areas of Limbus are still missing 
+
+___________________________
+Jan 4, 2006
+___________________________
+- updated maps for Alzadaal Undersea Ruins and a few Salvage Areas (still need map.ini lines) 
+from FFXI Atlas and FFXIclopedia
+
+___________________________
+Nov 10, 2006
+___________________________
+- updated the map.ini from the JP forum (released with FFAssist2 b14)
+- updated all maps from FFXI Atlas
+- included new assault maps (with strategies)
+- replaced a map for Periqia Assault (old one was inaccurate)
+- included new map for Talacca Cove (still need ini line though)
+- included new maps for Apollyon and Temenos (including most map.ini coordinates)
+
+___________________________
+August 8, 2006
+___________________________
+- updated the map.ini from the JP forum (released with FFAssist2 b06)
+- updated all maps from FFXI Atlas (including new ToAU areas)
+- included new map.ini lines for the new assaults
+- included lines for Heaven's Tower in the map.ini
+- concolidated the maps for Ru'Aun Gardens; one single maps shows all teleporters, NM, elems, etc.
+
+___________________________
+June 23, 2006
+___________________________
+- updated the map.ini from the JP forum (released with FFAssist2 b03)
+- made adjustments/corrections to map.ini as listed in the Windower forum
+- updated all maps from FFXI Atlas (including new Assault maps and now ALL ToAU areas)
+- added two files used to find your own 3D coordinates in game and generate map.ini lines
+
+___________________________
+Version 1.1   June 3, 2006
+___________________________
+- added line for Diorama Abdhaljs Purgonorgo Isle (2c) to the map.ini
+
+___________________________
+Version 1.09   June 2, 2006
+___________________________
+- added labelled Dynamis Maps for most areas with initial spawns included
+ (you will have to rename these new maps to replace the old blank ones if you want to use them)
+- created blank maps for Dynamis Tavnazia (none existed before)
+- moved files that help update your own maps to a separate directory 
+ (only use them if you want to,they are not necessary for the map pack to function in any way)
+
+___________________________
+Version 1.08   May 59, 2006
+___________________________
+- Updated all maps from the ToAU expansion from FFXIAtlas
+- Updated the map.ini from the JP forum (N15_5324.zip)
+- made corrections to the new ini file as posted in the windower forum thread
+
+___________________________
+Version 1.07   May 53, 2006
+___________________________
+- Updated the Assault section of the map.ini from the JP forum (N16_1826.zip)
+- Added updated Assault maps to the pack
+
+___________________________
+Version 1.06   May 53, 2006
+___________________________
+- Arrapago Reef maps switched; changed 36_3 to 36_5, and 36_9 to 36_1
+
+___________________________
+Version 1.05   May 52, 2006
+___________________________
+- Added the elemental spawn locations for all areas found on FFXI Atlas
+
+___________________________
+Version 1.04   May 51, 2006
+___________________________
+- Fixed the Perquia Assault (added ,)section of map.ini that was causing errors with Mapmon
+- Updated the maps for Dynamis 
+
+___________________________
+Version 1.03   May 19, 2006
+___________________________
+- Double checked all zone ids for maps and edited the map.ini file to be even easier to read
+  (next step is to figure out addresses for each map, especially Assault)
+
+___________________________
+Version 1.02   May 18, 2006
+___________________________
+- Downloaded all the maps from http://www.ffxi-atlas.com (all notes, chests, NMs etc. are included) and changed them to gifs using Photoshop
+- implemented the changes suggested (switching file names) from Wade's site (see above)
+- fixed the error with Diorama Ghelsba (proper gif should now be displayed)
+- fixed the gif files for Dynamis areas
+- added a map for Mamook, it is referenced in the map.ini, but older packs never contained the gif
+
+- added the Assault map.ini fixes to the end of the map.ini file (they seem incomplete to me so far though)
+- Changed all zone descriptions in the map.ini to English for easier reference
+
+
+NOTE:  I downloaded all the maps for the Assault areas myself, I wasn't able to find a JP pack with gifs. . . so I was unsure of the order . . . they may be mismatched for now.
+____________________________

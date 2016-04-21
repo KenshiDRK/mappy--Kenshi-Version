@@ -335,20 +335,17 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>if "$(ConfigurationName)" == "Debug" (
-    xcopy "$(SolutionDir)..\Maps\Vector Maps" "$(TargetDir)maps" /Y /E /I /R
-    xcopy "$(SolutionDir)..\Maps\Game Maps" "$(TargetDir)maps" /Y /E /I /R
+    xcopy "$(SolutionDir)..\Maps" "$(TargetDir)maps" /Y /E /I /R
 ) ELSE (
     if "$(ConfigurationName)" == "Release" (
-        xcopy "$(SolutionDir)..\Maps\Vector Maps" "$(TargetDir)maps" /Y /E /I /R
-        xcopy "$(SolutionDir)..\Maps\Game Maps" "$(TargetDir)maps" /Y /E /I /R
+        xcopy "$(SolutionDir)..\Maps" "$(TargetDir)maps" /Y /E /I /R
     ) ELSE (
         DEL /Q "$(SolutionDir)..\Release\Maps.zip"
 
         DEL /Q "$(SolutionDir)..\Release\Mappy.zip"
-        "C:\Program Files\WinRAR\winrar.exe" a -afzip "$(SolutionDir)..\Release\Maps.zip" -ep -apMaps "$(SolutionDir)..\Game Maps\*"
+        "C:\Program Files\WinRAR\winrar.exe" a -afzip "$(SolutionDir)..\Release\Maps.zip" -ep -apMaps "$(SolutionDir)..\Maps\*"
         "C:\Program Files\WinRAR\winrar.exe" a -afzip "$(SolutionDir)..\Release\Mappy.zip" -ep "$(TargetDir)mappy.exe"
         "C:\Program Files\WinRAR\winrar.exe" a -afzip "$(SolutionDir)..\Release\Mappy.zip" -ep "$(SolutionDir)..\Changes.txt"
-        "C:\Program Files\WinRAR\winrar.exe" a -afzip "$(SolutionDir)..\Release\Mappy.zip" -ep -apMaps "$(SolutionDir)..\Vector Maps\*"
         "C:\Program Files\WinRAR\winrar.exe" c -z$(SolutionDir)..\Changes.txt -afzip "$(SolutionDir)..\Release\Mappy.zip"
     )
 )</PostBuildEvent>

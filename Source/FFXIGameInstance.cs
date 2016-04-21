@@ -319,6 +319,10 @@ namespace mappy
                     {
                         ZoneID = 0x269;
                     }
+                    else if (ZoneID == 0x26A) //Mog Patio
+                    {
+                        ZoneID = 0x26A;
+                    }
                     else if (ZoneID == 0x100) //jeuno mog house
                     {
                         ZoneID = 0x116;

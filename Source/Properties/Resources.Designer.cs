@@ -70,7 +70,7 @@ namespace mappy.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a https://github.com/ThisIsPatrick/mappy-maps.
+        ///   Busca una cadena traducida similar a https://github.com/KenshiDRK/mappy--Kenshi-Version/Maps.
         /// </summary>
         internal static string config_mappack_url {
             get {
