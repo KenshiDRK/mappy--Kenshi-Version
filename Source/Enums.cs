@@ -30,7 +30,7 @@ namespace EntityEnums
         Spawned = 0x00000200,
         Enemy = 0x00002000,
         Hidden = 0x00004000,
-        Dead = 0x00400000
+        Dead = 0x00400000,
     }
 
     [Flags]
@@ -86,11 +86,12 @@ namespace EntityEnums
         InCombat = 1,  //100% confirmed: player pulls out weapon if set. WARNING: /heal /sit & some town NPCs sets this as well
         Dead = 2,  //100% confirmed: things get the death animation if set. WARNING: /sit sets this as well
         //              4     /sit sets this
-        Chocobo = 5
+        Chocobo = 5,
         //              8     /sit sets this. cant move if set.
         //              16    cant move if set
         //              32    /heal sets this. cant move if set.
         //              64    cant move if set
+        Mount = 85,
         //              128   cant move if set
         // this *IS* a bitfield: if you one-shot something the corpse will be 2 instead of 3 (died out of combat)
     }

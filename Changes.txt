@@ -1,3 +1,7 @@
+0.1.48
+* Added mog patio zone
+* Added icons for mounts
+
 0.1.47
 * Update Entity structure for February 10, 2016 update
 * Added icons for mining, logging and harvesting points
