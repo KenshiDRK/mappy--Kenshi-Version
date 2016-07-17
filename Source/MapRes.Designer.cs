@@ -309,6 +309,16 @@ namespace mappy {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusMount {
+            get {
+                object obj = ResourceManager.GetObject("StatusMount", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
         
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
@@ -346,6 +356,36 @@ namespace mappy {
         internal static System.Drawing.Bitmap StatusRedCrab {
             get {
                 object obj = ResourceManager.GetObject("StatusRedCrab", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusBomb {
+            get {
+                object obj = ResourceManager.GetObject("StatusBomb", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusRam {
+            get {
+                object obj = ResourceManager.GetObject("StatusRam", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusMorbol {
+            get {
+                object obj = ResourceManager.GetObject("StatusMorbol", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

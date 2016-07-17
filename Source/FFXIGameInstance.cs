@@ -840,21 +840,41 @@ namespace mappy
                 {
                     base.Icon = MapRes.StatusChocobo;
                 }
-                else if (base.Type == SpawnType.Player && (info.Status & (int)FFXICombatFlags.Mount) == 85 && (info.Flags1 == 0x83400600 || info.Flags1 == 0x83404000 || info.Flags1 == 0x83400000 || info.Flags1 == 0x03400600 || info.Flags1 == 0x03404000 || info.Flags1 == 0x03400000))
+                else if (base.Type == SpawnType.Player && (info.Status & (int)FFXICombatFlags.Mount) == 85)
                 {
-                    base.Icon = MapRes.StatusRaptor;
-                }
-                else if (base.Type == SpawnType.Player && (info.Status & (int)FFXICombatFlags.Mount) == 85 && (info.Flags1 == 0x84400600 || info.Flags1 == 0x84404000 || info.Flags1 == 0x84400000 || info.Flags1 == 0x04400600 || info.Flags1 == 0x04404000 || info.Flags1 == 0x04400000))
-                {
-                    base.Icon = MapRes.StatusTiger;
-                }
-                else if (base.Type == SpawnType.Player && (info.Status & (int)FFXICombatFlags.Mount) == 85 && (info.Flags1 == 0x85400600 || info.Flags1 == 0x85404000 || info.Flags1 == 0x85400000 || info.Flags1 == 0x05400600 || info.Flags1 == 0x05404000 || info.Flags1 == 0x05400000))
-                {
-                    base.Icon = MapRes.StatusCrab;
-                }
-                else if (base.Type == SpawnType.Player && (info.Status & (int)FFXICombatFlags.Mount) == 85 && (info.Flags1 == 0x86400600 || info.Flags1 == 0x86404000 || info.Flags1 == 0x86400000 || info.Flags1 == 0x06400600 || info.Flags1 == 0x06404000 || info.Flags1 == 0x06400000))
-                {
-                    base.Icon = MapRes.StatusRedCrab;
+                    string Flags1String = info.Flags1.ToString("X8");
+                    if (Flags1String.Substring(1, 1) == "3")
+                    {
+                        base.Icon = MapRes.StatusRaptor;
+                    }
+                    else if (Flags1String.Substring(1, 1) == "4")
+                    {
+                        base.Icon = MapRes.StatusTiger;
+                    }
+                    else if (Flags1String.Substring(1, 1) == "5")
+                    {
+                        base.Icon = MapRes.StatusCrab;
+                    }
+                    else if (Flags1String.Substring(1, 1) == "6")
+                    {
+                        base.Icon = MapRes.StatusRedCrab;
+                    }
+                    else if (Flags1String.Substring(1, 1) == "7")
+                    {
+                        base.Icon = MapRes.StatusBomb;
+                    }
+                    else if (Flags1String.Substring(1, 1) == "0")
+                    {
+                        base.Icon = MapRes.StatusRam;
+                    }
+                    else if (Flags1String.Substring(1, 1) == "1")
+                    {
+                        base.Icon = MapRes.StatusMorbol;
+                    }
+                    else
+                    {
+                        base.Icon = MapRes.StatusMount;
+                    }
                 }
                 else if (base.Type == SpawnType.NPC && info.DisplayName == "Waypoint")
                 {
