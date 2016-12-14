@@ -629,7 +629,7 @@ namespace mappy
         public UInt16 NameColor;            // Sets the players name color..
         [MarshalAs(UnmanagedType.I1)]
         public bool CampaignMode;
-        public byte Unk32;
+        public byte MountID;                // ID+1 Except for Chocobo mount
         public UInt16 FishingTimer;         // Counts down from when you click 'fish' to either catch or real in..
         public UInt16 FishingCastTimer;     // Counts down fromw when you click 'fish' til your bait hits the water..
         public UInt32 FishingUnknown0001;   // Gets set to 1800 when you hook a fish.. then unknown afterward..
@@ -842,34 +842,53 @@ namespace mappy
                 }
                 else if (base.Type == SpawnType.Player && (info.Status & (int)FFXICombatFlags.Mount) == 85)
                 {
-                    string Flags1String = info.Flags1.ToString("X8");
-                    if (Flags1String.Substring(1, 1) == "3")
+                    if (info.MountID == 2)
                     {
                         base.Icon = MapRes.StatusRaptor;
                     }
-                    else if (Flags1String.Substring(1, 1) == "4")
+                    else if (info.MountID == 3)
                     {
                         base.Icon = MapRes.StatusTiger;
                     }
-                    else if (Flags1String.Substring(1, 1) == "5")
+                    else if (info.MountID == 4)
                     {
                         base.Icon = MapRes.StatusCrab;
                     }
-                    else if (Flags1String.Substring(1, 1) == "6")
+                    else if (info.MountID == 5)
                     {
                         base.Icon = MapRes.StatusRedCrab;
                     }
-                    else if (Flags1String.Substring(1, 1) == "7")
+                    else if (info.MountID == 6)
                     {
                         base.Icon = MapRes.StatusBomb;
                     }
-                    else if (Flags1String.Substring(1, 1) == "0")
+                    else if (info.MountID == 7)
                     {
                         base.Icon = MapRes.StatusRam;
                     }
-                    else if (Flags1String.Substring(1, 1) == "1")
+                    else if (info.MountID == 8)
                     {
                         base.Icon = MapRes.StatusMorbol;
+                    }
+                    else if (info.MountID == 9)
+                    {
+                        base.Icon = MapRes.StatusCrawler;
+                    }
+                    else if (info.MountID == 10)
+                    {
+                        base.Icon = MapRes.Fenrir;
+                    }
+                    else if (info.MountID == 11)
+                    {
+                        base.Icon = MapRes.StatusBeetle;
+                    }
+                    else if (info.MountID == 12)
+                    {
+                        base.Icon = MapRes.MountMoogle;
+                    }
+                    else if (info.MountID == 13)
+                    {
+                        base.Icon = MapRes.StatusPot;
                     }
                     else
                     {
