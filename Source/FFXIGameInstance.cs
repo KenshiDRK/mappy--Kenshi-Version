@@ -890,6 +890,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusPot;
                     }
+                    else if (info.MountID == 14)
+                    {
+                        base.Icon = MapRes.StatusTulfaire;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
