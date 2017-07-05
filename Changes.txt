@@ -1,6 +1,3 @@
-0.1.51
-*Added Tulfaire mount
-
 0.1.50
 *Added new mounts
 

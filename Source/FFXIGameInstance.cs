@@ -894,6 +894,14 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusTulfaire;
                     }
+                    else if (info.MountID == 15)
+                    {
+                        base.Icon = MapRes.StatusWarmachine;
+                    }
+                    else if (info.MountID == 16)
+                    {
+                        base.Icon = MapRes.StatusXzomit;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
