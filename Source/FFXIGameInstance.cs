@@ -902,6 +902,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusXzomit;
                     }
+                    else if (info.MountID == 17)
+                    {
+                        base.Icon = MapRes.StatusHippogryph;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
