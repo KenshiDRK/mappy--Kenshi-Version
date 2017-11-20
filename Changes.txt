@@ -1,5 +1,6 @@
 0.1.50
 *Added new mounts
+*Added Dynamis Sandoria [D] map and updated ini
 
 0.1.49
 *Added new mounts
