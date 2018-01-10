@@ -910,6 +910,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusDverg;
                     }
+                    else if (info.MountID == 19)
+                    {
+                        base.Icon = MapRes.StatusSpheroid;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;

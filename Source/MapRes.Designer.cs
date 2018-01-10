@@ -483,6 +483,16 @@ namespace mappy {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap StatusSpheroid {
+            get {
+                object obj = ResourceManager.GetObject("StatusSpheroid", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StatusClaimed {
             get {
                 object obj = ResourceManager.GetObject("StatusClaimed", resourceCulture);
