@@ -914,6 +914,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusSpheroid;
                     }
+                    else if (info.MountID == 20)
+                    {
+                        base.Icon = MapRes.StatusOmega;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
