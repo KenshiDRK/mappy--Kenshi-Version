@@ -918,6 +918,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusOmega;
                     }
+                    else if (info.MountID == 21)
+                    {
+                        base.Icon = MapRes.StatusCoeurl;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;

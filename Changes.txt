@@ -1,3 +1,6 @@
+0.1.51
+*Added new mounts
+
 0.1.50
 *Addition of new Dynamis Divergence zones
 *Added new mounts
