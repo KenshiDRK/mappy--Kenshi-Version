@@ -922,6 +922,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusCoeurl;
                     }
+					else if (info.MountID == 22)
+                    {
+                        base.Icon = MapRes.StatusGoobbue;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
