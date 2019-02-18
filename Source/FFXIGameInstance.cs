@@ -930,6 +930,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusRaaz;
                     }
+					else if (info.MountID == 24)
+                    {
+                        base.Icon = MapRes.StatusLevitus;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
