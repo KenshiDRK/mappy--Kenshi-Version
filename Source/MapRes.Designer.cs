@@ -535,7 +535,17 @@ namespace mappy {
         /// </summary>
         internal static System.Drawing.Bitmap StatusLevitus {
             get {
-                object obj = ResourceManager.GetObject("StatusRaaz", resourceCulture);
+                object obj = ResourceManager.GetObject("StatusLevitus", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusAdamantoise {
+            get {
+                object obj = ResourceManager.GetObject("StatusAdamantoise", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

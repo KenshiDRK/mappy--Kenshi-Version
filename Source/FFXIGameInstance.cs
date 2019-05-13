@@ -934,6 +934,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusLevitus;
                     }
+                    else if (info.MountID == 25)
+                    {
+                        base.Icon = MapRes.StatusAdamantoise;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
