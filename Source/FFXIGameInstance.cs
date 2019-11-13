@@ -938,6 +938,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusAdamantoise;
                     }
+                    else if (info.MountID == 26)
+                    {
+                        base.Icon = MapRes.StatusDhalmel;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
@@ -1031,11 +1035,11 @@ namespace mappy
                 {
                     base.Icon = MapRes.Maw;
                 }
-                else if (base.Type == SpawnType.NPC && info.DisplayName == "Mining Point")
+                else if (base.Type == SpawnType.NPC && (info.DisplayName == "Mining Point" || info.DisplayName == "Excavation Point"))
                 {
                     base.Icon = MapRes.Pickaxe;
                 }
-                else if (base.Type == SpawnType.NPC && info.DisplayName == "Harventing Point")
+                else if (base.Type == SpawnType.NPC && info.DisplayName == "Harvesting Point")
                 {
                     base.Icon = MapRes.Sickle;
                 }
