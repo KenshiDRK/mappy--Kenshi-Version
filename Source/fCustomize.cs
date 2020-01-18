@@ -61,6 +61,7 @@ namespace mappy {
         private Color original_MOBInfoColor;
         private Color original_selectedColor;
         private bool original_showTextOutline;
+        private bool original_showTextShadow;
         private Color original_textOutlineColor;
         private bool original_showRadarRange;
         private Color original_radarRangeColor;
@@ -231,6 +232,7 @@ namespace mappy {
             original_scaleLines = parent.Engine.ScaleLines;
             original_selectedColor = parent.Engine.SelectedColor;
             original_showTextOutline = parent.Engine.TextOutlineEnabled;
+            original_showTextShadow = parent.Engine.TextShadowEnabled;
             original_textOutlineColor = parent.Engine.TextOutlineColor;
             original_showRadarRange = parent.Engine.ShowRadarRange;
             original_radarRangeColor = parent.Engine.RadarRangeColor;
@@ -304,6 +306,7 @@ namespace mappy {
             chkScaleLines.Checked = original_scaleLines;
             cmdSelectedColor.BackColor = original_selectedColor;
             chkShowTextOutline.Checked = original_showTextOutline;
+            chkShowTextShadow.Checked = original_showTextShadow;
             cmdTextGlowColor.BackColor = original_textOutlineColor;
             chkShowRadarRange.Checked = original_showRadarRange;
             cmdRadarRangeColor.BackColor = original_radarRangeColor;
@@ -509,6 +512,7 @@ namespace mappy {
                     parent.Config["SelectedColor"] = parent.Engine.SelectedColor.ToArgb();
                     parent.Config["TextOutlineEnabled"] = parent.Engine.TextOutlineEnabled;
                     parent.Config["TextOutlineColor"] = parent.Engine.TextOutlineColor.ToArgb();
+                    parent.Config["TextShadowEnabled"] = parent.Engine.TextShadowEnabled;
                     parent.Config["ShowRadarRange"] = parent.Engine.ShowRadarRange;
                     parent.Config["RadarRangeColor"] = parent.Engine.RadarRangeColor.ToArgb();
                     parent.Config["HuntChainColor"] = parent.Engine.HuntChainColor.ToArgb();
@@ -602,6 +606,7 @@ namespace mappy {
                     parent.Engine.SelectedColor = original_selectedColor;
                     parent.Engine.TextOutlineEnabled = original_showTextOutline;
                     parent.Engine.TextOutlineColor = original_textOutlineColor;
+                    parent.Engine.TextShadowEnabled = original_showTextShadow;
                     parent.Engine.ShowRadarRange = original_showRadarRange;
                     parent.Engine.RadarRangeColor = original_radarRangeColor;
                     parent.Engine.HuntChainColor = original_huntLineColor;
@@ -839,6 +844,11 @@ namespace mappy {
         private void chkShowTextOutline_CheckedChanged(object sender, EventArgs e)
         {
             parent.Engine.TextOutlineEnabled = chkShowTextOutline.Checked;
+        }
+
+        private void chkShowTextShadow_CheckedChanged(object sender, EventArgs e)
+        {
+            parent.Engine.TextShadowEnabled = chkShowTextShadow.Checked;
         }
 
         private void cmdTextGlowColor_Click(object sender, EventArgs e)

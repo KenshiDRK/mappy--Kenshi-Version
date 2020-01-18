@@ -585,6 +585,15 @@ namespace mappy.Lang {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Display a shadow below text.
+        /// </summary>
+        internal static string config_appear_use_shadow {
+            get {
+                return ResourceManager.GetString("config_appear_use_shadow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Main player arrow color.
         /// </summary>
         internal static string config_appear_you_color {

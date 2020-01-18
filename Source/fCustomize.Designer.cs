@@ -76,6 +76,7 @@ namespace mappy {
          lblEnemyColor.Text = Program.GetLang("config_appear_enemy_color");
          lblSelectedColor.Text = Program.GetLang("config_appear_selected_color");
          chkShowTextOutline.Text = Program.GetLang("config_appear_use_glow");
+         chkShowTextShadow.Text = Program.GetLang("config_appear_use_shadow");
          lblTextGlowColor.Text = Program.GetLang("config_appear_glow_color");
          chkShowRadarRange.Text = Program.GetLang("config_appear_show_range");
          lblRadarRangeColor.Text = Program.GetLang("config_appear_range_color");
@@ -316,6 +317,7 @@ namespace mappy {
             this.lblSigNoActivePID = new System.Windows.Forms.Label();
             this.dBrowseFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.dFontChanger = new System.Windows.Forms.FontDialog();
+            this.chkShowTextShadow = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -1223,7 +1225,6 @@ namespace mappy {
             this.tableLayoutPanel4.Controls.Add(this.udSpawnSelectSize, 1, 26);
             this.tableLayoutPanel4.Controls.Add(this.lblSelectedColor, 0, 27);
             this.tableLayoutPanel4.Controls.Add(this.cmdSelectedColor, 1, 27);
-            this.tableLayoutPanel4.Controls.Add(this.chkShowTextOutline, 0, 28);
             this.tableLayoutPanel4.Controls.Add(this.lblTextGlowColor, 0, 29);
             this.tableLayoutPanel4.Controls.Add(this.cmdTextGlowColor, 1, 29);
             this.tableLayoutPanel4.Controls.Add(this.udSpawnGroupSize, 1, 30);
@@ -1248,6 +1249,8 @@ namespace mappy {
             this.tableLayoutPanel4.Controls.Add(this.chkShowPetLines, 0, 42);
             this.tableLayoutPanel4.Controls.Add(this.lblPetLineColor, 0, 43);
             this.tableLayoutPanel4.Controls.Add(this.cmdPetLineColor, 1, 43);
+            this.tableLayoutPanel4.Controls.Add(this.chkShowTextOutline, 0, 29);
+            this.tableLayoutPanel4.Controls.Add(this.chkShowTextShadow, 0, 28);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -1298,7 +1301,7 @@ namespace mappy {
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 13F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(341, 952);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(341, 955);
             this.tableLayoutPanel4.TabIndex = 2;
             // 
             // chkShowPlayerPosition
@@ -2001,7 +2004,7 @@ namespace mappy {
             this.chkShowTextOutline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowTextOutline.AutoEllipsis = true;
             this.tableLayoutPanel4.SetColumnSpan(this.chkShowTextOutline, 2);
-            this.chkShowTextOutline.Location = new System.Drawing.Point(3, 593);
+            this.chkShowTextOutline.Location = new System.Drawing.Point(3, 616);
             this.chkShowTextOutline.Name = "chkShowTextOutline";
             this.chkShowTextOutline.Size = new System.Drawing.Size(335, 17);
             this.chkShowTextOutline.TabIndex = 12;
@@ -2013,7 +2016,7 @@ namespace mappy {
             // 
             this.lblTextGlowColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTextGlowColor.AutoSize = true;
-            this.lblTextGlowColor.Location = new System.Drawing.Point(3, 616);
+            this.lblTextGlowColor.Location = new System.Drawing.Point(3, 639);
             this.lblTextGlowColor.Name = "lblTextGlowColor";
             this.lblTextGlowColor.Size = new System.Drawing.Size(279, 13);
             this.lblTextGlowColor.TabIndex = 11;
@@ -2023,7 +2026,7 @@ namespace mappy {
             // 
             this.cmdTextGlowColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdTextGlowColor.BackColor = System.Drawing.Color.Black;
-            this.cmdTextGlowColor.Location = new System.Drawing.Point(286, 614);
+            this.cmdTextGlowColor.Location = new System.Drawing.Point(286, 637);
             this.cmdTextGlowColor.Margin = new System.Windows.Forms.Padding(1);
             this.cmdTextGlowColor.Name = "cmdTextGlowColor";
             this.cmdTextGlowColor.Size = new System.Drawing.Size(54, 18);
@@ -2039,7 +2042,7 @@ namespace mappy {
             0,
             0,
             65536});
-            this.udSpawnGroupSize.Location = new System.Drawing.Point(288, 636);
+            this.udSpawnGroupSize.Location = new System.Drawing.Point(288, 659);
             this.udSpawnGroupSize.Maximum = new decimal(new int[] {
             30,
             0,
@@ -2059,7 +2062,7 @@ namespace mappy {
             // 
             this.lblSpawnGroupSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSpawnGroupSize.AutoSize = true;
-            this.lblSpawnGroupSize.Location = new System.Drawing.Point(3, 639);
+            this.lblSpawnGroupSize.Location = new System.Drawing.Point(3, 662);
             this.lblSpawnGroupSize.Name = "lblSpawnGroupSize";
             this.lblSpawnGroupSize.Size = new System.Drawing.Size(279, 13);
             this.lblSpawnGroupSize.TabIndex = 44;
@@ -2069,7 +2072,7 @@ namespace mappy {
             // 
             this.lblSpawnHuntSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSpawnHuntSize.AutoSize = true;
-            this.lblSpawnHuntSize.Location = new System.Drawing.Point(3, 665);
+            this.lblSpawnHuntSize.Location = new System.Drawing.Point(3, 688);
             this.lblSpawnHuntSize.Name = "lblSpawnHuntSize";
             this.lblSpawnHuntSize.Size = new System.Drawing.Size(279, 13);
             this.lblSpawnHuntSize.TabIndex = 45;
@@ -2083,7 +2086,7 @@ namespace mappy {
             0,
             0,
             65536});
-            this.udSpawnHuntSize.Location = new System.Drawing.Point(288, 662);
+            this.udSpawnHuntSize.Location = new System.Drawing.Point(288, 685);
             this.udSpawnHuntSize.Maximum = new decimal(new int[] {
             30,
             0,
@@ -2104,7 +2107,7 @@ namespace mappy {
             this.chkDrawHeadingLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chkDrawHeadingLines.AutoSize = true;
             this.tableLayoutPanel4.SetColumnSpan(this.chkDrawHeadingLines, 2);
-            this.chkDrawHeadingLines.Location = new System.Drawing.Point(3, 688);
+            this.chkDrawHeadingLines.Location = new System.Drawing.Point(3, 711);
             this.chkDrawHeadingLines.Name = "chkDrawHeadingLines";
             this.chkDrawHeadingLines.Size = new System.Drawing.Size(335, 17);
             this.chkDrawHeadingLines.TabIndex = 78;
@@ -2116,7 +2119,7 @@ namespace mappy {
             // 
             this.lblHeadingLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHeadingLineColor.AutoSize = true;
-            this.lblHeadingLineColor.Location = new System.Drawing.Point(3, 711);
+            this.lblHeadingLineColor.Location = new System.Drawing.Point(3, 734);
             this.lblHeadingLineColor.Name = "lblHeadingLineColor";
             this.lblHeadingLineColor.Size = new System.Drawing.Size(279, 13);
             this.lblHeadingLineColor.TabIndex = 79;
@@ -2126,7 +2129,7 @@ namespace mappy {
             // 
             this.cmdHeadingLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdHeadingLineColor.BackColor = System.Drawing.Color.Black;
-            this.cmdHeadingLineColor.Location = new System.Drawing.Point(286, 709);
+            this.cmdHeadingLineColor.Location = new System.Drawing.Point(286, 732);
             this.cmdHeadingLineColor.Margin = new System.Windows.Forms.Padding(1);
             this.cmdHeadingLineColor.Name = "cmdHeadingLineColor";
             this.cmdHeadingLineColor.Size = new System.Drawing.Size(54, 18);
@@ -2139,7 +2142,7 @@ namespace mappy {
             this.chkShowRadarRange.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowRadarRange.AutoEllipsis = true;
             this.tableLayoutPanel4.SetColumnSpan(this.chkShowRadarRange, 2);
-            this.chkShowRadarRange.Location = new System.Drawing.Point(3, 731);
+            this.chkShowRadarRange.Location = new System.Drawing.Point(3, 754);
             this.chkShowRadarRange.Name = "chkShowRadarRange";
             this.chkShowRadarRange.Size = new System.Drawing.Size(335, 17);
             this.chkShowRadarRange.TabIndex = 15;
@@ -2151,7 +2154,7 @@ namespace mappy {
             // 
             this.lblRadarRangeColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblRadarRangeColor.AutoSize = true;
-            this.lblRadarRangeColor.Location = new System.Drawing.Point(3, 754);
+            this.lblRadarRangeColor.Location = new System.Drawing.Point(3, 777);
             this.lblRadarRangeColor.Name = "lblRadarRangeColor";
             this.lblRadarRangeColor.Size = new System.Drawing.Size(279, 13);
             this.lblRadarRangeColor.TabIndex = 16;
@@ -2161,7 +2164,7 @@ namespace mappy {
             // 
             this.cmdRadarRangeColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdRadarRangeColor.BackColor = System.Drawing.Color.Black;
-            this.cmdRadarRangeColor.Location = new System.Drawing.Point(286, 752);
+            this.cmdRadarRangeColor.Location = new System.Drawing.Point(286, 775);
             this.cmdRadarRangeColor.Margin = new System.Windows.Forms.Padding(1);
             this.cmdRadarRangeColor.Name = "cmdRadarRangeColor";
             this.cmdRadarRangeColor.Size = new System.Drawing.Size(54, 18);
@@ -2177,7 +2180,7 @@ namespace mappy {
             this.tableLayoutPanel4.SetColumnSpan(this.lblAppearSectionLines, 2);
             this.lblAppearSectionLines.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblAppearSectionLines.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblAppearSectionLines.Location = new System.Drawing.Point(3, 771);
+            this.lblAppearSectionLines.Location = new System.Drawing.Point(3, 794);
             this.lblAppearSectionLines.Name = "lblAppearSectionLines";
             this.lblAppearSectionLines.Padding = new System.Windows.Forms.Padding(1);
             this.lblAppearSectionLines.Size = new System.Drawing.Size(335, 15);
@@ -2190,7 +2193,7 @@ namespace mappy {
             this.chkShowHuntLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowHuntLines.AutoEllipsis = true;
             this.tableLayoutPanel4.SetColumnSpan(this.chkShowHuntLines, 2);
-            this.chkShowHuntLines.Location = new System.Drawing.Point(3, 789);
+            this.chkShowHuntLines.Location = new System.Drawing.Point(3, 812);
             this.chkShowHuntLines.Name = "chkShowHuntLines";
             this.chkShowHuntLines.Size = new System.Drawing.Size(335, 17);
             this.chkShowHuntLines.TabIndex = 36;
@@ -2202,7 +2205,7 @@ namespace mappy {
             // 
             this.lblHuntLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHuntLineColor.AutoSize = true;
-            this.lblHuntLineColor.Location = new System.Drawing.Point(3, 812);
+            this.lblHuntLineColor.Location = new System.Drawing.Point(3, 835);
             this.lblHuntLineColor.Name = "lblHuntLineColor";
             this.lblHuntLineColor.Size = new System.Drawing.Size(279, 13);
             this.lblHuntLineColor.TabIndex = 18;
@@ -2212,7 +2215,7 @@ namespace mappy {
             // 
             this.cmdHuntLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdHuntLineColor.BackColor = System.Drawing.Color.Black;
-            this.cmdHuntLineColor.Location = new System.Drawing.Point(286, 810);
+            this.cmdHuntLineColor.Location = new System.Drawing.Point(286, 833);
             this.cmdHuntLineColor.Margin = new System.Windows.Forms.Padding(1);
             this.cmdHuntLineColor.Name = "cmdHuntLineColor";
             this.cmdHuntLineColor.Size = new System.Drawing.Size(54, 18);
@@ -2224,7 +2227,7 @@ namespace mappy {
             // 
             this.lblHuntLockedLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblHuntLockedLineColor.AutoSize = true;
-            this.lblHuntLockedLineColor.Location = new System.Drawing.Point(3, 832);
+            this.lblHuntLockedLineColor.Location = new System.Drawing.Point(3, 855);
             this.lblHuntLockedLineColor.Name = "lblHuntLockedLineColor";
             this.lblHuntLockedLineColor.Size = new System.Drawing.Size(279, 13);
             this.lblHuntLockedLineColor.TabIndex = 53;
@@ -2234,7 +2237,7 @@ namespace mappy {
             // 
             this.cmdHuntLockedLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdHuntLockedLineColor.BackColor = System.Drawing.Color.Black;
-            this.cmdHuntLockedLineColor.Location = new System.Drawing.Point(286, 830);
+            this.cmdHuntLockedLineColor.Location = new System.Drawing.Point(286, 853);
             this.cmdHuntLockedLineColor.Margin = new System.Windows.Forms.Padding(1);
             this.cmdHuntLockedLineColor.Name = "cmdHuntLockedLineColor";
             this.cmdHuntLockedLineColor.Size = new System.Drawing.Size(54, 18);
@@ -2247,7 +2250,7 @@ namespace mappy {
             this.chkShowClaimLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowClaimLines.AutoEllipsis = true;
             this.tableLayoutPanel4.SetColumnSpan(this.chkShowClaimLines, 2);
-            this.chkShowClaimLines.Location = new System.Drawing.Point(3, 852);
+            this.chkShowClaimLines.Location = new System.Drawing.Point(3, 875);
             this.chkShowClaimLines.Name = "chkShowClaimLines";
             this.chkShowClaimLines.Size = new System.Drawing.Size(335, 17);
             this.chkShowClaimLines.TabIndex = 37;
@@ -2259,7 +2262,7 @@ namespace mappy {
             // 
             this.lblClaimLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblClaimLineColor.AutoSize = true;
-            this.lblClaimLineColor.Location = new System.Drawing.Point(3, 875);
+            this.lblClaimLineColor.Location = new System.Drawing.Point(3, 901);
             this.lblClaimLineColor.Name = "lblClaimLineColor";
             this.lblClaimLineColor.Size = new System.Drawing.Size(279, 13);
             this.lblClaimLineColor.TabIndex = 20;
@@ -2269,7 +2272,7 @@ namespace mappy {
             // 
             this.cmdClaimLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdClaimLineColor.BackColor = System.Drawing.Color.Black;
-            this.cmdClaimLineColor.Location = new System.Drawing.Point(286, 873);
+            this.cmdClaimLineColor.Location = new System.Drawing.Point(286, 898);
             this.cmdClaimLineColor.Margin = new System.Windows.Forms.Padding(1);
             this.cmdClaimLineColor.Name = "cmdClaimLineColor";
             this.cmdClaimLineColor.Size = new System.Drawing.Size(54, 18);
@@ -2282,9 +2285,9 @@ namespace mappy {
             this.chkShowPetLines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.chkShowPetLines.AutoEllipsis = true;
             this.tableLayoutPanel4.SetColumnSpan(this.chkShowPetLines, 2);
-            this.chkShowPetLines.Location = new System.Drawing.Point(3, 896);
+            this.chkShowPetLines.Location = new System.Drawing.Point(3, 923);
             this.chkShowPetLines.Name = "chkShowPetLines";
-            this.chkShowPetLines.Size = new System.Drawing.Size(335, 17);
+            this.chkShowPetLines.Size = new System.Drawing.Size(335, 16);
             this.chkShowPetLines.TabIndex = 38;
             this.chkShowPetLines.Text = "{config_appear_show_pet_lines}";
             this.chkShowPetLines.UseVisualStyleBackColor = true;
@@ -2294,7 +2297,7 @@ namespace mappy {
             // 
             this.lblPetLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblPetLineColor.AutoSize = true;
-            this.lblPetLineColor.Location = new System.Drawing.Point(3, 921);
+            this.lblPetLineColor.Location = new System.Drawing.Point(3, 942);
             this.lblPetLineColor.Name = "lblPetLineColor";
             this.lblPetLineColor.Size = new System.Drawing.Size(279, 13);
             this.lblPetLineColor.TabIndex = 22;
@@ -2304,10 +2307,10 @@ namespace mappy {
             // 
             this.cmdPetLineColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdPetLineColor.BackColor = System.Drawing.Color.Black;
-            this.cmdPetLineColor.Location = new System.Drawing.Point(286, 919);
+            this.cmdPetLineColor.Location = new System.Drawing.Point(286, 943);
             this.cmdPetLineColor.Margin = new System.Windows.Forms.Padding(1);
             this.cmdPetLineColor.Name = "cmdPetLineColor";
-            this.cmdPetLineColor.Size = new System.Drawing.Size(54, 18);
+            this.cmdPetLineColor.Size = new System.Drawing.Size(54, 11);
             this.cmdPetLineColor.TabIndex = 23;
             this.cmdPetLineColor.UseVisualStyleBackColor = false;
             this.cmdPetLineColor.Click += new System.EventHandler(this.cmdPetLineColor_Click);
@@ -2394,6 +2397,7 @@ namespace mappy {
             this.lvHotKeyBindings.ContextMenuStrip = this.cmHotkeyBindings;
             this.lvHotKeyBindings.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvHotKeyBindings.FullRowSelect = true;
+            this.lvHotKeyBindings.HideSelection = false;
             this.lvHotKeyBindings.Location = new System.Drawing.Point(3, 88);
             this.lvHotKeyBindings.MultiSelect = false;
             this.lvHotKeyBindings.Name = "lvHotKeyBindings";
@@ -2807,6 +2811,19 @@ namespace mappy {
             this.lblSigNoActivePID.TabIndex = 21;
             this.lblSigNoActivePID.Text = "{config_general_sig_no_active_pid}";
             // 
+            // chkShowTextShadow
+            // 
+            this.chkShowTextShadow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkShowTextShadow.AutoEllipsis = true;
+            this.tableLayoutPanel4.SetColumnSpan(this.chkShowTextShadow, 2);
+            this.chkShowTextShadow.Location = new System.Drawing.Point(3, 593);
+            this.chkShowTextShadow.Name = "chkShowTextShadow";
+            this.chkShowTextShadow.Size = new System.Drawing.Size(335, 17);
+            this.chkShowTextShadow.TabIndex = 82;
+            this.chkShowTextShadow.Text = "{config_appear_use_shadow}";
+            this.chkShowTextShadow.UseVisualStyleBackColor = true;
+            this.chkShowTextShadow.CheckedChanged += new System.EventHandler(this.chkShowTextShadow_CheckedChanged);
+            // 
             // fCustomize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3077,5 +3094,6 @@ namespace mappy {
       private System.Windows.Forms.Button cmdHeadingLineColor;
       private System.Windows.Forms.Label lblHeadingLineColor;
       private System.Windows.Forms.CheckBox chkShowPlayerPosition;
-   }
+        private System.Windows.Forms.CheckBox chkShowTextShadow;
+    }
 }
