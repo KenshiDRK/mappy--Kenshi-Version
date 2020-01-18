@@ -212,6 +212,9 @@ If you are running on Vista/7 then please start the program in administrator mod
   <data name="config_appear_use_glow" xml:space="preserve">
     <value>Display a glow effect around selected or targetted entities</value>
   </data>
+  <data name="config_appear_use_shadow" xml:space="preserve">
+    <value>Display a shadow below text</value>
+  </data>
   <data name="config_appear_you_color" xml:space="preserve">
     <value>Main player arrow color</value>
   </data>

@@ -65,6 +65,7 @@ namespace MapEngine
         private bool m_depthUseAlpha = true;
         private bool m_drawYOUFill = true;
         private bool m_drawTextOutline = true;
+        private bool m_drawTextShadow = false;
         private bool m_drawAlertRanges = true;
         private bool m_drawClaimLines = true;
         private bool m_drawPetLines = true;
@@ -690,6 +691,21 @@ namespace MapEngine
             set
             {
                 m_drawTextOutline = value;
+                if (Updated != null)
+                    Updated();
+            }
+        }
+
+        [Category("Map")]
+        [Description("Gets or sets whether a text drop shadow is added to improve readability.")]
+        [DisplayName("Text Shadow Enabled")]
+        [DefaultValue(true)]
+        public bool TextShadowEnabled
+        {
+            get { return m_drawTextShadow; }
+            set
+            {
+                m_drawTextShadow = value;
                 if (Updated != null)
                     Updated();
             }
@@ -2042,6 +2058,10 @@ namespace MapEngine
 
                         if (STHAH && m_drawTextOutline)
                             DrawOutlineString(g, output, fInfoText, bSelectedOutline, ox, oy, 4);
+
+                        if (m_drawTextShadow)
+                            g.DrawString(output, fInfoText, new SolidBrush(Color.Black), ox + 1, oy + 1);
+
                         g.DrawString(output, fInfoText, bInfoText, ox, oy);
                     }
                 }

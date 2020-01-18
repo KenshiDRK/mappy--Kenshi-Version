@@ -290,6 +290,7 @@ namespace mappy {
             MapEngine.DepthCutoff = m_config.Get("DepthCutoff", MapEngine.DepthCutoff);
             MapEngine.SelectedColor = Color.FromArgb(m_config.Get("SelectedColor", MapEngine.SelectedColor.ToArgb()));
             MapEngine.TextOutlineEnabled = m_config.Get("TextOutlineEnabled", true);
+            MapEngine.TextShadowEnabled = m_config.Get("TextShadowEnabled", false);
             MapEngine.TextOutlineColor = Color.FromArgb(m_config.Get("TextOutlineColor", MapEngine.TextOutlineColor.ToArgb()));
             MapEngine.ShowRadarRange = m_config.Get("ShowRadarRange", true);
             MapEngine.RadarRangeColor = Color.FromArgb(m_config.Get("RadarRangeColor", MapEngine.RadarRangeColor.ToArgb()));
