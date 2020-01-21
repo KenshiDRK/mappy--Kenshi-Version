@@ -433,11 +433,15 @@ namespace System.Windows.Forms {
             } else {
                base.WndProc(ref m);
             }
-         } else if(m_draggable && m.Msg == WM_LBUTTONDOWN) {
-            //Simulate title bar dragging for drag mode and only if the left mouse is down (to allow context menu to still fire)
-            SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+         } else if (m.Msg == WM_LBUTTONDOWN) {
+           var isCtrlDown = (Form.ModifierKeys == Keys.Control);
+           if ((m_draggable && !isCtrlDown) || (!m_draggable && isCtrlDown)) {
+             SendMessage(Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+           } else {
+             base.WndProc(ref m);
+           }
          } else {
-            base.WndProc(ref m);
+           base.WndProc(ref m);
          }
       }
    }
