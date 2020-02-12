@@ -214,6 +214,9 @@
   <data name="StatusDhalmel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\status_dhalmel.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="StatusDoll" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\status_doll.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="StatusClaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\status_locked.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -303,6 +306,9 @@
   </data>
   <data name="CaitSith" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\cait_sith.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Siren" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\siren.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Pickaxe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\pickaxe.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

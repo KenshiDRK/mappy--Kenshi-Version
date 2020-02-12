@@ -243,6 +243,16 @@ namespace mappy {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Siren {
+            get {
+                object obj = ResourceManager.GetObject("Siren", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StatusAggro {
             get {
                 object obj = ResourceManager.GetObject("StatusAggro", resourceCulture);
@@ -556,6 +566,16 @@ namespace mappy {
         internal static System.Drawing.Bitmap StatusDhalmel {
             get {
                 object obj = ResourceManager.GetObject("StatusDhalmel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap StatusDoll {
+            get {
+                object obj = ResourceManager.GetObject("StatusDoll", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

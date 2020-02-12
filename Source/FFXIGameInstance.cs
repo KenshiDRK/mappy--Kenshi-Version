@@ -942,6 +942,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusDhalmel;
                     }
+                    else if (info.MountID == 27)
+                    {
+                        base.Icon = MapRes.StatusDoll;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
@@ -1034,6 +1038,10 @@ namespace mappy
                 else if (base.Type == SpawnType.NPC && info.DisplayName == "Atomos")
                 {
                     base.Icon = MapRes.Maw;
+                }
+                else if (base.Type == SpawnType.NPC && info.DisplayName == "Siren")
+                {
+                    base.Icon = MapRes.Siren;
                 }
                 else if (base.Type == SpawnType.NPC && (info.DisplayName == "Mining Point" || info.DisplayName == "Excavation Point"))
                 {
