@@ -1,4 +1,7 @@
 0.1.51
+*Added support for Odyssey with new maps
+*Added a way to change draggable behavior while pressing cntrl
+*Added a new setting to add a shadow below text
 *Added new mounts
 
 0.1.50

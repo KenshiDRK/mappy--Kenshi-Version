@@ -959,7 +959,7 @@ namespace mappy
                 {
                     base.Icon = MapRes.Conveyor;
                 }
-                else if (base.Type == SpawnType.NPC && (info.DisplayName == "Treasure Chest" || info.DisplayName == "Treasure Coffer" || info.DisplayName == "Treasure Casket" || info.DisplayName == "Ancient Lockbox" || info.DisplayName == "Armoury Crate" || info.DisplayName == "Riftworn Pyxis" || info.DisplayName == "Sturdy Pyxis" || info.DisplayName == "Emblazoned Reliquary"))
+                else if (base.Type == SpawnType.NPC && (info.DisplayName == "Treasure Chest" || info.DisplayName == "Treasure Coffer" || info.DisplayName == "Treasure Casket" || info.DisplayName == "Ancient Lockbox" || info.DisplayName == "Armoury Crate" || info.DisplayName == "Riftworn Pyxis" || info.DisplayName == "Sturdy Pyxis" || info.DisplayName == "Emblazoned Reliquary" || info.DisplayName == "Chest" || info.DisplayName == "Coffer" || info.DisplayName == "Aurum Strongbox"))
                 {
                     base.Icon = MapRes.StatusTreasure;
                 }
@@ -983,7 +983,7 @@ namespace mappy
                 {
                     base.Icon = MapRes.PlanarRift;
                 }
-                else if (base.Type == SpawnType.NPC && info.DisplayName == "Ethereal Junction")
+                else if (base.Type == SpawnType.NPC && info.DisplayName.Contains("Ethereal Junction"))
                 {
                     base.Icon = MapRes.EtherealJunction;
                 }
