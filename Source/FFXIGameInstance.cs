@@ -946,6 +946,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusDoll;
                     }
+                    else if (info.MountID == 28)
+                    {
+                        base.Icon = MapRes.StatusGoldenBomb;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
