@@ -950,6 +950,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusGoldenBomb;
                     }
+                    else if (info.MountID == 29)
+                    {
+                        base.Icon = MapRes.StatusBuffalo;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
