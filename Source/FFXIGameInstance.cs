@@ -958,6 +958,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusWivre;
                     }
+                    else if (info.MountID == 31)
+                    {
+                        base.Icon = MapRes.StatusRedRaptor;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
