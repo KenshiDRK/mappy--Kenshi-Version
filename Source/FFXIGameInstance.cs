@@ -962,6 +962,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusRedRaptor;
                     }
+                    else if (info.MountID == 32)
+                    {
+                        base.Icon = MapRes.StatusIronGiant;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;
