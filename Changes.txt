@@ -1,3 +1,8 @@
+0.1.52
+*Fix for February 10, 2022 FFXI Update
+*Autofit radar range after zone option will now also fit the radar when map image changes
+*Added new mounts
+
 0.1.51
 *Added support for Odyssey with new maps
 *Added a way to change draggable behavior while pressing cntrl (thank you to wadewomersley)

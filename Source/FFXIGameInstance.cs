@@ -440,6 +440,8 @@ namespace mappy
                             engine.MapAlternativeBounds = bounds;           //set the origin/scale of the background image
                             engine.Data.CheckBounds(bounds);                //expand the map bounds (if necessary) to allow the map to be zoomed all the way out
                             lastMapID = curMap.MapID;                         //set the map id so that the map isnt processed again until a change is made
+                            if (engine.AutoRangeSnap)
+                                engine.SnapToRange();
                             if (MapChanged != null)
                                 MapChanged(curMap, new EventArgs());
                         }
@@ -573,7 +575,7 @@ namespace mappy
         public UInt32 Unk18;
         public UInt16 NPCSpeechLoop;
         public UInt16 NPCSpeechFrame;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 18)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 22)]
         public byte[] Unk19;
         public float RunSpeed2;
         public UInt16 NPCWalkPos1;
