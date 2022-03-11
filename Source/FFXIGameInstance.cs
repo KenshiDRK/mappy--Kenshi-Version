@@ -968,6 +968,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusIronGiant;
                     }
+                    else if (info.MountID == 33)
+                    {
+                        base.Icon = MapRes.StatusByakko;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;

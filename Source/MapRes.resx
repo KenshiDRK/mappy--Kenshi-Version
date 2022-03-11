@@ -232,6 +232,9 @@
   <data name="StatusIronGiant" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\status_irongiant.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="StatusByakko" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>Resources\status_byakko.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="StatusClaimed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>Resources\status_locked.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
