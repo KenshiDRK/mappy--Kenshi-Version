@@ -14,7 +14,7 @@ namespace mappy {
       public static readonly string MapIniFile = "map.ini";
       public static readonly string MapFileExt = ".png|.gif";
 
-      public static readonly string ProcessName = "pol";
+      public static readonly string[] ProcessName = {"pol", "xiloader", "wingsloader", "edenxi"};
       public static readonly string ModuleName = "FFXiMain.dll";
 
       /// <summary>

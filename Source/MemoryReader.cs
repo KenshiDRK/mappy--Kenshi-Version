@@ -134,10 +134,14 @@ public class MemoryReader {
    /// </summary>
    /// <param name="ProcessName">Name to perform search against</param>
    /// <returns>MemoryReader with the opened process</returns>
-   public static MemoryReader Open(string ProcessName) {
-      System.Diagnostics.Process[] processlist = System.Diagnostics.Process.GetProcessesByName(ProcessName);
-      if (processlist.Length > 0) {
-         return(new MemoryReader((uint)processlist[0].Id, processlist[0].MainModule.BaseAddress));
+   public static MemoryReader Open(string[] ProcessName) {
+      foreach (string Process in ProcessName) 
+      {
+         System.Diagnostics.Process[] processlist = System.Diagnostics.Process.GetProcessesByName(Process);
+        //System.Diagnostics.Process[] processlist = System.Diagnostics.Process.GetProcessesByName(ProcessName);
+        if (processlist.Length > 0) {
+            return(new MemoryReader((uint)processlist[0].Id, processlist[0].MainModule.BaseAddress));
+        }
       }
       return null;
    }

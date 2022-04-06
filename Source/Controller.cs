@@ -218,13 +218,16 @@ namespace mappy {
       //=================================================================================     
       // scan the process list and add any new target instances to the list
       private void RefreshInstances() {
-         Process[] processlist = Process.GetProcessesByName(Program.ProcessName);
-         foreach (Process process in processlist) {
-            if (!m_gamelist.ContainsKey(process.Id)) {
-               ProcessItem item;
-               item.process = process;
-               m_gamelist.Add(process.Id, item);
-               miInstance.Items.Add(item);
+         foreach (string Instance in Program.ProcessName) {
+            Process[] processlist = Process.GetProcessesByName(Instance);
+         
+            foreach (Process process in processlist) {
+                if (!m_gamelist.ContainsKey(process.Id)) {
+                    ProcessItem item;
+                    item.process = process;
+                    m_gamelist.Add(process.Id, item);
+                    miInstance.Items.Add(item);
+                }
             }
          }
 
