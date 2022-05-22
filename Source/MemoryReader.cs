@@ -188,7 +188,7 @@ public class MemoryReader {
 
          //If the module matches our target, use its baseaddress. Otherwise, grab the next module in the list
          do {
-            if (me32.szModule == ModuleName)
+            if(string.Compare(me32.szModule, ModuleName, true) == 0)
                return me32.modBaseAddr;
          } while(Module32Next(hModuleList, ref me32));
       } finally {
@@ -216,7 +216,7 @@ public class MemoryReader {
 
          //If the module matches our target, use its baseaddress. Otherwise, grab the next module in the list
          do {
-            if(me32.szModule == ModuleName) {
+            if(string.Compare(me32.szModule, ModuleName, true) == 0) {
                ModuleInfo = me32;
                return true;
             }
