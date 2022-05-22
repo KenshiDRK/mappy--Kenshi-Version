@@ -840,7 +840,14 @@ namespace mappy
                 }
                 else if (base.Type == SpawnType.Player && (info.Status & (int)FFXICombatFlags.Chocobo) == 5 && info.Status < 6)
                 {
-                    base.Icon = MapRes.StatusChocobo;
+                    if (info.MountID == 34)
+                    {
+                        base.Icon = MapRes.StatusNobleChocobo;
+                    }
+                    else
+                    {
+                        base.Icon = MapRes.StatusChocobo;
+                    }
                 }
                 else if (base.Type == SpawnType.Player && (info.Status & (int)FFXICombatFlags.Mount) == 85)
                 {
