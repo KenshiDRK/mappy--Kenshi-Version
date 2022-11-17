@@ -1,3 +1,11 @@
+0.1.53
+*Updated Crawlers's Nest and Crawlers's Nest [S] maps
+*Support for some private servers (Not tested)
+*Updated with Remapster maps (https://remapster.com/)
+*Added several mounts
+*Added a instance id signarture
+*Added Sortie maps
+
 0.1.52
 *Fix for February 10, 2022 FFXI Update
 *Autofit radar range after zone option will now also fit the radar when map image changes

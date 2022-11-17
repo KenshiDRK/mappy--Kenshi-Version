@@ -445,7 +445,7 @@ namespace mappy
                         engine.LocInImage = curMap.Translate(engine.Game.Player.Location);
 
                         //only process if the map has actually changed
-                        if ((curMap.MapID != lastMapID))
+                        if (curMap.MapID != lastMapID)
                         {
                             engine.MapAlternativeImage = curMap.GetImage(); //set the background image
                             RectangleF bounds = curMap.Bounds;                //retrieve the map coodinate boundaries
