@@ -96,6 +96,7 @@ namespace mappy {
         private string original_SIG_SPAWN_END;
         private string original_SIG_MY_ID;
         private string original_SIG_MY_TARGET;
+        private string original_SIG_INSTANCE_ID;
 
         public static void BeginCustomization(IController Controller, fMap Owner)
         {
@@ -151,6 +152,7 @@ namespace mappy {
             original_SIG_SPAWN_END = controller.Config.Get("SIG_SPAWN_END", FFXIGameInstance.SIG_SPAWN_END);
             original_SIG_MY_ID = controller.Config.Get("SIG_MY_ID", FFXIGameInstance.SIG_MY_ID);
             original_SIG_MY_TARGET = controller.Config.Get("SIG_MY_TARGET", FFXIGameInstance.SIG_MY_TARGET);
+            original_SIG_INSTANCE_ID = controller.Config.Get("SIG_INSTANCE_ID", FFXIGameInstance.SIG_INSTANCE_ID);
 
             original_enable_filtering = controller.HotkeyEnabled;
             original_action_key = controller.ActionKey;
@@ -167,6 +169,7 @@ namespace mappy {
             txtSIG_SPAWN_END.Text = original_SIG_SPAWN_END;
             txtSIG_MY_ID.Text = original_SIG_MY_ID;
             txtSIG_MY_TARGET.Text = original_SIG_MY_TARGET;
+            txtSIG_INSTANCE_ID.Text = original_SIG_INSTANCE_ID;
 
             chkEnableInputFiltering.Checked = original_enable_filtering;
             chkEnableHotkeyCancel.Checked = original_consume_input;
@@ -351,6 +354,7 @@ namespace mappy {
             txtSIG_SPAWN_END_TextChanged(this, new EventArgs());
             txtSIG_MY_ID_TextChanged(this, new EventArgs());
             txtSIG_MY_TARGET_TextChanged(this, new EventArgs());
+            txtSIG_INSTANCE_ID_TextChanged(this, new EventArgs());
         }
 
         private void displayMapPath()
@@ -451,6 +455,7 @@ namespace mappy {
                     controller.Config.Remove("SIG_SPAWN_END");
                     controller.Config.Remove("SIG_MY_ID");
                     controller.Config.Remove("SIG_MY_TARGET");
+                    controller.Config.Remove("SIG_INSTANCE_ID");
                 }
                 else if (isSigsDirty())
                 {
@@ -464,6 +469,7 @@ namespace mappy {
                     controller.Config["SIG_SPAWN_END"] = FFXIGameInstance.SIG_SPAWN_END;
                     controller.Config["SIG_MY_ID"] = FFXIGameInstance.SIG_MY_ID;
                     controller.Config["SIG_MY_TARGET"] = FFXIGameInstance.SIG_MY_TARGET;
+                    controller.Config["SIG_INSTANCE_ID"] = FFXIGameInstance.SIG_INSTANCE_ID;
 
                     if (!alreadyCustom)
                     {
@@ -556,6 +562,7 @@ namespace mappy {
                 FFXIGameInstance.SIG_SPAWN_END = original_SIG_SPAWN_END;
                 FFXIGameInstance.SIG_MY_ID = original_SIG_MY_ID;
                 FFXIGameInstance.SIG_MY_TARGET = original_SIG_MY_TARGET;
+                FFXIGameInstance.SIG_INSTANCE_ID = original_SIG_INSTANCE_ID;
 
                 controller.HotkeyEnabled = original_enable_filtering;
                 controller.ActionKey = original_action_key;
@@ -1004,6 +1011,7 @@ namespace mappy {
             txtSIG_SPAWN_END.Text = original_SIG_SPAWN_END;
             txtSIG_MY_ID.Text = original_SIG_MY_ID;
             txtSIG_MY_TARGET.Text = original_SIG_MY_TARGET;
+            txtSIG_INSTANCE_ID.Text = original_SIG_INSTANCE_ID;
         }
 
         private void cmdSigDefaults_Click(object sender, EventArgs e)
@@ -1016,6 +1024,7 @@ namespace mappy {
                 txtSIG_SPAWN_END.Text = FFXIGameInstance.DEFAULT_SIG_SPAWN_END;
                 txtSIG_MY_ID.Text = FFXIGameInstance.DEFAULT_SIG_MY_ID;
                 txtSIG_MY_TARGET.Text = FFXIGameInstance.DEFAULT_SIG_MY_TARGET;
+                txtSIG_INSTANCE_ID.Text = FFXIGameInstance.DEFAULT_SIG_INSTANCE_ID;
             }
         }
 
@@ -1029,6 +1038,7 @@ namespace mappy {
             isDirty = isDirty || (FFXIGameInstance.SIG_SPAWN_END != original_SIG_SPAWN_END);
             isDirty = isDirty || (FFXIGameInstance.SIG_MY_ID != original_SIG_MY_ID);
             isDirty = isDirty || (FFXIGameInstance.SIG_MY_TARGET != original_SIG_MY_TARGET);
+            isDirty = isDirty || (FFXIGameInstance.SIG_INSTANCE_ID != original_SIG_INSTANCE_ID);
 
             return isDirty;
         }
@@ -1043,6 +1053,7 @@ namespace mappy {
             isDefault = isDefault && (FFXIGameInstance.SIG_SPAWN_END == FFXIGameInstance.DEFAULT_SIG_SPAWN_END);
             isDefault = isDefault && (FFXIGameInstance.SIG_MY_ID == FFXIGameInstance.DEFAULT_SIG_MY_ID);
             isDefault = isDefault && (FFXIGameInstance.SIG_MY_TARGET == FFXIGameInstance.DEFAULT_SIG_MY_TARGET);
+            isDefault = isDefault && (FFXIGameInstance.SIG_INSTANCE_ID == FFXIGameInstance.DEFAULT_SIG_INSTANCE_ID);
 
             return isDefault;
         }
@@ -1187,6 +1198,30 @@ namespace mappy {
                 catch (Exception)
                 {
                     pbStatus_SIG_MY_TARGET.Image = Properties.Resources.icon_no;
+                }
+            }
+        }
+
+        private void txtSIG_INSTANCE_ID_TextChanged(object sender, EventArgs e)
+        {
+            FFXIGameInstance.SIG_INSTANCE_ID = txtSIG_INSTANCE_ID.Text;
+            if (parent != null)
+            {
+                try
+                {
+                    IntPtr pTest = parent.Instance.Reader.FindSignature(txtSIG_INSTANCE_ID.Text, Program.ModuleName);
+                    if (pTest == IntPtr.Zero)
+                    {
+                        pbStatus_SIG_INSTANCE_ID.Image = Properties.Resources.icon_no;
+                    }
+                    else
+                    {
+                        pbStatus_SIG_INSTANCE_ID.Image = Properties.Resources.icon_ok;
+                    }
+                }
+                catch (Exception)
+                {
+                    pbStatus_SIG_INSTANCE_ID.Image = Properties.Resources.icon_no;
                 }
             }
         }
@@ -1432,5 +1467,6 @@ namespace mappy {
                 parent.Engine.HeadingColor = dColorChanger.Color;
             }
         }
+
     }
 }

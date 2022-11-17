@@ -118,6 +118,7 @@ namespace mappy {
          lblSIG_SPAWN_END.Text = Program.GetLang("config_general_SIG_SPAWN_END");
          lblSIG_MY_ID.Text = Program.GetLang("config_general_SIG_MY_ID");
          lblSIG_MY_TARGET.Text = Program.GetLang("config_general_SIG_MY_TARGET");
+         lblSIG_INSTANCE_ID.Text = Program.GetLang("config_general_SIG_INSTANCE_ID");
          lblSigNoActivePID.Text = Program.GetLang("config_general_sig_no_active_pid");
          lblSigRestartWarning.Text = Program.GetLang("config_general_sig_restart_warning");
          cmdResetSigs.Text = Program.GetLang("button_reset");
@@ -247,7 +248,6 @@ namespace mappy {
             this.udSpawnSelectSize = new System.Windows.Forms.NumericUpDown();
             this.lblSelectedColor = new System.Windows.Forms.Label();
             this.cmdSelectedColor = new System.Windows.Forms.Button();
-            this.chkShowTextOutline = new System.Windows.Forms.CheckBox();
             this.lblTextGlowColor = new System.Windows.Forms.Label();
             this.cmdTextGlowColor = new System.Windows.Forms.Button();
             this.udSpawnGroupSize = new System.Windows.Forms.NumericUpDown();
@@ -272,6 +272,8 @@ namespace mappy {
             this.chkShowPetLines = new System.Windows.Forms.CheckBox();
             this.lblPetLineColor = new System.Windows.Forms.Label();
             this.cmdPetLineColor = new System.Windows.Forms.Button();
+            this.chkShowTextOutline = new System.Windows.Forms.CheckBox();
+            this.chkShowTextShadow = new System.Windows.Forms.CheckBox();
             this.tpDepthFilter = new System.Windows.Forms.TabPage();
             this.tpHotkeys = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
@@ -289,20 +291,19 @@ namespace mappy {
             this.txtActionKey = new System.Windows.Forms.TextBox();
             this.lblHotkeyHelp = new System.Windows.Forms.Label();
             this.tpSignatures = new System.Windows.Forms.TabPage();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cmdResetSigs = new System.Windows.Forms.Button();
+            this.cmdSigDefaults = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.pbStatus_SIG_INSTANCE_ID = new System.Windows.Forms.PictureBox();
+            this.lblSIG_INSTANCE_ID = new System.Windows.Forms.Label();
             this.lblSigWarning = new System.Windows.Forms.Label();
             this.lblSigHelp = new System.Windows.Forms.Label();
-            this.pbStatus_SIG_MY_TARGET = new System.Windows.Forms.PictureBox();
             this.txtSIG_ZONE_ID = new System.Windows.Forms.TextBox();
             this.lblSIG_MY_TARGET = new System.Windows.Forms.Label();
-            this.pbStatus_SIG_MY_ID = new System.Windows.Forms.PictureBox();
             this.txtSIG_ZONE_SHORT = new System.Windows.Forms.TextBox();
             this.lblSIG_ZONE_SHORT = new System.Windows.Forms.Label();
-            this.pbStatus_SIG_SPAWN_END = new System.Windows.Forms.PictureBox();
             this.lblSIG_ZONE_ID = new System.Windows.Forms.Label();
-            this.pbStatus_SIG_SPAWN_START = new System.Windows.Forms.PictureBox();
-            this.pbStatus_SIG_ZONE_ID = new System.Windows.Forms.PictureBox();
-            this.pbStatus_SIG_ZONE_SHORT = new System.Windows.Forms.PictureBox();
             this.lblSIG_SPAWN_START = new System.Windows.Forms.Label();
             this.lblSIG_SPAWN_END = new System.Windows.Forms.Label();
             this.lblSIG_MY_ID = new System.Windows.Forms.Label();
@@ -310,14 +311,17 @@ namespace mappy {
             this.txtSIG_SPAWN_END = new System.Windows.Forms.TextBox();
             this.txtSIG_MY_ID = new System.Windows.Forms.TextBox();
             this.txtSIG_MY_TARGET = new System.Windows.Forms.TextBox();
-            this.lblSigRestartWarning = new System.Windows.Forms.Label();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cmdResetSigs = new System.Windows.Forms.Button();
-            this.cmdSigDefaults = new System.Windows.Forms.Button();
+            this.txtSIG_INSTANCE_ID = new System.Windows.Forms.TextBox();
             this.lblSigNoActivePID = new System.Windows.Forms.Label();
+            this.lblSigRestartWarning = new System.Windows.Forms.Label();
+            this.pbStatus_SIG_MY_TARGET = new System.Windows.Forms.PictureBox();
+            this.pbStatus_SIG_MY_ID = new System.Windows.Forms.PictureBox();
+            this.pbStatus_SIG_SPAWN_END = new System.Windows.Forms.PictureBox();
+            this.pbStatus_SIG_SPAWN_START = new System.Windows.Forms.PictureBox();
+            this.pbStatus_SIG_ZONE_SHORT = new System.Windows.Forms.PictureBox();
+            this.pbStatus_SIG_ZONE_ID = new System.Windows.Forms.PictureBox();
             this.dBrowseFolder = new System.Windows.Forms.FolderBrowserDialog();
             this.dFontChanger = new System.Windows.Forms.FontDialog();
-            this.chkShowTextShadow = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -356,14 +360,15 @@ namespace mappy {
             this.tableLayoutPanel8.SuspendLayout();
             this.cmHotkeyBindings.SuspendLayout();
             this.tpSignatures.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_INSTANCE_ID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_MY_TARGET)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_MY_ID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_SPAWN_END)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_SPAWN_START)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_ZONE_ID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_ZONE_SHORT)).BeginInit();
-            this.flowLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_ZONE_ID)).BeginInit();
             this.SuspendLayout();
             // 
             // cmdOK
@@ -1999,19 +2004,6 @@ namespace mappy {
             this.cmdSelectedColor.UseVisualStyleBackColor = false;
             this.cmdSelectedColor.Click += new System.EventHandler(this.cmdSelectedColor_Click);
             // 
-            // chkShowTextOutline
-            // 
-            this.chkShowTextOutline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkShowTextOutline.AutoEllipsis = true;
-            this.tableLayoutPanel4.SetColumnSpan(this.chkShowTextOutline, 2);
-            this.chkShowTextOutline.Location = new System.Drawing.Point(3, 616);
-            this.chkShowTextOutline.Name = "chkShowTextOutline";
-            this.chkShowTextOutline.Size = new System.Drawing.Size(335, 17);
-            this.chkShowTextOutline.TabIndex = 12;
-            this.chkShowTextOutline.Text = "{config_appear_use_glow}";
-            this.chkShowTextOutline.UseVisualStyleBackColor = true;
-            this.chkShowTextOutline.CheckedChanged += new System.EventHandler(this.chkShowTextOutline_CheckedChanged);
-            // 
             // lblTextGlowColor
             // 
             this.lblTextGlowColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -2315,6 +2307,32 @@ namespace mappy {
             this.cmdPetLineColor.UseVisualStyleBackColor = false;
             this.cmdPetLineColor.Click += new System.EventHandler(this.cmdPetLineColor_Click);
             // 
+            // chkShowTextOutline
+            // 
+            this.chkShowTextOutline.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkShowTextOutline.AutoEllipsis = true;
+            this.tableLayoutPanel4.SetColumnSpan(this.chkShowTextOutline, 2);
+            this.chkShowTextOutline.Location = new System.Drawing.Point(3, 616);
+            this.chkShowTextOutline.Name = "chkShowTextOutline";
+            this.chkShowTextOutline.Size = new System.Drawing.Size(335, 17);
+            this.chkShowTextOutline.TabIndex = 12;
+            this.chkShowTextOutline.Text = "{config_appear_use_glow}";
+            this.chkShowTextOutline.UseVisualStyleBackColor = true;
+            this.chkShowTextOutline.CheckedChanged += new System.EventHandler(this.chkShowTextOutline_CheckedChanged);
+            // 
+            // chkShowTextShadow
+            // 
+            this.chkShowTextShadow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.chkShowTextShadow.AutoEllipsis = true;
+            this.tableLayoutPanel4.SetColumnSpan(this.chkShowTextShadow, 2);
+            this.chkShowTextShadow.Location = new System.Drawing.Point(3, 593);
+            this.chkShowTextShadow.Name = "chkShowTextShadow";
+            this.chkShowTextShadow.Size = new System.Drawing.Size(335, 17);
+            this.chkShowTextShadow.TabIndex = 82;
+            this.chkShowTextShadow.Text = "{config_appear_use_shadow}";
+            this.chkShowTextShadow.UseVisualStyleBackColor = true;
+            this.chkShowTextShadow.CheckedChanged += new System.EventHandler(this.chkShowTextShadow_CheckedChanged);
+            // 
             // tpDepthFilter
             // 
             this.tpDepthFilter.AutoScroll = true;
@@ -2501,6 +2519,41 @@ namespace mappy {
             this.tpSignatures.Text = "{tab_sig}";
             this.tpSignatures.UseVisualStyleBackColor = true;
             // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel3.Controls.Add(this.cmdSigDefaults);
+            this.flowLayoutPanel3.Controls.Add(this.cmdResetSigs);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(127, 240);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel3.MinimumSize = new System.Drawing.Size(20, 20);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(194, 29);
+            this.flowLayoutPanel3.TabIndex = 15;
+            // 
+            // cmdResetSigs
+            // 
+            this.cmdResetSigs.AutoSize = true;
+            this.cmdResetSigs.Location = new System.Drawing.Point(107, 3);
+            this.cmdResetSigs.Name = "cmdResetSigs";
+            this.cmdResetSigs.Size = new System.Drawing.Size(84, 23);
+            this.cmdResetSigs.TabIndex = 12;
+            this.cmdResetSigs.Text = "{button_reset}";
+            this.cmdResetSigs.UseVisualStyleBackColor = true;
+            this.cmdResetSigs.Click += new System.EventHandler(this.cmdResetSigs_Click);
+            // 
+            // cmdSigDefaults
+            // 
+            this.cmdSigDefaults.AutoSize = true;
+            this.cmdSigDefaults.Location = new System.Drawing.Point(3, 3);
+            this.cmdSigDefaults.Name = "cmdSigDefaults";
+            this.cmdSigDefaults.Size = new System.Drawing.Size(98, 23);
+            this.cmdSigDefaults.TabIndex = 13;
+            this.cmdSigDefaults.Text = "{button_defaults}";
+            this.cmdSigDefaults.UseVisualStyleBackColor = true;
+            this.cmdSigDefaults.Click += new System.EventHandler(this.cmdSigDefaults_Click);
+            // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.AutoSize = true;
@@ -2509,19 +2562,16 @@ namespace mappy {
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel7.Controls.Add(this.flowLayoutPanel3, 1, 11);
+            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_INSTANCE_ID, 2, 8);
+            this.tableLayoutPanel7.Controls.Add(this.lblSIG_INSTANCE_ID, 0, 8);
             this.tableLayoutPanel7.Controls.Add(this.lblSigWarning, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.lblSigHelp, 0, 1);
-            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_MY_TARGET, 2, 7);
             this.tableLayoutPanel7.Controls.Add(this.txtSIG_ZONE_ID, 1, 2);
             this.tableLayoutPanel7.Controls.Add(this.lblSIG_MY_TARGET, 0, 7);
-            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_MY_ID, 2, 6);
             this.tableLayoutPanel7.Controls.Add(this.txtSIG_ZONE_SHORT, 1, 3);
             this.tableLayoutPanel7.Controls.Add(this.lblSIG_ZONE_SHORT, 0, 3);
-            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_SPAWN_END, 2, 5);
             this.tableLayoutPanel7.Controls.Add(this.lblSIG_ZONE_ID, 0, 2);
-            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_SPAWN_START, 2, 4);
-            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_ZONE_ID, 2, 2);
-            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_ZONE_SHORT, 2, 3);
             this.tableLayoutPanel7.Controls.Add(this.lblSIG_SPAWN_START, 0, 4);
             this.tableLayoutPanel7.Controls.Add(this.lblSIG_SPAWN_END, 0, 5);
             this.tableLayoutPanel7.Controls.Add(this.lblSIG_MY_ID, 0, 6);
@@ -2529,13 +2579,19 @@ namespace mappy {
             this.tableLayoutPanel7.Controls.Add(this.txtSIG_SPAWN_END, 1, 5);
             this.tableLayoutPanel7.Controls.Add(this.txtSIG_MY_ID, 1, 6);
             this.tableLayoutPanel7.Controls.Add(this.txtSIG_MY_TARGET, 1, 7);
-            this.tableLayoutPanel7.Controls.Add(this.lblSigRestartWarning, 1, 9);
-            this.tableLayoutPanel7.Controls.Add(this.flowLayoutPanel3, 1, 10);
-            this.tableLayoutPanel7.Controls.Add(this.lblSigNoActivePID, 1, 8);
+            this.tableLayoutPanel7.Controls.Add(this.txtSIG_INSTANCE_ID, 1, 8);
+            this.tableLayoutPanel7.Controls.Add(this.lblSigNoActivePID, 1, 9);
+            this.tableLayoutPanel7.Controls.Add(this.lblSigRestartWarning, 1, 10);
+            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_MY_TARGET, 2, 7);
+            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_MY_ID, 2, 6);
+            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_SPAWN_END, 2, 5);
+            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_SPAWN_START, 2, 4);
+            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_ZONE_SHORT, 2, 3);
+            this.tableLayoutPanel7.Controls.Add(this.pbStatus_SIG_ZONE_ID, 2, 2);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.tableLayoutPanel7.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 11;
+            this.tableLayoutPanel7.RowCount = 12;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -2547,13 +2603,35 @@ namespace mappy {
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(358, 243);
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(358, 269);
             this.tableLayoutPanel7.TabIndex = 0;
+            // 
+            // pbStatus_SIG_INSTANCE_ID
+            // 
+            this.pbStatus_SIG_INSTANCE_ID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbStatus_SIG_INSTANCE_ID.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_INSTANCE_ID.Image")));
+            this.pbStatus_SIG_INSTANCE_ID.Location = new System.Drawing.Point(339, 193);
+            this.pbStatus_SIG_INSTANCE_ID.Name = "pbStatus_SIG_INSTANCE_ID";
+            this.pbStatus_SIG_INSTANCE_ID.Size = new System.Drawing.Size(16, 16);
+            this.pbStatus_SIG_INSTANCE_ID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbStatus_SIG_INSTANCE_ID.TabIndex = 21;
+            this.pbStatus_SIG_INSTANCE_ID.TabStop = false;
+            // 
+            // lblSIG_INSTANCE_ID
+            // 
+            this.lblSIG_INSTANCE_ID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSIG_INSTANCE_ID.AutoSize = true;
+            this.lblSIG_INSTANCE_ID.Location = new System.Drawing.Point(3, 194);
+            this.lblSIG_INSTANCE_ID.Name = "lblSIG_INSTANCE_ID";
+            this.lblSIG_INSTANCE_ID.Size = new System.Drawing.Size(121, 13);
+            this.lblSIG_INSTANCE_ID.TabIndex = 8;
+            this.lblSIG_INSTANCE_ID.Text = "{SIG_INSTANCE_ID}";
             // 
             // lblSigWarning
             // 
             this.lblSigWarning.AutoSize = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.lblSigWarning, 3);
+            this.tableLayoutPanel7.SetColumnSpan(this.lblSigWarning, 2);
             this.lblSigWarning.Location = new System.Drawing.Point(3, 0);
             this.lblSigWarning.Name = "lblSigWarning";
             this.lblSigWarning.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
@@ -2567,23 +2645,12 @@ namespace mappy {
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSigHelp.AutoSize = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.lblSigHelp, 3);
+            this.tableLayoutPanel7.SetColumnSpan(this.lblSigHelp, 2);
             this.lblSigHelp.Location = new System.Drawing.Point(3, 19);
             this.lblSigHelp.Name = "lblSigHelp";
-            this.lblSigHelp.Size = new System.Drawing.Size(352, 13);
+            this.lblSigHelp.Size = new System.Drawing.Size(330, 13);
             this.lblSigHelp.TabIndex = 2;
             this.lblSigHelp.Text = "{config_general_sig_help}";
-            // 
-            // pbStatus_SIG_MY_TARGET
-            // 
-            this.pbStatus_SIG_MY_TARGET.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbStatus_SIG_MY_TARGET.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_MY_TARGET.Image")));
-            this.pbStatus_SIG_MY_TARGET.Location = new System.Drawing.Point(339, 167);
-            this.pbStatus_SIG_MY_TARGET.Name = "pbStatus_SIG_MY_TARGET";
-            this.pbStatus_SIG_MY_TARGET.Size = new System.Drawing.Size(16, 16);
-            this.pbStatus_SIG_MY_TARGET.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbStatus_SIG_MY_TARGET.TabIndex = 20;
-            this.pbStatus_SIG_MY_TARGET.TabStop = false;
             // 
             // txtSIG_ZONE_ID
             // 
@@ -2604,17 +2671,6 @@ namespace mappy {
             this.lblSIG_MY_TARGET.TabIndex = 7;
             this.lblSIG_MY_TARGET.Text = "{SIG_MY_TARGET}";
             // 
-            // pbStatus_SIG_MY_ID
-            // 
-            this.pbStatus_SIG_MY_ID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbStatus_SIG_MY_ID.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_MY_ID.Image")));
-            this.pbStatus_SIG_MY_ID.Location = new System.Drawing.Point(339, 141);
-            this.pbStatus_SIG_MY_ID.Name = "pbStatus_SIG_MY_ID";
-            this.pbStatus_SIG_MY_ID.Size = new System.Drawing.Size(16, 16);
-            this.pbStatus_SIG_MY_ID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbStatus_SIG_MY_ID.TabIndex = 19;
-            this.pbStatus_SIG_MY_ID.TabStop = false;
-            // 
             // txtSIG_ZONE_SHORT
             // 
             this.txtSIG_ZONE_SHORT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -2634,17 +2690,6 @@ namespace mappy {
             this.lblSIG_ZONE_SHORT.TabIndex = 2;
             this.lblSIG_ZONE_SHORT.Text = "{SIG_ZONE_SHORT}";
             // 
-            // pbStatus_SIG_SPAWN_END
-            // 
-            this.pbStatus_SIG_SPAWN_END.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbStatus_SIG_SPAWN_END.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_SPAWN_END.Image")));
-            this.pbStatus_SIG_SPAWN_END.Location = new System.Drawing.Point(339, 115);
-            this.pbStatus_SIG_SPAWN_END.Name = "pbStatus_SIG_SPAWN_END";
-            this.pbStatus_SIG_SPAWN_END.Size = new System.Drawing.Size(16, 16);
-            this.pbStatus_SIG_SPAWN_END.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbStatus_SIG_SPAWN_END.TabIndex = 18;
-            this.pbStatus_SIG_SPAWN_END.TabStop = false;
-            // 
             // lblSIG_ZONE_ID
             // 
             this.lblSIG_ZONE_ID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -2654,39 +2699,6 @@ namespace mappy {
             this.lblSIG_ZONE_ID.Size = new System.Drawing.Size(121, 13);
             this.lblSIG_ZONE_ID.TabIndex = 0;
             this.lblSIG_ZONE_ID.Text = "{SIG_ZONE_ID}";
-            // 
-            // pbStatus_SIG_SPAWN_START
-            // 
-            this.pbStatus_SIG_SPAWN_START.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbStatus_SIG_SPAWN_START.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_SPAWN_START.Image")));
-            this.pbStatus_SIG_SPAWN_START.Location = new System.Drawing.Point(339, 89);
-            this.pbStatus_SIG_SPAWN_START.Name = "pbStatus_SIG_SPAWN_START";
-            this.pbStatus_SIG_SPAWN_START.Size = new System.Drawing.Size(16, 16);
-            this.pbStatus_SIG_SPAWN_START.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbStatus_SIG_SPAWN_START.TabIndex = 17;
-            this.pbStatus_SIG_SPAWN_START.TabStop = false;
-            // 
-            // pbStatus_SIG_ZONE_ID
-            // 
-            this.pbStatus_SIG_ZONE_ID.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbStatus_SIG_ZONE_ID.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_ZONE_ID.Image")));
-            this.pbStatus_SIG_ZONE_ID.Location = new System.Drawing.Point(339, 37);
-            this.pbStatus_SIG_ZONE_ID.Name = "pbStatus_SIG_ZONE_ID";
-            this.pbStatus_SIG_ZONE_ID.Size = new System.Drawing.Size(16, 16);
-            this.pbStatus_SIG_ZONE_ID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbStatus_SIG_ZONE_ID.TabIndex = 15;
-            this.pbStatus_SIG_ZONE_ID.TabStop = false;
-            // 
-            // pbStatus_SIG_ZONE_SHORT
-            // 
-            this.pbStatus_SIG_ZONE_SHORT.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pbStatus_SIG_ZONE_SHORT.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_ZONE_SHORT.Image")));
-            this.pbStatus_SIG_ZONE_SHORT.Location = new System.Drawing.Point(339, 63);
-            this.pbStatus_SIG_ZONE_SHORT.Name = "pbStatus_SIG_ZONE_SHORT";
-            this.pbStatus_SIG_ZONE_SHORT.Size = new System.Drawing.Size(16, 16);
-            this.pbStatus_SIG_ZONE_SHORT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pbStatus_SIG_ZONE_SHORT.TabIndex = 16;
-            this.pbStatus_SIG_ZONE_SHORT.TabStop = false;
             // 
             // lblSIG_SPAWN_START
             // 
@@ -2754,75 +2766,100 @@ namespace mappy {
             this.txtSIG_MY_TARGET.TabIndex = 11;
             this.txtSIG_MY_TARGET.TextChanged += new System.EventHandler(this.txtSIG_MY_TARGET_TextChanged);
             // 
-            // lblSigRestartWarning
+            // txtSIG_INSTANCE_ID
             // 
-            this.lblSigRestartWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblSigRestartWarning.AutoSize = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.lblSigRestartWarning, 2);
-            this.lblSigRestartWarning.Location = new System.Drawing.Point(130, 201);
-            this.lblSigRestartWarning.Name = "lblSigRestartWarning";
-            this.lblSigRestartWarning.Size = new System.Drawing.Size(225, 13);
-            this.lblSigRestartWarning.TabIndex = 13;
-            this.lblSigRestartWarning.Text = "{config_general_sig_restart_warning}";
-            // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel7.SetColumnSpan(this.flowLayoutPanel3, 2);
-            this.flowLayoutPanel3.Controls.Add(this.cmdResetSigs);
-            this.flowLayoutPanel3.Controls.Add(this.cmdSigDefaults);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(127, 214);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(194, 29);
-            this.flowLayoutPanel3.TabIndex = 14;
-            // 
-            // cmdResetSigs
-            // 
-            this.cmdResetSigs.AutoSize = true;
-            this.cmdResetSigs.Location = new System.Drawing.Point(3, 3);
-            this.cmdResetSigs.Name = "cmdResetSigs";
-            this.cmdResetSigs.Size = new System.Drawing.Size(84, 23);
-            this.cmdResetSigs.TabIndex = 12;
-            this.cmdResetSigs.Text = "{button_reset}";
-            this.cmdResetSigs.UseVisualStyleBackColor = true;
-            this.cmdResetSigs.Click += new System.EventHandler(this.cmdResetSigs_Click);
-            // 
-            // cmdSigDefaults
-            // 
-            this.cmdSigDefaults.AutoSize = true;
-            this.cmdSigDefaults.Location = new System.Drawing.Point(93, 3);
-            this.cmdSigDefaults.Name = "cmdSigDefaults";
-            this.cmdSigDefaults.Size = new System.Drawing.Size(98, 23);
-            this.cmdSigDefaults.TabIndex = 13;
-            this.cmdSigDefaults.Text = "{button_defaults}";
-            this.cmdSigDefaults.UseVisualStyleBackColor = true;
-            this.cmdSigDefaults.Click += new System.EventHandler(this.cmdSigDefaults_Click);
+            this.txtSIG_INSTANCE_ID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSIG_INSTANCE_ID.Location = new System.Drawing.Point(130, 191);
+            this.txtSIG_INSTANCE_ID.Name = "txtSIG_INSTANCE_ID";
+            this.txtSIG_INSTANCE_ID.Size = new System.Drawing.Size(203, 20);
+            this.txtSIG_INSTANCE_ID.TabIndex = 22;
+            this.txtSIG_INSTANCE_ID.TextChanged += new System.EventHandler(this.txtSIG_INSTANCE_ID_TextChanged);
             // 
             // lblSigNoActivePID
             // 
             this.lblSigNoActivePID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSigNoActivePID.AutoSize = true;
-            this.tableLayoutPanel7.SetColumnSpan(this.lblSigNoActivePID, 2);
-            this.lblSigNoActivePID.Location = new System.Drawing.Point(130, 188);
+            this.lblSigNoActivePID.Location = new System.Drawing.Point(130, 214);
             this.lblSigNoActivePID.Name = "lblSigNoActivePID";
-            this.lblSigNoActivePID.Size = new System.Drawing.Size(225, 13);
+            this.lblSigNoActivePID.Size = new System.Drawing.Size(203, 13);
             this.lblSigNoActivePID.TabIndex = 21;
             this.lblSigNoActivePID.Text = "{config_general_sig_no_active_pid}";
             // 
-            // chkShowTextShadow
+            // lblSigRestartWarning
             // 
-            this.chkShowTextShadow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkShowTextShadow.AutoEllipsis = true;
-            this.tableLayoutPanel4.SetColumnSpan(this.chkShowTextShadow, 2);
-            this.chkShowTextShadow.Location = new System.Drawing.Point(3, 593);
-            this.chkShowTextShadow.Name = "chkShowTextShadow";
-            this.chkShowTextShadow.Size = new System.Drawing.Size(335, 17);
-            this.chkShowTextShadow.TabIndex = 82;
-            this.chkShowTextShadow.Text = "{config_appear_use_shadow}";
-            this.chkShowTextShadow.UseVisualStyleBackColor = true;
-            this.chkShowTextShadow.CheckedChanged += new System.EventHandler(this.chkShowTextShadow_CheckedChanged);
+            this.lblSigRestartWarning.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSigRestartWarning.AutoSize = true;
+            this.lblSigRestartWarning.Location = new System.Drawing.Point(130, 227);
+            this.lblSigRestartWarning.Name = "lblSigRestartWarning";
+            this.lblSigRestartWarning.Size = new System.Drawing.Size(203, 13);
+            this.lblSigRestartWarning.TabIndex = 13;
+            this.lblSigRestartWarning.Text = "{config_general_sig_restart_warning}";
+            // 
+            // pbStatus_SIG_MY_TARGET
+            // 
+            this.pbStatus_SIG_MY_TARGET.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbStatus_SIG_MY_TARGET.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_MY_TARGET.Image")));
+            this.pbStatus_SIG_MY_TARGET.Location = new System.Drawing.Point(339, 167);
+            this.pbStatus_SIG_MY_TARGET.Name = "pbStatus_SIG_MY_TARGET";
+            this.pbStatus_SIG_MY_TARGET.Size = new System.Drawing.Size(16, 16);
+            this.pbStatus_SIG_MY_TARGET.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbStatus_SIG_MY_TARGET.TabIndex = 20;
+            this.pbStatus_SIG_MY_TARGET.TabStop = false;
+            // 
+            // pbStatus_SIG_MY_ID
+            // 
+            this.pbStatus_SIG_MY_ID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbStatus_SIG_MY_ID.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_MY_ID.Image")));
+            this.pbStatus_SIG_MY_ID.Location = new System.Drawing.Point(339, 141);
+            this.pbStatus_SIG_MY_ID.Name = "pbStatus_SIG_MY_ID";
+            this.pbStatus_SIG_MY_ID.Size = new System.Drawing.Size(16, 16);
+            this.pbStatus_SIG_MY_ID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbStatus_SIG_MY_ID.TabIndex = 19;
+            this.pbStatus_SIG_MY_ID.TabStop = false;
+            // 
+            // pbStatus_SIG_SPAWN_END
+            // 
+            this.pbStatus_SIG_SPAWN_END.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbStatus_SIG_SPAWN_END.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_SPAWN_END.Image")));
+            this.pbStatus_SIG_SPAWN_END.Location = new System.Drawing.Point(339, 115);
+            this.pbStatus_SIG_SPAWN_END.Name = "pbStatus_SIG_SPAWN_END";
+            this.pbStatus_SIG_SPAWN_END.Size = new System.Drawing.Size(16, 16);
+            this.pbStatus_SIG_SPAWN_END.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbStatus_SIG_SPAWN_END.TabIndex = 18;
+            this.pbStatus_SIG_SPAWN_END.TabStop = false;
+            // 
+            // pbStatus_SIG_SPAWN_START
+            // 
+            this.pbStatus_SIG_SPAWN_START.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbStatus_SIG_SPAWN_START.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_SPAWN_START.Image")));
+            this.pbStatus_SIG_SPAWN_START.Location = new System.Drawing.Point(339, 89);
+            this.pbStatus_SIG_SPAWN_START.Name = "pbStatus_SIG_SPAWN_START";
+            this.pbStatus_SIG_SPAWN_START.Size = new System.Drawing.Size(16, 16);
+            this.pbStatus_SIG_SPAWN_START.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbStatus_SIG_SPAWN_START.TabIndex = 17;
+            this.pbStatus_SIG_SPAWN_START.TabStop = false;
+            // 
+            // pbStatus_SIG_ZONE_SHORT
+            // 
+            this.pbStatus_SIG_ZONE_SHORT.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbStatus_SIG_ZONE_SHORT.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_ZONE_SHORT.Image")));
+            this.pbStatus_SIG_ZONE_SHORT.Location = new System.Drawing.Point(339, 63);
+            this.pbStatus_SIG_ZONE_SHORT.Name = "pbStatus_SIG_ZONE_SHORT";
+            this.pbStatus_SIG_ZONE_SHORT.Size = new System.Drawing.Size(16, 16);
+            this.pbStatus_SIG_ZONE_SHORT.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbStatus_SIG_ZONE_SHORT.TabIndex = 16;
+            this.pbStatus_SIG_ZONE_SHORT.TabStop = false;
+            // 
+            // pbStatus_SIG_ZONE_ID
+            // 
+            this.pbStatus_SIG_ZONE_ID.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pbStatus_SIG_ZONE_ID.Image = ((System.Drawing.Image)(resources.GetObject("pbStatus_SIG_ZONE_ID.Image")));
+            this.pbStatus_SIG_ZONE_ID.Location = new System.Drawing.Point(339, 37);
+            this.pbStatus_SIG_ZONE_ID.Name = "pbStatus_SIG_ZONE_ID";
+            this.pbStatus_SIG_ZONE_ID.Size = new System.Drawing.Size(16, 16);
+            this.pbStatus_SIG_ZONE_ID.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbStatus_SIG_ZONE_ID.TabIndex = 15;
+            this.pbStatus_SIG_ZONE_ID.TabStop = false;
             // 
             // fCustomize
             // 
@@ -2894,16 +2931,17 @@ namespace mappy {
             this.cmHotkeyBindings.ResumeLayout(false);
             this.tpSignatures.ResumeLayout(false);
             this.tpSignatures.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_INSTANCE_ID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_MY_TARGET)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_MY_ID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_SPAWN_END)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_SPAWN_START)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_ZONE_ID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_ZONE_SHORT)).EndInit();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_ZONE_ID)).EndInit();
             this.ResumeLayout(false);
 
       }
@@ -3009,33 +3047,6 @@ namespace mappy {
       private System.Windows.Forms.PictureBox pbMapPackWarning;
       private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;
       private System.Windows.Forms.PictureBox pbFilePathWarning;
-      private System.Windows.Forms.TabPage tpSignatures;
-      private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
-      private System.Windows.Forms.Label lblSIG_ZONE_ID;
-      private System.Windows.Forms.TextBox txtSIG_ZONE_ID;
-      private System.Windows.Forms.Label lblSIG_MY_TARGET;
-      private System.Windows.Forms.TextBox txtSIG_ZONE_SHORT;
-      private System.Windows.Forms.Label lblSIG_ZONE_SHORT;
-      private System.Windows.Forms.Label lblSIG_SPAWN_START;
-      private System.Windows.Forms.Label lblSIG_SPAWN_END;
-      private System.Windows.Forms.Label lblSIG_MY_ID;
-      private System.Windows.Forms.TextBox txtSIG_SPAWN_START;
-      private System.Windows.Forms.TextBox txtSIG_SPAWN_END;
-      private System.Windows.Forms.TextBox txtSIG_MY_ID;
-      private System.Windows.Forms.TextBox txtSIG_MY_TARGET;
-      private System.Windows.Forms.Button cmdResetSigs;
-      private System.Windows.Forms.Label lblSigWarning;
-      private System.Windows.Forms.Label lblSigRestartWarning;
-      private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
-      private System.Windows.Forms.Button cmdSigDefaults;
-      private System.Windows.Forms.PictureBox pbStatus_SIG_ZONE_ID;
-      private System.Windows.Forms.PictureBox pbStatus_SIG_MY_TARGET;
-      private System.Windows.Forms.PictureBox pbStatus_SIG_MY_ID;
-      private System.Windows.Forms.PictureBox pbStatus_SIG_SPAWN_END;
-      private System.Windows.Forms.PictureBox pbStatus_SIG_SPAWN_START;
-      private System.Windows.Forms.PictureBox pbStatus_SIG_ZONE_SHORT;
-      private System.Windows.Forms.Label lblSigNoActivePID;
-      private System.Windows.Forms.Label lblSigHelp;
       private System.Windows.Forms.TabPage tpHotkeys;
       private System.Windows.Forms.TableLayoutPanel tableLayoutPanel8;
       private System.Windows.Forms.CheckBox chkEnableInputFiltering;
@@ -3094,6 +3105,36 @@ namespace mappy {
       private System.Windows.Forms.Button cmdHeadingLineColor;
       private System.Windows.Forms.Label lblHeadingLineColor;
       private System.Windows.Forms.CheckBox chkShowPlayerPosition;
-        private System.Windows.Forms.CheckBox chkShowTextShadow;
+      private System.Windows.Forms.CheckBox chkShowTextShadow;
+        private System.Windows.Forms.TabPage tpSignatures;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.PictureBox pbStatus_SIG_INSTANCE_ID;
+        private System.Windows.Forms.Label lblSIG_INSTANCE_ID;
+        private System.Windows.Forms.Label lblSigWarning;
+        private System.Windows.Forms.Label lblSigHelp;
+        private System.Windows.Forms.TextBox txtSIG_ZONE_ID;
+        private System.Windows.Forms.Label lblSIG_MY_TARGET;
+        private System.Windows.Forms.TextBox txtSIG_ZONE_SHORT;
+        private System.Windows.Forms.Label lblSIG_ZONE_SHORT;
+        private System.Windows.Forms.Label lblSIG_ZONE_ID;
+        private System.Windows.Forms.Label lblSIG_SPAWN_START;
+        private System.Windows.Forms.Label lblSIG_SPAWN_END;
+        private System.Windows.Forms.Label lblSIG_MY_ID;
+        private System.Windows.Forms.TextBox txtSIG_SPAWN_START;
+        private System.Windows.Forms.TextBox txtSIG_SPAWN_END;
+        private System.Windows.Forms.TextBox txtSIG_MY_ID;
+        private System.Windows.Forms.TextBox txtSIG_MY_TARGET;
+        private System.Windows.Forms.TextBox txtSIG_INSTANCE_ID;
+        private System.Windows.Forms.Label lblSigNoActivePID;
+        private System.Windows.Forms.Label lblSigRestartWarning;
+        private System.Windows.Forms.PictureBox pbStatus_SIG_MY_TARGET;
+        private System.Windows.Forms.PictureBox pbStatus_SIG_MY_ID;
+        private System.Windows.Forms.PictureBox pbStatus_SIG_SPAWN_END;
+        private System.Windows.Forms.PictureBox pbStatus_SIG_SPAWN_START;
+        private System.Windows.Forms.PictureBox pbStatus_SIG_ZONE_SHORT;
+        private System.Windows.Forms.PictureBox pbStatus_SIG_ZONE_ID;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
+        private System.Windows.Forms.Button cmdResetSigs;
+        private System.Windows.Forms.Button cmdSigDefaults;
     }
 }

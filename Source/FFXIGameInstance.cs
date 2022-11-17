@@ -31,6 +31,7 @@ namespace mappy
         //public static readonly string DEFAULT_SIG_MY_ID = "8B8EA800000051B9"; No Longer Valid
         public static readonly string DEFAULT_SIG_MY_TARGET = "8946188b0d????????85c9";
         //public static readonly string DEFAULT_SIG_MY_TARGET = "3ac3a1????????8a4838"; //target was the only one to break last patch. including this backup just in case it happens again.
+        public static readonly string DEFAULT_SIG_INSTANCE_ID = ">>00010000E0??????????????";
 
         public static string SIG_ZONE_ID = DEFAULT_SIG_ZONE_ID;
         public static string SIG_ZONE_SHORT = DEFAULT_SIG_ZONE_SHORT;
@@ -38,6 +39,7 @@ namespace mappy
         public static string SIG_SPAWN_END = DEFAULT_SIG_SPAWN_END;
         public static string SIG_MY_ID = DEFAULT_SIG_MY_ID;
         public static string SIG_MY_TARGET = DEFAULT_SIG_MY_TARGET;
+        public static string SIG_INSTANCE_ID = DEFAULT_SIG_INSTANCE_ID;
         private static bool sigloaded = false;
 
         private List<string> m_zoneNameShort;
@@ -48,10 +50,12 @@ namespace mappy
         private IntPtr pMyID;
         private IntPtr pMyTarget;
         private IntPtr pZoneID;
+        private IntPtr pInstanceID;
         private IntPtr pZoneShortNames;
         private int listSize;
         private int listMax;
         private int lastZone;
+        private short lastInstanceID;
         private int lastMapID = -1;
         private bool zoneFinished = false;
         private Dictionary<UInt32, FFXISpawn> m_ServerIDLookup;
@@ -60,6 +64,7 @@ namespace mappy
 
         public event EventHandler ZoneChanged;
         public event EventHandler MapChanged;
+        public static int instanceID;
 
         public FFXIGameInstance(Engine engine, Config config, string FilePath, string ModuleName)
             : base(engine, config, ModuleName)
@@ -102,6 +107,7 @@ namespace mappy
                     config.Remove("SIG_SPAWN_START");
                     config.Remove("SIG_ZONE_ID");
                     config.Remove("SIG_ZONE_SHORT");
+                    config.Remove("SIG_INSTANCE_ID");
                 }
 
                 //push the manually configured signatures
@@ -111,6 +117,7 @@ namespace mappy
                 SIG_SPAWN_START = config.Get("SIG_SPAWN_START", DEFAULT_SIG_SPAWN_START);
                 SIG_ZONE_ID = config.Get("SIG_ZONE_ID", DEFAULT_SIG_ZONE_ID);
                 SIG_ZONE_SHORT = config.Get("SIG_ZONE_SHORT", DEFAULT_SIG_ZONE_SHORT);
+                SIG_INSTANCE_ID = config.Get("SIG_INSTANCE_ID", DEFAULT_SIG_INSTANCE_ID);
             }
             sigloaded = true;
         }
@@ -211,6 +218,7 @@ namespace mappy
                 pSpawnEnd = reader.FindSignature(SIG_SPAWN_END, Program.ModuleName);
                 pMyID = reader.FindSignature(SIG_MY_ID, Program.ModuleName, 4);
                 pZoneID = reader.FindSignature(SIG_ZONE_ID, Program.ModuleName);
+                pInstanceID = reader.FindSignature(SIG_INSTANCE_ID, Program.ModuleName, 0x3C2EA);
 
                 //This is a double pointer to the target table. the table is laid out by:
                 // 0x00 Zone ID
@@ -239,10 +247,11 @@ namespace mappy
             Debug.WriteLine("Zone ID: " + pZoneID.ToString("X"));
             Debug.WriteLine("*Zone Names (short): " + ppZoneShortNames.ToString("X"));
             Debug.WriteLine("Zone Names (short): " + pZoneShortNames.ToString("X"));
+            Debug.WriteLine("Instance ID: " + pInstanceID.ToString("X"));
 #endif
 
                 if (pSpawnStart == IntPtr.Zero || pSpawnEnd == IntPtr.Zero || pMyID == IntPtr.Zero ||
-                   pZoneID == IntPtr.Zero || pMyTarget == IntPtr.Zero || pZoneShortNames == IntPtr.Zero)
+                   pZoneID == IntPtr.Zero || pMyTarget == IntPtr.Zero || pZoneShortNames == IntPtr.Zero || pInstanceID == IntPtr.Zero)
                 {
                     string failtext = "[FAILED]";
                     string varlist = "Spawn List Start: " + (pSpawnStart == IntPtr.Zero ? failtext : pSpawnStart.ToString("X2"));
@@ -251,6 +260,7 @@ namespace mappy
                     varlist += "\nMy Target: " + (pMyTarget == IntPtr.Zero ? failtext : pMyTarget.ToString("X2"));
                     varlist += "\nZone ID: " + (pZoneID == IntPtr.Zero ? failtext : pZoneID.ToString("X2"));
                     varlist += "\nZone Names (short): " + (pZoneShortNames == IntPtr.Zero ? failtext : pZoneShortNames.ToString("X2"));
+                    varlist += "\nInstance ID: " + (pInstanceID == IntPtr.Zero ? failtext : pInstanceID.ToString("X2"));
                     throw new InstanceException(string.Format(Program.GetLang("msg_invalid_sig_text"), Process.MainWindowTitle, varlist), InstanceExceptionType.SigFailure);
                 }
 
@@ -293,6 +303,8 @@ namespace mappy
             {
                 //grab the current zone id
                 Int32 ZoneID = reader.ReadStruct<Int32>(pZoneID);
+                Int16 InstanceID = reader.ReadStruct<Int16>(pInstanceID);
+                instanceID = InstanceID;
                 if (ZoneID > 0xFF)
                 {
                     if (ZoneID == 0x122) //bastok mog house floor 1
@@ -433,7 +445,7 @@ namespace mappy
                         engine.LocInImage = curMap.Translate(engine.Game.Player.Location);
 
                         //only process if the map has actually changed
-                        if (curMap.MapID != lastMapID)
+                        if ((curMap.MapID != lastMapID))
                         {
                             engine.MapAlternativeImage = curMap.GetImage(); //set the background image
                             RectangleF bounds = curMap.Bounds;                //retrieve the map coodinate boundaries
@@ -700,6 +712,7 @@ namespace mappy
                     return;
 
                 m_serverID = info.ServerID;
+                base.InstanceID = FFXIGameInstance.instanceID;
                 base.Location.X = info.moveX;
                 base.Location.Y = info.moveY;
                 base.Location.Z = info.moveZ;
@@ -978,6 +991,10 @@ namespace mappy
                     else if (info.MountID == 33)
                     {
                         base.Icon = MapRes.StatusByakko;
+                    }
+                    else if (info.MountID == 35)
+                    {
+                        base.Icon = MapRes.StatusIxion;
                     }
                     else
                     {
@@ -1755,10 +1772,14 @@ namespace mappy
                 {
                     //search the map path for the zone image, using the list of supported extentions. take the first one found.
                     Bitmap tempImage = null;
+                    string instID = FFXIGameInstance.instanceID.ToString() + "_";
+
                     for (int i = 0; i < m_parent.Maps.FileExtList.Length; i++)
                     {
                         //load the image file
-                        string fullfilepath = m_parent.Maps.FilePath + m_parent.ZoneID.ToString("X2") + "_" + m_mapid + m_parent.Maps.FileExtList[i];
+                        string fullfilepath1 = m_parent.Maps.FilePath + m_parent.ZoneID.ToString("X2") + "_" + instID + m_mapid + m_parent.Maps.FileExtList[i];
+                        string fullfilepath2 = m_parent.Maps.FilePath + m_parent.ZoneID.ToString("X2") + "_" + m_mapid + m_parent.Maps.FileExtList[i];
+                        string fullfilepath = File.Exists(fullfilepath1) ? fullfilepath1 : fullfilepath2;
                         if (File.Exists(fullfilepath))
                         {
                             Debug.WriteLine("GetImage: loading " + fullfilepath);

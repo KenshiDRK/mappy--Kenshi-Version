@@ -17,6 +17,6 @@
     <ProjectView>ProjectFiles</ProjectView>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <StartWorkingDirectory>C:\Users\Jacinto\Desktop\mappy-master(KenshiVersion)\Release\</StartWorkingDirectory>
+    <StartWorkingDirectory>D:\Programación\mappy--Kenshi-Version\Release\</StartWorkingDirectory>
   </PropertyGroup>
 </Project>
