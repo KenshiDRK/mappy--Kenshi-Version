@@ -31,7 +31,7 @@ namespace mappy
         //public static readonly string DEFAULT_SIG_MY_ID = "8B8EA800000051B9"; No Longer Valid
         public static readonly string DEFAULT_SIG_MY_TARGET = "8946188b0d????????85c9";
         //public static readonly string DEFAULT_SIG_MY_TARGET = "3ac3a1????????8a4838"; //target was the only one to break last patch. including this backup just in case it happens again.
-        public static readonly string DEFAULT_SIG_INSTANCE_ID = ">>00010000E0??????????????";
+        public static readonly string DEFAULT_SIG_INSTANCE_ID = "240CBF????????B9";
 
         public static string SIG_ZONE_ID = DEFAULT_SIG_ZONE_ID;
         public static string SIG_ZONE_SHORT = DEFAULT_SIG_ZONE_SHORT;
@@ -55,7 +55,6 @@ namespace mappy
         private int listSize;
         private int listMax;
         private int lastZone;
-        private short lastInstanceID;
         private int lastMapID = -1;
         private bool zoneFinished = false;
         private Dictionary<UInt32, FFXISpawn> m_ServerIDLookup;
@@ -218,7 +217,6 @@ namespace mappy
                 pSpawnEnd = reader.FindSignature(SIG_SPAWN_END, Program.ModuleName);
                 pMyID = reader.FindSignature(SIG_MY_ID, Program.ModuleName, 4);
                 pZoneID = reader.FindSignature(SIG_ZONE_ID, Program.ModuleName);
-                pInstanceID = reader.FindSignature(SIG_INSTANCE_ID, Program.ModuleName, 0x3C2EA);
 
                 //This is a double pointer to the target table. the table is laid out by:
                 // 0x00 Zone ID
@@ -228,13 +226,20 @@ namespace mappy
 
                 //This is a double pointer to the zone name table
                 IntPtr ppZoneShortNames = reader.FindSignature(SIG_ZONE_SHORT, Program.ModuleName, 0xA0); //offset by 0xA0
+
+                //This ia a double pointer to instance id
+                IntPtr ppInstanceID = reader.FindSignature(SIG_INSTANCE_ID, Program.ModuleName);
+
                 pMyTarget = IntPtr.Zero;
                 pZoneShortNames = IntPtr.Zero;
+                pInstanceID = IntPtr.Zero;
 
                 if (ppMyTarget != IntPtr.Zero)
                     pMyTarget = (IntPtr)reader.ReadStruct<Int32>(ppMyTarget);
                 if (ppZoneShortNames != IntPtr.Zero)
                     pZoneShortNames = (IntPtr)reader.ReadStruct<Int32>(ppZoneShortNames);
+                if (ppInstanceID != IntPtr.Zero)
+                    pInstanceID = (IntPtr)reader.ReadStruct<Int32>(ppInstanceID) + 0x3C2EA;
 
 #if DEBUG
             //Quick grabbag of pointers for memory digging
