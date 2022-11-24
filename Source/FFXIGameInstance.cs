@@ -314,7 +314,7 @@ namespace mappy
                 {
                     if (ZoneID == 0x122) //bastok mog house floor 1
                     {
-                        ZoneID = 0xE5;
+                        ZoneID = 0xD2;
                     }
                     else if (ZoneID == 0x268) //bastok mog house floor 2
                     {
@@ -322,7 +322,7 @@ namespace mappy
                     }
                     else if (ZoneID == 0x101) //sandoria mog house floor 1
                     {
-                        ZoneID = 0xE5;
+                        ZoneID = 0xD2;
                     }
                     else if (ZoneID == 0x267) //sandoria mog house floor 2
                     {
@@ -330,7 +330,7 @@ namespace mappy
                     }
                     else if (ZoneID == 0x120) //windurst mog house floor 1
                     {
-                        ZoneID = 0xE5;
+                        ZoneID = 0xD2;
                     }
                     else if (ZoneID == 0x269) //windurst mog house floor 2
                     {
