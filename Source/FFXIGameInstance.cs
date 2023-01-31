@@ -717,7 +717,6 @@ namespace mappy
                     return;
 
                 m_serverID = info.ServerID;
-                base.InstanceID = FFXIGameInstance.instanceID;
                 base.Location.X = info.moveX;
                 base.Location.Y = info.moveY;
                 base.Location.Z = info.moveZ;
