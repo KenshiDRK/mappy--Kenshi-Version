@@ -8,6 +8,8 @@ using System.Windows.Forms;
 using MapEngine;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace mappy {
    public partial class fMap : LayeredForm {
@@ -15,6 +17,7 @@ namespace mappy {
       private IController  m_controller = null;
       private GameInstance m_game       = null;
       private Config       m_config     = null;
+      private IntPtr parent_default;
 
       //storage
       private GameSpawn  m_contextspawn = null;
@@ -24,6 +27,12 @@ namespace mappy {
       private bool m_original_clickthru;
       private bool m_actionState = false;
       private IMapEditor currentEditor;
+
+      [DllImport("user32.dll", EntryPoint = "SetWindowLong", CharSet = CharSet.Auto)]
+      public static extern IntPtr SetWindowLong(IntPtr hWnd, int nIndex, IntPtr dwNewLong);
+
+      [DllImport("user32.dll", EntryPoint = "GetWindowLong", CharSet = CharSet.Auto)]
+      public static extern IntPtr GetWindowLong(IntPtr hWnd, int nIndex);
 
       //====================================================================================================
       // Constructor
@@ -188,11 +197,31 @@ namespace mappy {
          set { MapTimer.Interval = value; }
       }
 
+      private bool m_topmost = false;
       //track changes to embedded functionality for configuration storage
       new public bool TopMost {
-         get { return base.TopMost; }
+         get { return this.m_topmost; }
          set {
-            base.TopMost = value;
+            var owned = base.Handle;
+            if (this.parent_default == null)
+            {
+                this.parent_default = GetWindowLong(owned, -8);
+            }
+            if (value)
+            {
+                var ffxi = Process.GetProcessesByName("pol").FirstOrDefault();
+                if (ffxi != null)
+                {
+                    var owner = ffxi.MainWindowHandle;
+                    SetWindowLong(owned, -8, owner);
+                }
+            }
+            else
+            {
+                SetWindowLong(owned, -8, this.parent_default);
+            }
+            this.m_topmost = value;
+            //base.TopMost = value;
             m_config["TopMost"] = value;
          }
       }
