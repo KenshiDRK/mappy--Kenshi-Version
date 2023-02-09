@@ -366,6 +366,9 @@ Use the following tokens to customize the display:
   <data name="menu_toggle_clickthrough" xml:space="preserve">
     <value>Click Through</value>
   </data>
+  <data name="menu_toggle_docked" xml:space="preserve">
+    <value>Docked to FFXI</value>
+  </data>
   <data name="menu_toggle_draggable" xml:space="preserve">
     <value>Draggable</value>
   </data>

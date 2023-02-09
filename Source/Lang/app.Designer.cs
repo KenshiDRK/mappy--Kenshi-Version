@@ -692,7 +692,7 @@ namespace mappy.Lang {
         ///
         ///Prefixes:
         ///&lt;&lt; Use the 32bit integer preceeding a match
-        ///&gt;&gt; Use the 32bit integer following the match regar [resto de la cadena truncado]&quot;;.
+        ///&gt;&gt; Use the 32bit integer following the match regardless of [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string config_general_sig_help {
             get {
@@ -1383,6 +1383,15 @@ namespace mappy.Lang {
         internal static string menu_toggle_clickthrough {
             get {
                 return ResourceManager.GetString("menu_toggle_clickthrough", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Docked to FFXI.
+        /// </summary>
+        internal static string menu_toggle_docked {
+            get {
+                return ResourceManager.GetString("menu_toggle_docked", resourceCulture);
             }
         }
         

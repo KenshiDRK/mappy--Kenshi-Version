@@ -61,7 +61,7 @@ namespace mappy.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a https://github.com/KenshiDRK/mappy--Kenshi-Version/releases/tag/v1.5.3.
+        ///   Busca una cadena traducida similar a https://github.com/KenshiDRK/mappy--Kenshi-Version/releases/tag/v1.5.4.
         /// </summary>
         internal static string config_app_url {
             get {
@@ -70,7 +70,7 @@ namespace mappy.Properties {
         }
         
         /// <summary>
-        ///   Busca una cadena traducida similar a https://github.com/KenshiDRK/mappy--Kenshi-Version/Maps.
+        ///   Busca una cadena traducida similar a https://github.com/KenshiDRK/mappy--Kenshi-Version/tree/master/Maps.
         /// </summary>
         internal static string config_mappack_url {
             get {
@@ -82,7 +82,7 @@ namespace mappy.Properties {
         ///   Busca una cadena traducida similar a {\rtf1\ansi\deff3\adeflang1025
         ///{\fonttbl{\f0\froman\fprq2\fcharset0 Times New Roman;}{\f1\froman\fprq2\fcharset2 Symbol;}{\f2\fswiss\fprq2\fcharset0 Arial;}{\f3\froman\fprq2\fcharset0 Times New Roman{\*\falt Helvetica};}{\f4\fswiss\fprq2\fcharset0 Verdana;}{\f5\fnil\fprq2\fcharset0 Microsoft YaHei;}{\f6\fnil\fprq2\fcharset0 Mangal;}{\f7\fnil\fprq0\fcharset128 Mangal;}}
         ///{\colortbl;\red0\green0\blue0;\red0\green0\blue255;\red128\green128\blue128;}
-        ///{\stylesheet{\s0\snext0\ql\aspalpha\faauto\li0\ri0\lin0\rin [resto de la cadena truncado]&quot;;.
+        ///{\stylesheet{\s0\snext0\ql\aspalpha\faauto\li0\ri0\lin0\rin0\f [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string credits {
             get {

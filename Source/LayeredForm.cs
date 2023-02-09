@@ -11,6 +11,8 @@ namespace System.Windows.Forms {
    public class LayeredForm : Form {
       private bool m_layered = false;
       private bool m_clickthru = false;
+      private bool m_ontop = false;
+      private bool m_docked = false;
       private bool m_draggable = false;
       private bool m_resizable = true;
 
@@ -138,7 +140,7 @@ namespace System.Windows.Forms {
 
       //foreground forcing
       [DllImport("user32.dll")]
-      private static extern IntPtr GetForegroundWindow();
+      public static extern IntPtr GetForegroundWindow();
 
       [DllImport("user32.dll")]
       private static extern bool AttachThreadInput(uint idAttach, uint idAttachTo, bool fAttach);
@@ -349,6 +351,22 @@ namespace System.Windows.Forms {
                }
             }
          }
+      }
+
+      [DefaultValue(false)]
+      [Category("Layered")]
+      [Description("Gets or sets whether the form is always on top.")]
+      public bool OnTop {
+         get { return m_ontop; }
+         set { m_ontop = value; }
+      }
+
+      [DefaultValue(false)]
+      [Category("Layered")]
+      [Description("Gets or sets whether the form get docked to the FFXI Instance.")]
+      public bool Docked {
+         get { return m_docked; }
+         set { m_docked = value; }
       }
 
       [DefaultValue(false)]

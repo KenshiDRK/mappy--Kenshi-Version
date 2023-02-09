@@ -20,6 +20,7 @@
 
       private void InitializeLanguage() {
          miActiveOnTop.Text = Program.GetLang("menu_toggle_topmost");
+         miActiveDocked.Text = Program.GetLang("menu_toggle_docked");
          miActiveDraggable.Text = Program.GetLang("menu_toggle_draggable");
          miActiveResizable.Text = Program.GetLang("menu_toggle_resizable");
          miActiveClickthru.Text = Program.GetLang("menu_toggle_clickthrough");
@@ -50,6 +51,7 @@
             this.TrayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.TrayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miActiveOnTop = new System.Windows.Forms.ToolStripMenuItem();
+            this.miActiveDocked = new System.Windows.Forms.ToolStripMenuItem();
             this.miActiveDraggable = new System.Windows.Forms.ToolStripMenuItem();
             this.miActiveResizable = new System.Windows.Forms.ToolStripMenuItem();
             this.miActiveClickthru = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,6 +86,7 @@
             // 
             this.TrayMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miActiveOnTop,
+            this.miActiveDocked,
             this.miActiveDraggable,
             this.miActiveResizable,
             this.miActiveClickthru,
@@ -107,7 +110,7 @@
             this.miAbout,
             this.miTrayExit});
             this.TrayMenu.Name = "TrayMenu";
-            this.TrayMenu.Size = new System.Drawing.Size(214, 435);
+            this.TrayMenu.Size = new System.Drawing.Size(214, 457);
             // 
             // miActiveOnTop
             // 
@@ -115,6 +118,13 @@
             this.miActiveOnTop.Name = "miActiveOnTop";
             this.miActiveOnTop.Size = new System.Drawing.Size(213, 22);
             this.miActiveOnTop.Text = "Always On Top";
+            // 
+            // miActiveDocked
+            // 
+            this.miActiveDocked.CheckOnClick = true;
+            this.miActiveDocked.Name = "miDockedToFFXI";
+            this.miActiveDocked.Size = new System.Drawing.Size(213, 22);
+            this.miActiveDocked.Text = "Docked to FFXI";
             // 
             // miActiveDraggable
             // 
@@ -268,6 +278,7 @@
       private System.Windows.Forms.ToolStripComboBox miInstance;
       private System.Windows.Forms.ToolStripMenuItem miActiveOnTop;
       private System.Windows.Forms.ToolStripMenuItem miActiveClickthru;
+      private System.Windows.Forms.ToolStripMenuItem miActiveDocked;
       private System.Windows.Forms.ToolStripMenuItem miActiveDraggable;
       private System.Windows.Forms.ToolStripMenuItem miActiveResizable;
       private System.Windows.Forms.ToolStripSeparator miSep2;

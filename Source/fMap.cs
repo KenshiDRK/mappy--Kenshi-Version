@@ -57,7 +57,8 @@ namespace mappy {
          m_config.Resume();
 
          //set the intial check state of the context menu toggles
-         miOnTop.Checked = this.TopMost;
+         miOnTop.Checked = this.OnTop;
+         miDockedToFFXI.Checked = this.Docked;
          miDraggable.Checked = this.Draggable;
          miResizable.Checked = this.Resizable;
          miClickThru.Checked = this.ClickThrough;
@@ -69,6 +70,7 @@ namespace mappy {
 
          MapMenu.Opening += new CancelEventHandler(MapMenu_Opening);
          miOnTop.CheckedChanged += new EventHandler(miOnTop_CheckedChanged);
+         miDockedToFFXI.CheckedChanged += new EventHandler(miDockedToFFXI_CheckedChanged);
          miDraggable.CheckedChanged += new EventHandler(miDraggable_CheckedChanged);
          miResizable.CheckedChanged += new EventHandler(miResizable_CheckedChanged);
          miClickThru.CheckedChanged += new EventHandler(miClickThru_CheckedChanged);
@@ -123,6 +125,8 @@ namespace mappy {
             {
                MapTimer.Tick += new EventHandler(MapTimer_Tick);
                MapTimer.Enabled = true;
+               MapInstance.Tick += new EventHandler(MapInstance_Tick);
+               MapInstance.Enabled = true;
             }
          } catch (InstanceException fex) {
             MessageBox.Show(fex.Message, "Unable to Initialize", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -189,11 +193,19 @@ namespace mappy {
       }
 
       //track changes to embedded functionality for configuration storage
-      new public bool TopMost {
-         get { return base.TopMost; }
+      new public bool OnTop {
+         get { return base.OnTop; }
          set {
-            base.TopMost = value;
-            m_config["TopMost"] = value;
+            base.OnTop = value;
+            m_config["OnTop"] = value;
+         }
+      }
+
+      new public bool Docked {
+         get { return base.Docked; }
+         set {
+            base.Docked = value;
+            m_config["Docked"] = value;
          }
       }
 
@@ -247,7 +259,8 @@ namespace mappy {
       private void ApplyConfig() {
          try {
             //window configuration
-            this.TopMost = m_config.Get("TopMost", false);
+            this.OnTop = m_config.Get("OnTop", false);
+            this.Docked = m_config.Get("Docked", false);
             this.Draggable = m_config.Get("Draggable", false);
             this.Resizable = m_config.Get("Resizable", true);
             this.ClickThrough = m_config.Get("ClickThrough", false);
@@ -445,7 +458,8 @@ namespace mappy {
          //since there are two menus that set these values in the engine directly, we must update the
          //  state of the menu items when opening it.
          SetActionState(false);
-         miOnTop.Checked = this.TopMost;
+         miOnTop.Checked = this.OnTop;
+         miDockedToFFXI.Checked = this.Docked;
          miDraggable.Checked = this.Draggable;
          miResizable.Checked = this.Resizable;
          miClickThru.Checked = this.ClickThrough;
@@ -491,12 +505,16 @@ namespace mappy {
          this.Resizable = miResizable.Checked;
       }
 
+      private void miDockedToFFXI_CheckedChanged(object sender, EventArgs e) {
+         this.Docked = miDockedToFFXI.Checked;
+      }
+
       private void miDraggable_CheckedChanged(object sender, EventArgs e) {
          this.Draggable = miDraggable.Checked;
       }
 
       private void miOnTop_CheckedChanged(object sender, EventArgs e) {
-         this.TopMost = miOnTop.Checked;
+         this.OnTop = miOnTop.Checked;
       }
 
       private void miShowHiddenSpawns_Click(object sender, EventArgs e) {
@@ -523,6 +541,29 @@ namespace mappy {
             Debug.WriteLine("Shutting down the poll timer...");
             MapTimer.Enabled = false;
             MessageBox.Show("An error occurred while polling the game:\n" + ex.Message);
+         }
+      }
+      
+      private void MapInstance_Tick(object sender, EventArgs e) {
+         try {
+            var currentHandle = GetForegroundWindow();
+            if (currentHandle == this.Handle) {
+            }
+            else if (OnTop) {
+                if (!TopMost)
+                    this.TopMost = true;
+            }
+            else if ((currentHandle == Process.MainWindowHandle) && Docked) {
+                if (!TopMost)
+                    this.TopMost = true;
+            }
+            else if ((currentHandle != Process.MainWindowHandle) && TopMost) {
+                this.TopMost = false;
+            }
+         } catch(Exception ex) {
+            Debug.WriteLine("Shutting down the instance timer...");
+            MapInstance.Enabled = false;
+            MessageBox.Show("An error occurred while getting the instance handle:\n" + ex.Message);
          }
       }
 

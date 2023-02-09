@@ -18,6 +18,7 @@
 
       private void InitializeLanguage() {
          miOnTop.Text = Program.GetLang("menu_toggle_topmost");
+         miDockedToFFXI.Text = Program.GetLang("menu_toggle_docked");
          miDraggable.Text = Program.GetLang("menu_toggle_draggable");
          miResizable.Text = Program.GetLang("menu_toggle_resizable");
          miClickThru.Text = Program.GetLang("menu_toggle_clickthrough");
@@ -58,6 +59,7 @@
             this.MapEngine = new MapEngine.Engine(this.components);
             this.MapMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.miOnTop = new System.Windows.Forms.ToolStripMenuItem();
+            this.miDockedToFFXI = new System.Windows.Forms.ToolStripMenuItem();
             this.miDraggable = new System.Windows.Forms.ToolStripMenuItem();
             this.miResizable = new System.Windows.Forms.ToolStripMenuItem();
             this.miClickThru = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,6 +93,7 @@
             this.miQuickSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.MapTimer = new System.Windows.Forms.Timer(this.components);
+            this.MapInstance = new System.Windows.Forms.Timer(this.components);
             this.MapMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -133,12 +136,14 @@
             this.MapEngine.SelectedColor = System.Drawing.Color.White;
             this.MapEngine.SpawnGroupMemberSize = 2F;
             this.MapEngine.TextOutlineColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(255)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.MapEngine.TextShadowEnabled = false;
             this.MapEngine.ViewLocation = ((System.Drawing.PointF)(resources.GetObject("MapEngine.ViewLocation")));
             // 
             // MapMenu
             // 
             this.MapMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miOnTop,
+            this.miDockedToFFXI,
             this.miDraggable,
             this.miResizable,
             this.miClickThru,
@@ -175,6 +180,13 @@
             this.miOnTop.Name = "miOnTop";
             this.miOnTop.Size = new System.Drawing.Size(224, 22);
             this.miOnTop.Text = "{menu_toggle_topmost}";
+            // 
+            // miDockedToFFXI
+            // 
+            this.miDockedToFFXI.CheckOnClick = true;
+            this.miDockedToFFXI.Name = "miDockedToFFXI";
+            this.miDockedToFFXI.Size = new System.Drawing.Size(224, 22);
+            this.miDockedToFFXI.Text = "{menu_toggle_docked}";
             // 
             // miDraggable
             // 
@@ -277,14 +289,14 @@
             // miSpawnAddAsHuntId
             // 
             this.miSpawnAddAsHuntId.Name = "miSpawnAddAsHuntId";
-            this.miSpawnAddAsHuntId.Size = new System.Drawing.Size(152, 22);
+            this.miSpawnAddAsHuntId.Size = new System.Drawing.Size(112, 22);
             this.miSpawnAddAsHuntId.Text = "{id}";
             this.miSpawnAddAsHuntId.Click += new System.EventHandler(this.miSpawnAddAsHuntId_Click);
             // 
             // miSpawnAddAsHuntName
             // 
             this.miSpawnAddAsHuntName.Name = "miSpawnAddAsHuntName";
-            this.miSpawnAddAsHuntName.Size = new System.Drawing.Size(152, 22);
+            this.miSpawnAddAsHuntName.Size = new System.Drawing.Size(112, 22);
             this.miSpawnAddAsHuntName.Text = "{name}";
             this.miSpawnAddAsHuntName.Click += new System.EventHandler(this.miSpawnAddAsHuntName_Click);
             // 
@@ -301,14 +313,14 @@
             // miSpawnAddAsReplacementId
             // 
             this.miSpawnAddAsReplacementId.Name = "miSpawnAddAsReplacementId";
-            this.miSpawnAddAsReplacementId.Size = new System.Drawing.Size(152, 22);
+            this.miSpawnAddAsReplacementId.Size = new System.Drawing.Size(112, 22);
             this.miSpawnAddAsReplacementId.Text = "{id}";
             this.miSpawnAddAsReplacementId.Click += new System.EventHandler(this.miSpawnAddAsReplacementId_Click);
             // 
             // miSpawnAddAsReplacementName
             // 
             this.miSpawnAddAsReplacementName.Name = "miSpawnAddAsReplacementName";
-            this.miSpawnAddAsReplacementName.Size = new System.Drawing.Size(152, 22);
+            this.miSpawnAddAsReplacementName.Size = new System.Drawing.Size(112, 22);
             this.miSpawnAddAsReplacementName.Text = "{name}";
             this.miSpawnAddAsReplacementName.Click += new System.EventHandler(this.miSpawnAddAsReplacementName_Click);
             // 
@@ -405,18 +417,22 @@
             this.miExit.Text = "{menu_exit}";
             this.miExit.Click += new System.EventHandler(this.miExit_Click);
             // 
+            // MapInstance
+            // 
+            this.MapInstance.Interval = 10;
+            // 
             // fMap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 266);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Layered = true;
             this.LayerOpacity = 0.4D;
             this.Name = "fMap";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "fMap";
+            this.Text = "Mappy";
             this.MapMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -427,6 +443,7 @@
       private MapEngine.Engine MapEngine;
       private System.Windows.Forms.ContextMenuStrip MapMenu;
       private System.Windows.Forms.ToolStripMenuItem miOnTop;
+      private System.Windows.Forms.ToolStripMenuItem miDockedToFFXI;
       private System.Windows.Forms.ToolStripMenuItem miDraggable;
       private System.Windows.Forms.ToolStripMenuItem miQuickSettings;
       private System.Windows.Forms.ToolStripMenuItem miResizable;
@@ -452,6 +469,7 @@
       private System.Windows.Forms.ToolStripMenuItem miExit;
       private System.Windows.Forms.ToolStripMenuItem miShowMapImage;
       private System.Windows.Forms.Timer MapTimer;
+      private System.Windows.Forms.Timer MapInstance;
       private System.Windows.Forms.ContextMenuStrip ModeMenu;
       private System.Windows.Forms.ToolStripMenuItem miModeMenu;
       private System.Windows.Forms.ToolStripMenuItem miSpawnAddAsReplacement;
@@ -460,6 +478,6 @@
       private System.Windows.Forms.ToolStripMenuItem miSpawnAddAsHuntName;
       private System.Windows.Forms.ToolStripMenuItem miSpawnAddAsReplacementId;
       private System.Windows.Forms.ToolStripMenuItem miSpawnAddAsReplacementName;
-
+   
    }
 }

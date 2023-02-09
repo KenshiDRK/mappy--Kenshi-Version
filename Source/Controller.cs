@@ -81,6 +81,7 @@ namespace mappy {
          miActiveOnTop.CheckedChanged += new EventHandler(miActiveOnTop_CheckedChanged);
          miActiveClickthru.CheckedChanged += new EventHandler(miActiveClickthru_CheckedChanged);
          miActiveResizable.CheckedChanged += new EventHandler(miActiveResizable_CheckedChanged);
+         miActiveDocked.CheckedChanged += new EventHandler(miActiveDocked_CheckedChanged);
          miActiveDraggable.CheckedChanged += new EventHandler(miActiveDraggable_CheckedChanged);
          miActiveShowSpawns.CheckedChanged += new EventHandler(miActiveShowSpawns_CheckedChanged);
          miActiveShowHidden.CheckedChanged += new EventHandler(miActiveShowHidden_CheckedChanged);
@@ -396,6 +397,7 @@ namespace mappy {
          if (m_window == null) {
             miActiveClickthru.Enabled = false;
             miActiveOnTop.Enabled = false;
+            miActiveDocked.Enabled = false;
             miActiveDraggable.Enabled = false;
             miActiveResizable.Enabled = false;
             miActiveShowSpawns.Enabled = false;
@@ -407,8 +409,9 @@ namespace mappy {
             miActiveShowMapImage.Enabled = false;
          } else {
             m_window.SetActionState(false);
-            miActiveOnTop.Checked = m_window.TopMost;
+            miActiveOnTop.Checked = m_window.OnTop;
             miActiveClickthru.Checked = m_window.ClickThrough;
+            miActiveDocked.Checked = m_window.Docked;
             miActiveDraggable.Checked = m_window.Draggable;
             miActiveResizable.Checked = m_window.Resizable;
             miActiveShowSpawns.Checked = m_window.Engine.ShowSpawns;
@@ -419,6 +422,7 @@ namespace mappy {
 
             miActiveClickthru.Enabled = true;
             miActiveOnTop.Enabled = true;
+            miActiveDocked.Enabled = true;
             miActiveDraggable.Enabled = true;
             miActiveResizable.Enabled = true;
             miActiveShowSpawns.Enabled = true;
@@ -429,6 +433,11 @@ namespace mappy {
             miActiveCenter.Enabled = true;
             miActiveSnapRange.Enabled = true;
          }
+      }
+      
+      private void miActiveDocked_CheckedChanged(object sender, EventArgs e) {
+         if(m_window != null)
+            m_window.Docked = miActiveDocked.Checked;
       }
 
       private void miActiveDraggable_CheckedChanged(object sender, EventArgs e) {
@@ -448,7 +457,7 @@ namespace mappy {
 
       private void miActiveOnTop_CheckedChanged(object sender, EventArgs e) {
          if(m_window != null)
-            m_window.TopMost = miActiveOnTop.Checked;
+            m_window.OnTop = miActiveOnTop.Checked;
       }
 
       private void miActiveShowHidden_CheckedChanged(object sender, EventArgs e) {
