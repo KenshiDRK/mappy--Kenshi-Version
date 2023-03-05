@@ -122,7 +122,7 @@
             // miActiveDocked
             // 
             this.miActiveDocked.CheckOnClick = true;
-            this.miActiveDocked.Name = "miDockedToFFXI";
+            this.miActiveDocked.Name = "miActiveDocked";
             this.miActiveDocked.Size = new System.Drawing.Size(213, 22);
             this.miActiveDocked.Text = "Docked to FFXI";
             // 

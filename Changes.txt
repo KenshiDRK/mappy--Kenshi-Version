@@ -1,3 +1,7 @@
+0.1.55
+*Added option to select instance from the map menu
+*Added new Sortie map
+
 0.1.54
 *Added an option Dock mappy to the FFXI window
 *Now mappy will show on the taskbar

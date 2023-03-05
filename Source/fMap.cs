@@ -8,10 +8,11 @@ using System.Windows.Forms;
 using MapEngine;
 using System.Diagnostics;
 using System.IO;
+using static mappy.Controller;
 
 namespace mappy {
-   public partial class fMap : LayeredForm {
-      //properties
+    public partial class fMap : LayeredForm {
+        //properties
       private IController  m_controller = null;
       private GameInstance m_game       = null;
       private Config       m_config     = null;
@@ -25,10 +26,11 @@ namespace mappy {
       private bool m_actionState = false;
       private IMapEditor currentEditor;
 
-      //====================================================================================================
-      // Constructor
-      //====================================================================================================
-      public fMap(IController controller, Process process, Config config) {
+      public Dictionary<int, ProcessItem> gamelist;
+        //====================================================================================================
+        // Constructor
+        //====================================================================================================
+        public fMap(Controller controller, Process process, Config config) {
          m_controller = controller;
          m_config = config;
          
@@ -37,6 +39,8 @@ namespace mappy {
          Editor = controller.Editors.Default;
          InitializeComponent();
          InitializeLanguage();
+
+         gamelist = new Dictionary<int, ProcessItem>();
 
          //Add the supported editors to the mode list
          if (controller.Editors != null && controller.Editors.Count > 0) {
@@ -55,6 +59,7 @@ namespace mappy {
          //apply the configuration settings from the current profile
          ApplyConfig();
          m_config.Resume();
+         m_controller.RefreshInstances(gamelist, miInstance, miSaveDefault, miClearDefault);
 
          //set the intial check state of the context menu toggles
          miOnTop.Checked = this.OnTop;
@@ -74,6 +79,10 @@ namespace mappy {
          miDraggable.CheckedChanged += new EventHandler(miDraggable_CheckedChanged);
          miResizable.CheckedChanged += new EventHandler(miResizable_CheckedChanged);
          miClickThru.CheckedChanged += new EventHandler(miClickThru_CheckedChanged);
+         miInstance.SelectedIndexChanged += new EventHandler(m_controller.miInstance_SelectedIndexChanged);
+         miRefresh.Click += new EventHandler(m_controller.miRefresh_Click);
+         miSaveDefault.Click += new EventHandler(m_controller.miSaveDefault_Click);
+         miClearDefault.Click += new EventHandler(m_controller.miClearDefault_Click);
 
          //check the data path and inform the user if invalid
          bool dns = m_config.Get("DNS_MapPath", false);
@@ -439,10 +448,10 @@ namespace mappy {
          currentEditor.OnAfterPaint(e);
       }
 
-      //====================================================================================================
-      // Events
-      //====================================================================================================
-      protected override void OnClosed(EventArgs e) {
+        //====================================================================================================
+        // Events
+        //====================================================================================================
+        protected override void OnClosed(EventArgs e) {
          if (currentEditor != null)
             currentEditor.OnDisengage();
          SetActionState(false);

@@ -43,6 +43,8 @@
          miReloadMap.Text = Program.GetLang("menu_reload_map");
          miSaveMap.Text = Program.GetLang("menu_save_map");
          //----------------
+         miRefresh.Text = Program.GetLang("menu_refresh_games");
+         //----------------
          miQuickSettings.Text = Program.GetLang("menu_preferences");
          miExit.Text = Program.GetLang("menu_exit");
       }
@@ -90,6 +92,11 @@
             this.miReloadMap = new System.Windows.Forms.ToolStripMenuItem();
             this.miSaveMap = new System.Windows.Forms.ToolStripMenuItem();
             this.miSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.miInstance = new System.Windows.Forms.ToolStripComboBox();
+            this.miRefresh = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSaveDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.miClearDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.miSep6 = new System.Windows.Forms.ToolStripSeparator();
             this.miQuickSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.MapTimer = new System.Windows.Forms.Timer(this.components);
@@ -169,10 +176,15 @@
             this.miReloadMap,
             this.miSaveMap,
             this.miSep2,
+            this.miInstance,
+            this.miRefresh,
+            this.miSaveDefault,
+            this.miClearDefault,
+            this.miSep6,
             this.miQuickSettings,
             this.miExit});
             this.MapMenu.Name = "MapMenu";
-            this.MapMenu.Size = new System.Drawing.Size(225, 546);
+            this.MapMenu.Size = new System.Drawing.Size(225, 667);
             // 
             // miOnTop
             // 
@@ -401,6 +413,38 @@
             this.miSep2.Name = "miSep2";
             this.miSep2.Size = new System.Drawing.Size(221, 6);
             // 
+            // miInstance
+            // 
+            this.miInstance.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.miInstance.Enabled = false;
+            this.miInstance.Name = "miInstance";
+            this.miInstance.Size = new System.Drawing.Size(121, 23);
+            // 
+            // miRefresh
+            // 
+            this.miRefresh.Image = global::mappy.Properties.Resources.icon_refresh;
+            this.miRefresh.Name = "miRefresh";
+            this.miRefresh.Size = new System.Drawing.Size(224, 22);
+            this.miRefresh.Text = "Refresh";
+            // 
+            // miSaveDefault
+            // 
+            this.miSaveDefault.Name = "miSaveDefault";
+            this.miSaveDefault.Size = new System.Drawing.Size(224, 22);
+            this.miSaveDefault.Text = "Set as Default";
+            // 
+            // miClearDefault
+            // 
+            this.miClearDefault.Enabled = false;
+            this.miClearDefault.Name = "miClearDefault";
+            this.miClearDefault.Size = new System.Drawing.Size(224, 22);
+            this.miClearDefault.Text = "Clear Default";
+            // 
+            // miSep6
+            // 
+            this.miSep6.Name = "miSep6";
+            this.miSep6.Size = new System.Drawing.Size(221, 6);
+            // 
             // miQuickSettings
             // 
             this.miQuickSettings.Image = global::mappy.Properties.Resources.icon_properties;
@@ -426,6 +470,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 266);
+            this.Enabled = false;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Layered = true;
@@ -478,6 +523,10 @@
       private System.Windows.Forms.ToolStripMenuItem miSpawnAddAsHuntName;
       private System.Windows.Forms.ToolStripMenuItem miSpawnAddAsReplacementId;
       private System.Windows.Forms.ToolStripMenuItem miSpawnAddAsReplacementName;
-   
-   }
+      private System.Windows.Forms.ToolStripSeparator miSep6;
+      public System.Windows.Forms.ToolStripComboBox miInstance;
+      private System.Windows.Forms.ToolStripMenuItem miRefresh;
+      public System.Windows.Forms.ToolStripMenuItem miSaveDefault;
+      public System.Windows.Forms.ToolStripMenuItem miClearDefault;
+    }
 }

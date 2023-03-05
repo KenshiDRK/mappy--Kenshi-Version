@@ -348,6 +348,10 @@ namespace mappy
                     {
                         ZoneID = 0x11E;
                     }
+                    else if (ZoneID == 0x2E9) //sandoria [S] mog house
+                    {
+                        ZoneID = 0x2E9;
+                    }
                     else
                     {
                         ZoneID = ZoneID - 0x1BC;

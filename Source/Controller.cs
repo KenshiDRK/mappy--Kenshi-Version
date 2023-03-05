@@ -24,13 +24,13 @@ namespace mappy {
       private MapEditors m_editors;
 
       //class and collection definitions
-      private struct ProcessItem {
+      public struct ProcessItem {
          public Process process;
          public override string ToString() {
             return process.MainWindowTitle;
          }
       }
-      private Dictionary<int, ProcessItem> m_gamelist;
+      public Dictionary<int, ProcessItem> m_gamelist;
 
       //=================================================================================
       // Constructor
@@ -94,7 +94,7 @@ namespace mappy {
          miOptions.Click += new EventHandler(miOptions_Click);
          SetIcon(MapRes.MappyIcon);
 
-         RefreshInstances();
+         RefreshInstances(m_gamelist, miInstance, miSaveDefault, miClearDefault);
 
          m_hook = new Hook(Hook.HookType.Keyboard | Hook.HookType.Mouse);
          m_hook.AllowCancel = m_config.Get("HotkeysConsume", false);
@@ -216,49 +216,49 @@ namespace mappy {
 
       //=================================================================================
       // Private Functions
-      //=================================================================================     
+      //=================================================================================
       // scan the process list and add any new target instances to the list
-      private void RefreshInstances() {
+      public void RefreshInstances(Dictionary<int, ProcessItem> gamelist, ToolStripComboBox instance, ToolStripMenuItem saveDefault, ToolStripMenuItem clearDefault) {
          foreach (string Instance in Program.ProcessName) {
             Process[] processlist = Process.GetProcessesByName(Instance);
          
             foreach (Process process in processlist) {
-                if (!m_gamelist.ContainsKey(process.Id)) {
+                if (!gamelist.ContainsKey(process.Id)) {
                     ProcessItem item;
                     item.process = process;
-                    m_gamelist.Add(process.Id, item);
-                    miInstance.Items.Add(item);
+                    gamelist.Add(process.Id, item);
+                    instance.Items.Add(item);
                 }
             }
          }
 
-         if (m_gamelist.Count == 0) {
+         if (gamelist.Count == 0) {
             ShowBalloonTip(1500, Program.GetLang("bubble_warn_nogames_title"), Program.GetLang("bubble_warn_nogames_text"), ToolTipIcon.Warning);
             string defInstance = m_config.Get("DefaultInstance", "");
-            miSaveDefault.Enabled = false;
+            saveDefault.Enabled = false;
             if (defInstance == "")
-               miClearDefault.Enabled = false;
-         } else if (miInstance.SelectedIndex < 0) {
-            miSaveDefault.Enabled = true;
+               clearDefault.Enabled = false;
+         } else if (instance.SelectedIndex < 0) {
+            saveDefault.Enabled = true;
             bool found = false;
             string defInstance = m_config.Get("DefaultInstance", "");
             if (defInstance == "")
-               miClearDefault.Enabled = false;
-            foreach (ProcessItem item in miInstance.Items) {
+               clearDefault.Enabled = false;
+            foreach (ProcessItem item in instance.Items) {
                if (item.ToString() == m_config.Get("DefaultInstance", "")) {
                   found = true;
-                  miInstance.SelectedItem = item;
+                  instance.SelectedItem = item;
                   break;
                }
             }
             if(!found)
-               miInstance.SelectedIndex = 0;
+               instance.SelectedIndex = 0;
          }
-         miInstance.Enabled = (m_gamelist.Count > 0);
+         instance.Enabled = (m_gamelist.Count > 0);
       }
 
       // starts a new map instance using the given process
-      private void LoadProcess(Process process) {
+      public void LoadProcess(Process process) {
          if (m_instance != process) {
             try {
                Config cProcess = m_config.OpenKey("profiles\\" + process.MainWindowTitle);
@@ -497,25 +497,33 @@ namespace mappy {
             m_window.Engine.CenterView();
       }
 
-      private void miRefresh_Click(object sender, EventArgs e) {
-         RefreshInstances();
+      public void miRefresh_Click(object sender, EventArgs e) {
+         RefreshInstances(m_gamelist, miInstance, miSaveDefault, miClearDefault);
+         if (m_window != null)
+            RefreshInstances(m_window.gamelist, m_window.miInstance, m_window.miSaveDefault, m_window.miClearDefault);
       }
 
-      private void miInstance_SelectedIndexChanged(object sender, EventArgs e) {
+      public void miInstance_SelectedIndexChanged(object sender, EventArgs e) {
          ProcessItem item = (ProcessItem)miInstance.SelectedItem;
          LoadProcess(item.process);
+         if (m_window != null) {
+               ProcessItem _ = (ProcessItem)m_window.miInstance.SelectedItem;
+               LoadProcess(_.process);
+            }
       }
 
-      private void miSaveDefault_Click(object sender, EventArgs e) {
+      public void miSaveDefault_Click(object sender, EventArgs e) {
          if (miInstance.SelectedItem != null) {
             m_config["DefaultInstance"] = miInstance.SelectedItem.ToString();
             miClearDefault.Enabled = true;
+            m_window.miClearDefault.Enabled = true;
          }
       }
 
-      void miClearDefault_Click(object sender, EventArgs e) {
+      public void miClearDefault_Click(object sender, EventArgs e) {
          m_config["DefaultInstance"] = "";
          miClearDefault.Enabled = false;
+         m_window.miClearDefault.Enabled = false;
       }
 
       private void TrayIcon_MouseDoubleClick(object sender, MouseEventArgs e) {
