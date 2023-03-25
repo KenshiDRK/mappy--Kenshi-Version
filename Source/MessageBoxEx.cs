@@ -199,5 +199,19 @@ namespace mappy {
          e.Graphics.DrawIcon(m_icon, rIcon);
          e.Graphics.DrawString(m_text, SystemFonts.MessageBoxFont, bText, rText.Location);
       }
-   }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MessageBoxEx));
+            this.SuspendLayout();
+            // 
+            // MessageBoxEx
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "MessageBoxEx";
+            this.ResumeLayout(false);
+
+        }
+    }
 }

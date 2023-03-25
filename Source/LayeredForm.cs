@@ -463,5 +463,19 @@ namespace System.Windows.Forms {
            base.WndProc(ref m);
          }
       }
-   }
+
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LayeredForm));
+            this.SuspendLayout();
+            // 
+            // LayeredForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "LayeredForm";
+            this.ResumeLayout(false);
+
+        }
+    }
 }

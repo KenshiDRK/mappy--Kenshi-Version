@@ -291,10 +291,10 @@ namespace mappy {
             this.txtActionKey = new System.Windows.Forms.TextBox();
             this.lblHotkeyHelp = new System.Windows.Forms.Label();
             this.tpSignatures = new System.Windows.Forms.TabPage();
-            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
-            this.cmdResetSigs = new System.Windows.Forms.Button();
-            this.cmdSigDefaults = new System.Windows.Forms.Button();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.flowLayoutPanel3 = new System.Windows.Forms.FlowLayoutPanel();
+            this.cmdSigDefaults = new System.Windows.Forms.Button();
+            this.cmdResetSigs = new System.Windows.Forms.Button();
             this.pbStatus_SIG_INSTANCE_ID = new System.Windows.Forms.PictureBox();
             this.lblSIG_INSTANCE_ID = new System.Windows.Forms.Label();
             this.lblSigWarning = new System.Windows.Forms.Label();
@@ -360,8 +360,8 @@ namespace mappy {
             this.tableLayoutPanel8.SuspendLayout();
             this.cmHotkeyBindings.SuspendLayout();
             this.tpSignatures.SuspendLayout();
-            this.flowLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel7.SuspendLayout();
+            this.flowLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_INSTANCE_ID)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_MY_TARGET)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_MY_ID)).BeginInit();
@@ -2519,41 +2519,6 @@ namespace mappy {
             this.tpSignatures.Text = "{tab_sig}";
             this.tpSignatures.UseVisualStyleBackColor = true;
             // 
-            // flowLayoutPanel3
-            // 
-            this.flowLayoutPanel3.AutoSize = true;
-            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel3.Controls.Add(this.cmdSigDefaults);
-            this.flowLayoutPanel3.Controls.Add(this.cmdResetSigs);
-            this.flowLayoutPanel3.Location = new System.Drawing.Point(127, 240);
-            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
-            this.flowLayoutPanel3.MinimumSize = new System.Drawing.Size(20, 20);
-            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(194, 29);
-            this.flowLayoutPanel3.TabIndex = 15;
-            // 
-            // cmdResetSigs
-            // 
-            this.cmdResetSigs.AutoSize = true;
-            this.cmdResetSigs.Location = new System.Drawing.Point(107, 3);
-            this.cmdResetSigs.Name = "cmdResetSigs";
-            this.cmdResetSigs.Size = new System.Drawing.Size(84, 23);
-            this.cmdResetSigs.TabIndex = 12;
-            this.cmdResetSigs.Text = "{button_reset}";
-            this.cmdResetSigs.UseVisualStyleBackColor = true;
-            this.cmdResetSigs.Click += new System.EventHandler(this.cmdResetSigs_Click);
-            // 
-            // cmdSigDefaults
-            // 
-            this.cmdSigDefaults.AutoSize = true;
-            this.cmdSigDefaults.Location = new System.Drawing.Point(3, 3);
-            this.cmdSigDefaults.Name = "cmdSigDefaults";
-            this.cmdSigDefaults.Size = new System.Drawing.Size(98, 23);
-            this.cmdSigDefaults.TabIndex = 13;
-            this.cmdSigDefaults.Text = "{button_defaults}";
-            this.cmdSigDefaults.UseVisualStyleBackColor = true;
-            this.cmdSigDefaults.Click += new System.EventHandler(this.cmdSigDefaults_Click);
-            // 
             // tableLayoutPanel7
             // 
             this.tableLayoutPanel7.AutoSize = true;
@@ -2606,6 +2571,41 @@ namespace mappy {
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel7.Size = new System.Drawing.Size(358, 269);
             this.tableLayoutPanel7.TabIndex = 0;
+            // 
+            // flowLayoutPanel3
+            // 
+            this.flowLayoutPanel3.AutoSize = true;
+            this.flowLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel3.Controls.Add(this.cmdSigDefaults);
+            this.flowLayoutPanel3.Controls.Add(this.cmdResetSigs);
+            this.flowLayoutPanel3.Location = new System.Drawing.Point(127, 240);
+            this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(0);
+            this.flowLayoutPanel3.MinimumSize = new System.Drawing.Size(20, 20);
+            this.flowLayoutPanel3.Name = "flowLayoutPanel3";
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(194, 29);
+            this.flowLayoutPanel3.TabIndex = 15;
+            // 
+            // cmdSigDefaults
+            // 
+            this.cmdSigDefaults.AutoSize = true;
+            this.cmdSigDefaults.Location = new System.Drawing.Point(3, 3);
+            this.cmdSigDefaults.Name = "cmdSigDefaults";
+            this.cmdSigDefaults.Size = new System.Drawing.Size(98, 23);
+            this.cmdSigDefaults.TabIndex = 13;
+            this.cmdSigDefaults.Text = "{button_defaults}";
+            this.cmdSigDefaults.UseVisualStyleBackColor = true;
+            this.cmdSigDefaults.Click += new System.EventHandler(this.cmdSigDefaults_Click);
+            // 
+            // cmdResetSigs
+            // 
+            this.cmdResetSigs.AutoSize = true;
+            this.cmdResetSigs.Location = new System.Drawing.Point(107, 3);
+            this.cmdResetSigs.Name = "cmdResetSigs";
+            this.cmdResetSigs.Size = new System.Drawing.Size(84, 23);
+            this.cmdResetSigs.TabIndex = 12;
+            this.cmdResetSigs.Text = "{button_reset}";
+            this.cmdResetSigs.UseVisualStyleBackColor = true;
+            this.cmdResetSigs.Click += new System.EventHandler(this.cmdResetSigs_Click);
             // 
             // pbStatus_SIG_INSTANCE_ID
             // 
@@ -2869,6 +2869,7 @@ namespace mappy {
             this.Controls.Add(this.tcOptions);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(316, 293);
             this.Name = "fCustomize";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -2931,10 +2932,10 @@ namespace mappy {
             this.cmHotkeyBindings.ResumeLayout(false);
             this.tpSignatures.ResumeLayout(false);
             this.tpSignatures.PerformLayout();
-            this.flowLayoutPanel3.ResumeLayout(false);
-            this.flowLayoutPanel3.PerformLayout();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            this.flowLayoutPanel3.ResumeLayout(false);
+            this.flowLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_INSTANCE_ID)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_MY_TARGET)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbStatus_SIG_MY_ID)).EndInit();

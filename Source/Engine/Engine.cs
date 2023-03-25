@@ -1657,6 +1657,7 @@ namespace MapEngine
             if (ShowPlayerPosition)
             {
                 char tlxc;
+                string instance;
                 decimal tlx = (decimal)(m_LocInImage.X * 2 - 17) / 32;
                 decimal tly = (decimal)(m_LocInImage.Y * 2 - 17) / 32;
                 tlx = Decimal.Ceiling(tlx);
@@ -1665,8 +1666,11 @@ namespace MapEngine
                     tlxc = '?';
                 else
                     tlxc = (char)(tlx + 64);
-
-                g.DrawString(String.Format("({0}-{1})", tlxc, tly), m_labelFont, bYOUFill, 10, 10);
+                if (mappy.FFXIGameInstance.instanceID > 0)
+                    instance = " | " + mappy.FFXIGameInstance.instanceID;
+                else
+                    instance = "";
+                g.DrawString(String.Format("({0}-{1}){2}", tlxc, tly, instance), m_labelFont, bYOUFill, 10, 10);
             }
 
         }

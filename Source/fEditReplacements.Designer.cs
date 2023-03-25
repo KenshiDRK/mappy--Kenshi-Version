@@ -24,6 +24,7 @@
       /// the contents of this method with the code editor.
       /// </summary>
       private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fEditReplacements));
             this.txtReplaceRegex = new System.Windows.Forms.TextBox();
             this.cmdAddReplacement = new System.Windows.Forms.Button();
             this.lvReplacements = new System.Windows.Forms.ListView();
@@ -68,6 +69,7 @@
             this.colReplacement,
             this.colPemanent});
             this.lvReplacements.FullRowSelect = true;
+            this.lvReplacements.HideSelection = false;
             this.lvReplacements.Location = new System.Drawing.Point(6, 47);
             this.lvReplacements.Name = "lvReplacements";
             this.lvReplacements.Size = new System.Drawing.Size(328, 150);
@@ -163,6 +165,7 @@
             this.Controls.Add(this.cmdAddReplacement);
             this.Controls.Add(this.txtReplaceRegex);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(276, 215);
             this.Name = "fEditReplacements";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

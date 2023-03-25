@@ -225,6 +225,9 @@
       <DependentUpon>FFXIMapImageEditorUI.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="LayeredForm.resx">
+      <DependentUpon>LayeredForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MapRes.resx">
       <SubType>Designer</SubType>
       <Generator>ResXFileCodeGenerator</Generator>
@@ -232,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Engine\MapControl.resx">
       <DependentUpon>MapControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MessageBoxEx.resx">
+      <DependentUpon>MessageBoxEx.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

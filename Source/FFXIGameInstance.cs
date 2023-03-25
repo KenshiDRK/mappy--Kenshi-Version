@@ -960,7 +960,7 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusRaaz;
                     }
-					else if (info.MountID == 24)
+                    else if (info.MountID == 24)
                     {
                         base.Icon = MapRes.StatusLevitus;
                     }
@@ -1003,6 +1003,10 @@ namespace mappy
                     else if (info.MountID == 35)
                     {
                         base.Icon = MapRes.StatusIxion;
+                    }
+                    else if (info.MountID == 36)
+                    {
+                        base.Icon = MapRes.StatusPhuabo;
                     }
                     else
                     {

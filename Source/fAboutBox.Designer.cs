@@ -22,6 +22,7 @@
       /// the contents of this method with the code editor.
       /// </summary>
       private void InitializeComponent() {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fAboutBox));
             this.pbLogo = new System.Windows.Forms.PictureBox();
             this.lblProductName = new System.Windows.Forms.Label();
             this.lblUrl = new System.Windows.Forms.LinkLabel();
@@ -132,6 +133,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "fAboutBox";
