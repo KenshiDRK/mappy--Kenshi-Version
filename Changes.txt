@@ -2,6 +2,7 @@
 *Added new mounts
 *Instance id will now show following position when applicable
 *Fixed a panning issue
+*Added new map
 
 0.1.55
 *Added option to select instance from the map menu
