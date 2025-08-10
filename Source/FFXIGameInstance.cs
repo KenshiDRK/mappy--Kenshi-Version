@@ -1008,6 +1008,10 @@ namespace mappy
                     {
                         base.Icon = MapRes.StatusPhuabo;
                     }
+                    else if (info.MountID == 37)
+                    {
+                        base.Icon = MapRes.StatusCracklaw;
+                    }
                     else
                     {
                         base.Icon = MapRes.StatusMount;

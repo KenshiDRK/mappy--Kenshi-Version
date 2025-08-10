@@ -78,6 +78,7 @@ namespace mappy {
          miRefresh.Click += new EventHandler(miRefresh_Click);
          miSaveDefault.Click += new EventHandler(miSaveDefault_Click);
          miClearDefault.Click += new EventHandler(miClearDefault_Click);
+         miResetMapWindowPos.Click += new EventHandler(miResetMapWindowPos_Click);
          miActiveOnTop.CheckedChanged += new EventHandler(miActiveOnTop_CheckedChanged);
          miActiveClickthru.CheckedChanged += new EventHandler(miActiveClickthru_CheckedChanged);
          miActiveResizable.CheckedChanged += new EventHandler(miActiveResizable_CheckedChanged);
@@ -524,6 +525,13 @@ namespace mappy {
          m_config["DefaultInstance"] = "";
          miClearDefault.Enabled = false;
          m_window.miClearDefault.Enabled = false;
+      }
+
+      public void miResetMapWindowPos_Click(object sender, EventArgs e) {
+         if (miInstance.SelectedItem != null) {
+            m_window.Top = 0;
+            m_window.Left = 0;
+         }
       }
 
       private void TrayIcon_MouseDoubleClick(object sender, MouseEventArgs e) {

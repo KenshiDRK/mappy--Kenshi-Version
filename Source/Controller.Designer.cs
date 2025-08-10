@@ -69,6 +69,7 @@
             this.miRefresh = new System.Windows.Forms.ToolStripMenuItem();
             this.miSaveDefault = new System.Windows.Forms.ToolStripMenuItem();
             this.miClearDefault = new System.Windows.Forms.ToolStripMenuItem();
+            this.miResetMapWindowPos = new System.Windows.Forms.ToolStripMenuItem();
             this.miSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.miOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.miSep3 = new System.Windows.Forms.ToolStripSeparator();
@@ -104,6 +105,7 @@
             this.miRefresh,
             this.miSaveDefault,
             this.miClearDefault,
+            this.miResetMapWindowPos,
             this.miSep1,
             this.miOptions,
             this.miSep3,
@@ -235,6 +237,12 @@
             this.miClearDefault.Size = new System.Drawing.Size(213, 22);
             this.miClearDefault.Text = "Clear Default";
             // 
+            // miResetMapWindowPos
+            // 
+            this.miResetMapWindowPos.Name = "miResetMapWindowPos";
+            this.miResetMapWindowPos.Size = new System.Drawing.Size(213, 22);
+            this.miResetMapWindowPos.Text = "Reset Map Window Pos";
+            // 
             // miSep1
             // 
             this.miSep1.Name = "miSep1";
@@ -296,5 +304,6 @@
       private System.Windows.Forms.ToolStripMenuItem miActiveShowMapImage;
       private System.Windows.Forms.ToolStripMenuItem miSaveDefault;
       private System.Windows.Forms.ToolStripMenuItem miClearDefault;
-   }
+      private System.Windows.Forms.ToolStripMenuItem miResetMapWindowPos;
+    }
 }

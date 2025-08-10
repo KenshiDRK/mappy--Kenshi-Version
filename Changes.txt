@@ -1,3 +1,7 @@
+0.1.57
+*Added Cracklaw mount
+*Added an option to reset map window position to the system tray menu
+
 0.1.56
 *Added new mounts
 *Instance id will now show following position when applicable

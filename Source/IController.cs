@@ -15,6 +15,7 @@ namespace mappy {
       void miRefresh_Click(object sender, EventArgs e);
       void miSaveDefault_Click(object sender, EventArgs e);
       void miClearDefault_Click(object sender, EventArgs e);
+      void miResetMapWindowPos_Click(object sender, EventArgs e);
       Config Config { get; }
       fMap Active { get; }
       Keys ActionKey { get; set; }

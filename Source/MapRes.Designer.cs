@@ -643,6 +643,16 @@ namespace mappy {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap StatusCracklaw {
+            get {
+                object obj = ResourceManager.GetObject("StatusCracklaw", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap StatusPot {
             get {
                 object obj = ResourceManager.GetObject("StatusPot", resourceCulture);
