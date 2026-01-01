@@ -1,3 +1,7 @@
+0.1.58
+*Changed the way docked to ffxi work
+*Added support for linux thx to ry contribution (Not extensively tested and unknown if all distributions work)
+
 0.1.57
 *Added Cracklaw mount
 *Added an option to reset map window position to the system tray menu

@@ -25,12 +25,19 @@ namespace mappy {
       private bool m_original_clickthru;
       private bool m_actionState = false;
       private IMapEditor currentEditor;
+      private IntPtr hook = IntPtr.Zero;
+      private readonly WinEventDelegate _winEventDelegate;
+      private IntPtr _lastForegroundHandle = IntPtr.Zero;
+
+      private const uint EVENT_SYSTEM_FOREGROUND = 0x0003;
+      private const uint WINEVENT_OUTOFCONTEXT = 0;
 
       public Dictionary<int, ProcessItem> gamelist;
         //====================================================================================================
         // Constructor
         //====================================================================================================
         public fMap(Controller controller, Process process, Config config) {
+         _winEventDelegate = new WinEventDelegate(WinEventProc);
          m_controller = controller;
          m_config = config;
          
@@ -39,6 +46,7 @@ namespace mappy {
          Editor = controller.Editors.Default;
          InitializeComponent();
          InitializeLanguage();
+         StartWinEventHook();
 
          gamelist = new Dictionary<int, ProcessItem>();
 
@@ -134,8 +142,8 @@ namespace mappy {
             {
                MapTimer.Tick += new EventHandler(MapTimer_Tick);
                MapTimer.Enabled = true;
-               MapInstance.Tick += new EventHandler(MapInstance_Tick);
-               MapInstance.Enabled = true;
+               //MapInstance.Tick += new EventHandler(MapInstance_Tick);
+               //MapInstance.Enabled = true;
             }
          } catch (InstanceException fex) {
             MessageBox.Show(fex.Message, "Unable to Initialize", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -553,6 +561,7 @@ namespace mappy {
          }
       }
       
+      /*old docked function
       private void MapInstance_Tick(object sender, EventArgs e) {
          try {
             var currentHandle = GetForegroundWindow();
@@ -574,8 +583,56 @@ namespace mappy {
             MapInstance.Enabled = false;
             MessageBox.Show("An error occurred while getting the instance handle:\n" + ex.Message);
          }
+      }*/
+
+      private void StartWinEventHook() {
+         hook = SetWinEventHook(
+            EVENT_SYSTEM_FOREGROUND,
+            EVENT_SYSTEM_FOREGROUND,
+            IntPtr.Zero,
+            _winEventDelegate,
+            0,
+            0,
+            WINEVENT_OUTOFCONTEXT
+         );
       }
 
+      private void WinEventProc(
+         IntPtr hWinEventHook,
+         uint eventType,
+         IntPtr hwnd,
+         int idObject,
+         int idChild,
+         uint dwEventThread,
+         uint dwmsEventTime)
+         {
+            if (eventType != EVENT_SYSTEM_FOREGROUND || Process == null)
+                return;
+            IntPtr ffInstanceHandle = Process.MainWindowHandle;
+            if (ffInstanceHandle == IntPtr.Zero)
+                return;
+            bool shouldBeTopMost = OnTop;
+            if (!shouldBeTopMost)
+            {
+                IntPtr currentHandle = GetForegroundWindow();
+                if (currentHandle == _lastForegroundHandle)
+                    return;
+                _lastForegroundHandle = currentHandle;
+                shouldBeTopMost = Docked && currentHandle == ffInstanceHandle;
+            }
+            if (TopMost != shouldBeTopMost)
+                TopMost = shouldBeTopMost;
+         }
+
+      protected override void OnFormClosing(FormClosingEventArgs e)
+         {
+            if (hook != IntPtr.Zero)
+            {
+                UnhookWinEvent(hook);
+                hook = IntPtr.Zero;
+            }
+            base.OnFormClosing(e);
+         }
       private void MapEngine_Updated() {
          //Something on the map has been updated, so invalidate the surface to prepare it for rendering
          this.Invalidate();

@@ -100,7 +100,7 @@
             this.miQuickSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.miExit = new System.Windows.Forms.ToolStripMenuItem();
             this.MapTimer = new System.Windows.Forms.Timer(this.components);
-            this.MapInstance = new System.Windows.Forms.Timer(this.components);
+            //this.MapInstance = new System.Windows.Forms.Timer(this.components);
             this.MapMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -463,7 +463,7 @@
             // 
             // MapInstance
             // 
-            this.MapInstance.Interval = 10;
+            //this.MapInstance.Interval = 10;
             // 
             // fMap
             // 
@@ -513,7 +513,7 @@
       private System.Windows.Forms.ToolStripMenuItem miExit;
       private System.Windows.Forms.ToolStripMenuItem miShowMapImage;
       private System.Windows.Forms.Timer MapTimer;
-      private System.Windows.Forms.Timer MapInstance;
+      //private System.Windows.Forms.Timer MapInstance;
       private System.Windows.Forms.ContextMenuStrip ModeMenu;
       private System.Windows.Forms.ToolStripMenuItem miModeMenu;
       private System.Windows.Forms.ToolStripMenuItem miSpawnAddAsReplacement;

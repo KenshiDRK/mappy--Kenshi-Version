@@ -102,6 +102,9 @@ namespace System.Windows.Forms {
       private const byte  AC_SRC_OVER = 0x00;
       private const byte  AC_SRC_ALPHA = 0x01;
 
+      internal const uint EVENT_SYSTEM_FOREGROUND = 0x0003;
+      internal const uint WINEVENT_OUTOFCONTEXT = 0;
+
       [DllImport("user32.dll", ExactSpelling = true, SetLastError = true)]
       private static extern bool UpdateLayeredWindow(IntPtr hWnd, IntPtr hdcDst, ref POINT pptDst, ref SIZE psize, IntPtr hdcSrc, ref POINT pptSrc, uint crKey, [In] ref BLENDFUNCTION pblend, uint dwFlags);
 
@@ -172,6 +175,19 @@ namespace System.Windows.Forms {
       [DllImport("user32.dll")]
       private static extern bool ShowWindow(IntPtr hWnd, ShowWindowFlags nCmdShow);
 
+      [DllImport("user32.dll")]
+        internal static extern IntPtr SetWinEventHook(
+        uint eventMin,
+        uint eventMax,
+        IntPtr hmodWinEventProc,
+        WinEventDelegate lpfnWinEventProc,
+        uint idProcess,
+        uint idThread,
+        uint dwFlags
+    );
+
+      [DllImport("user32.dll")]
+        internal static extern bool UnhookWinEvent(IntPtr hWinEventHook);
       private enum ShowWindowFlags : uint {
          SW_HIDE = 0,
          SW_SHOWNORMAL = 1,
@@ -190,6 +206,15 @@ namespace System.Windows.Forms {
          SW_MAX = 11
       }
 
+      internal delegate void WinEventDelegate(
+         IntPtr hWinEventHook,
+         uint eventType,
+         IntPtr hwnd,
+         int idObject,
+         int idChild,
+         uint dwEventThread,
+         uint dwmsEventTime
+      );
       protected override void OnHandleCreated(EventArgs e) {
          rBounds = new Rectangle(0, 0, Width - 1, Height - 1);
          hWindowDC = GetDC(Handle);

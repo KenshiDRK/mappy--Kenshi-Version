@@ -12,18 +12,40 @@ public class MemoryReader {
       PROCESS_VM_READ = 0x0010,
       PROCESS_VM_WRITE = 0x0020,
       PROCESS_QUERY_INFORMATION = 0x0400,
-      PROCESS_QUERY_LIMITED_INFORMATION = 0x1000
+      PROCESS_QUERY_LIMITED_INFORMATION = 0x1000,
    }
 
    [DllImport("kernel32.dll")]
    private static extern IntPtr OpenProcess(ProcessAccess dwDesiredAccess, Int32 bInheritHandle, UInt32 dwProcessId);
-    [DllImport("kernel32.dll")]
+   [DllImport("kernel32.dll")]
    private static extern Int32 CloseHandle(IntPtr hObject);
    [DllImport("kernel32.dll")]
-   private static extern bool ReadProcessMemory(IntPtr hProcess, IntPtr lpBaseAddress, [In, Out] byte[] buffer, int size, out int lpNumberOfBytesRead);
+   private static extern bool ReadProcessMemory(IntPtr m_hpid, IntPtr lpBaseAddress, [In, Out] byte[] buffer, int size, out int lpNumberOfBytesRead);
    [DllImport("kernel32.dll", SetLastError = true)]
    [return: MarshalAs(UnmanagedType.Bool)]
-   private static extern bool GetExitCodeProcess(IntPtr hProcess, out uint lpExitCode);
+   private static extern bool GetExitCodeProcess(IntPtr m_hpid, out uint lpExitCode);
+
+   [DllImport("psapi.dll", SetLastError = true)]
+   private static extern bool EnumProcessModulesEx(
+      IntPtr m_hpid,
+      [Out] IntPtr[] lphModule,
+      int cb,
+      out int lpcbNeeded,
+      uint dwFilterFlag);
+
+   [DllImport("psapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+   private static extern uint GetModuleFileNameEx(
+      IntPtr m_hpid,
+      IntPtr hModule,
+      [Out] StringBuilder lpFilename,
+      int nSize);
+
+   [DllImport("psapi.dll", SetLastError = true)]
+   private static extern bool GetModuleInformation(
+      IntPtr hProcess,
+      IntPtr hModule,
+      out MODULEINFO lpmodinfo,
+      int cb);
 
    //WINAPI for module inspection
    private const int MAX_MODULE_NAME32 = 255;
@@ -39,6 +61,14 @@ public class MemoryReader {
       Inherit  = 0x80000000,
       All      = 0x0000001F
    };
+
+   [StructLayout(LayoutKind.Sequential)]
+   private struct MODULEINFO
+   {
+      public IntPtr lpBaseOfDll;   // base address
+      public int SizeOfImage;      // module size in bytes
+      public IntPtr EntryPoint;
+   }
 
    [StructLayout(LayoutKind.Sequential)]
    private struct MODULEENTRY32 {
@@ -106,7 +136,7 @@ public class MemoryReader {
    /// <param name="ProcessID">Process ID</param>
    /// <returns>MemoryReader with the opened process</returns>
    public static MemoryReader Open(UInt32 ProcessID) {
-      return(new MemoryReader(ProcessID, IntPtr.Zero));
+      return (new MemoryReader(ProcessID, IntPtr.Zero));
    }
    /// <summary>
    /// Opens the given process for reading and sets the base address for offset reading
@@ -115,7 +145,7 @@ public class MemoryReader {
    /// <param name="BaseAddress">Address to calculate pointer of when offset reading</param>
    /// <returns>MemoryReader with the opened process</returns>
    public static MemoryReader Open(UInt32 ProcessID, IntPtr BaseAddress) {
-      return(new MemoryReader(ProcessID, BaseAddress));
+      return (new MemoryReader(ProcessID, BaseAddress));
    }
    /// <summary>
    /// Opens the given process for reading and sets the base address to the given module's base address
@@ -127,7 +157,7 @@ public class MemoryReader {
       IntPtr pBase = GetModuleBase(ProcessID, BaseModule);
       if (pBase == IntPtr.Zero)
          return null;
-      return(new MemoryReader(ProcessID, pBase));
+      return (new MemoryReader(ProcessID, pBase));
    }
    /// <summary>
    /// Searches for the given process by name and opens the first one found, if any
@@ -135,18 +165,20 @@ public class MemoryReader {
    /// <param name="ProcessName">Name to perform search against</param>
    /// <returns>MemoryReader with the opened process</returns>
    public static MemoryReader Open(string[] ProcessName) {
-      foreach (string Process in ProcessName) 
+      foreach (string Process in ProcessName)
       {
          System.Diagnostics.Process[] processlist = System.Diagnostics.Process.GetProcessesByName(Process);
-        //System.Diagnostics.Process[] processlist = System.Diagnostics.Process.GetProcessesByName(ProcessName);
-        if (processlist.Length > 0) {
-            return(new MemoryReader((uint)processlist[0].Id, processlist[0].MainModule.BaseAddress));
-        }
+         //System.Diagnostics.Process[] processlist = System.Diagnostics.Process.GetProcessesByName(ProcessName);
+         if (processlist.Length > 0) {
+            return (new MemoryReader((uint)processlist[0].Id, processlist[0].MainModule.BaseAddress));
+         }
       }
       return null;
    }
-   
+
    private MemoryReader(UInt32 ProcessID, IntPtr BaseAddress) {
+      File.AppendAllText(@"./output", $"Constructor - Process Id: {ProcessID}\r\n");
+      File.AppendAllText(@"./output", $"Constructor - BaseAddress: {BaseAddress}\r\n");
       m_pid = ProcessID;
       m_hbase = BaseAddress;
       m_hpid = OpenProcess(ProcessAccess.PROCESS_VM_READ | ProcessAccess.PROCESS_QUERY_INFORMATION, 1, ProcessID);
@@ -173,6 +205,45 @@ public class MemoryReader {
    /// <param name="ModuleName">Module name to search for</param>
    /// <returns>Pointer to the modules base address</returns>
    private static IntPtr GetModuleBase(uint PID, string ModuleName) {
+      IntPtr m_hpid = IntPtr.Zero;
+      try {
+         uint LIST_MODULES_ALL = 0x03;
+         m_hpid = OpenProcess(ProcessAccess.PROCESS_VM_READ | ProcessAccess.PROCESS_QUERY_INFORMATION, 1, PID);
+         if (m_hpid == IntPtr.Zero) return IntPtr.Zero;
+
+         var emptypt = new IntPtr[0];
+         // First call to get required size
+         EnumProcessModulesEx(m_hpid, emptypt, 0, out int needed, LIST_MODULES_ALL);
+         int count = needed / IntPtr.Size;
+         if (count <= 0) return IntPtr.Zero;
+
+         var modules = new IntPtr[count];
+         if (!EnumProcessModulesEx(m_hpid, modules, needed, out needed, LIST_MODULES_ALL))
+            throw new Exception("Filed Enum Process");
+
+         var sb = new StringBuilder(1024);
+
+         foreach (var mod in modules) {
+               sb.Clear();
+               if (GetModuleFileNameEx(m_hpid, mod, sb, sb.Capacity) == 0)
+                  continue;
+
+               var path = sb.ToString();
+               if (path.EndsWith(ModuleName, StringComparison.OrdinalIgnoreCase))
+                  return mod; // HMODULE == base address
+            }
+
+         return IntPtr.Zero;
+      }
+      catch {
+        throw new Exception("Couldn't get module base");
+      }
+      finally {
+        CloseHandle(m_hpid);
+      }
+   }
+   /* old GetModuleBase
+   private static IntPtr GetModuleBase(uint PID, string ModuleName) {
       //Take a snapshot of the module list
       IntPtr hModuleList = CreateToolhelp32Snapshot(SnapshotFlags.Module | SnapshotFlags.Module32, PID);
       if (hModuleList == IntPtr.Zero)
@@ -196,8 +267,28 @@ public class MemoryReader {
          CloseHandle(hModuleList);
       }
       return IntPtr.Zero;
+   }*/
+
+   private static bool GetModuleInfo(uint PID, string ModuleName, out MODULEINFO ModuleInfo) {
+      ModuleInfo = default;
+      IntPtr m_hpid = IntPtr.Zero;
+      try {
+         m_hpid = OpenProcess(ProcessAccess.PROCESS_VM_READ | ProcessAccess.PROCESS_QUERY_INFORMATION, 1, PID);
+         var mod = GetModuleBase(PID, ModuleName);
+         if (GetModuleInformation(m_hpid, mod, out ModuleInfo, Marshal.SizeOf(typeof(MODULEINFO)))) {
+            return true;
+         }
+      }
+      catch {
+         throw new Exception("Couldn't get module info");
+      }
+      finally {
+         CloseHandle(m_hpid);
+      }
+      return false;
    }
 
+   /* old GetModuleInfo
    private static bool GetModuleInfo(uint PID, string ModuleName, out MODULEENTRY32 ModuleInfo) {
       ModuleInfo = default(MODULEENTRY32);
 
@@ -226,8 +317,7 @@ public class MemoryReader {
          CloseHandle(hModuleList);
       }
       return false;
-   }
-
+   }*/
 
    //-----------------------------------------------------------------------------
    // Public Methods
@@ -241,11 +331,11 @@ public class MemoryReader {
    /// <summary>Gets whether the targer process is still running or not</summary>
    public bool HasExited {
       get {
-         if(m_hpid == IntPtr.Zero)
+         if (m_hpid == IntPtr.Zero)
             return true;
 
          uint code;
-         if(GetExitCodeProcess(m_hpid, out code))
+         if (GetExitCodeProcess(m_hpid, out code))
             return (code != 259);
          return true;
       }
@@ -253,7 +343,7 @@ public class MemoryReader {
 
    /// <summary>Close access to the process and release the handle</summary>
    public void Close() {
-      if(m_hpid == IntPtr.Zero)
+      if (m_hpid == IntPtr.Zero)
          return;
       CloseHandle(m_hpid);
       m_hpid = IntPtr.Zero;
@@ -310,7 +400,7 @@ public class MemoryReader {
    public T ReadStruct<T>(IntPtr Address) {
       byte[] buffer;
       int cnt = ReadMemory(Address, Marshal.SizeOf(typeof(T)), out buffer);
-      if(cnt > 0) {
+      if (cnt > 0) {
          GCHandle pinned = GCHandle.Alloc(buffer, GCHandleType.Pinned);
          try {
             return (T)Marshal.PtrToStructure(pinned.AddrOfPinnedObject(), typeof(T));
@@ -325,7 +415,7 @@ public class MemoryReader {
          }
       }
       return default(T);
-    }
+   }
 
    /// <summary>
    /// Convert the binary data at the address into an array of structures of the specified type and length.
@@ -335,19 +425,19 @@ public class MemoryReader {
    /// <param name="Count">The number of structures to read</param>
    /// <returns>Returns a filled array of the specified type or a default type if the function fails.</returns>
    public T[] ReadStructArray<T>(IntPtr Address, int Count) {
-      if(Count <= 0)
+      if (Count <= 0)
          return default(T[]);
 
       //Read in the number of bytes required for each array index
       byte[] buffer;
       int cnt = ReadMemory(Address, Marshal.SizeOf(typeof(T)) * Count, out buffer);
-      if(cnt > 0) {
+      if (cnt > 0) {
          GCHandle pinned = GCHandle.Alloc(buffer, GCHandleType.Pinned);
          try {
             //Read in the structure at each position and coerce it into its slot
             T[] output = new T[Count];
             IntPtr current = pinned.AddrOfPinnedObject();
-            for(int i = 0; i < Count; i++) {
+            for (int i = 0; i < Count; i++) {
                output[i] = (T)Marshal.PtrToStructure(current, typeof(T));
                current = (IntPtr)((int)current + Marshal.SizeOf(output[i])); //advance to the next index
             }
@@ -374,7 +464,7 @@ public class MemoryReader {
    public string ReadString(IntPtr Address, int MaxLen) {
       byte[] buffer;
       int cnt = ReadMemory(Address, MaxLen, out buffer);
-      if(cnt > 0) {
+      if (cnt > 0) {
          GCHandle pinned = GCHandle.Alloc(buffer, GCHandleType.Pinned);
          try {
             return Marshal.PtrToStringAnsi(pinned.AddrOfPinnedObject());
@@ -390,7 +480,7 @@ public class MemoryReader {
       }
       return "";
    }
-   
+
    /// <summary>
    /// Convert the binary data at the offset from the base address into the specified data type or structure.
    /// </summary>
@@ -400,7 +490,7 @@ public class MemoryReader {
    public T ReadOffsetStruct<T>(IntPtr Offset) {
       byte[] buffer;
       int cnt = ReadOffset(Offset, Marshal.SizeOf(typeof(T)), out buffer);
-      if(cnt > 0) {
+      if (cnt > 0) {
          GCHandle pinned = GCHandle.Alloc(buffer, GCHandleType.Pinned);
          try {
             return (T)Marshal.PtrToStructure(pinned.AddrOfPinnedObject(), typeof(T));
@@ -415,7 +505,7 @@ public class MemoryReader {
          }
       }
       return default(T);
-    }
+   }
 
    /// <summary>
    /// Searches the loaded process for the given byte signature within the specified module. Requires the BinarySearch library.
@@ -435,16 +525,18 @@ public class MemoryReader {
    /// <param name="offset">An offset to add to the pointer VALUE</param>
    /// <returns>The pointer found at the matching location</returns>
    public IntPtr FindSignature(string Signature, string Module, int offset) {
-      if(Signature.Length == 0 || Signature.Length % 2 != 0)
+      if (Signature.Length == 0 || Signature.Length % 2 != 0)
          throw new MemoryReaderException("Invalid signature");
 
       //Narrow the search breadth to only the requested module's address space
-      MODULEENTRY32 info;
-      if(GetModuleInfo(m_pid, Module, out info)) {
+      //MODULEENTRY32 info;
+      MODULEINFO info;
+      if (GetModuleInfo(m_pid, Module, out info)) {
          //Take a memory snapshot of the entire module and then locate the pointer
          byte[] buffer;
-         int cnt = ReadMemory((IntPtr)info.modBaseAddr, (int)info.modBaseSize, out buffer);
-         if(cnt > 0) 
+         //int cnt = ReadMemory((IntPtr)info.modBaseAddr, (int)info.modBaseSize, out buffer);
+         int cnt = ReadMemory((IntPtr)info.lpBaseOfDll, (int)info.SizeOfImage, out buffer);
+         if (cnt > 0)
             return BinarySearch.FindSignature(buffer, Signature, offset);
       }
       return IntPtr.Zero;
@@ -475,7 +567,7 @@ public sealed class MemoryHelper {
    private static extern IntPtr VirtualAlloc(IntPtr lpAddress, UIntPtr dwSize, AllocType flAllocationType, MemoryProtection flProtect);
    [DllImport("kernel32.dll", SetLastError=true)]
    private static extern bool VirtualFree(IntPtr lpAddress, UIntPtr dwSize, DeallocType dwFreeType);
-   
+
    private enum AllocType : uint {
       MEM_COMMIT = 0x1000,
       MEM_RESERVE = 0x2000,
@@ -561,10 +653,10 @@ public sealed class MemoryHelper {
       } catch {
 #endif
       } finally {
-           handle.Free();
+         handle.Free();
       }
       return default(T);
-    }
+   }
 
    private static MemoryHelper Instance {
       get {
