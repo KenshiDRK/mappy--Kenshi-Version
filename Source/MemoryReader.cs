@@ -177,8 +177,6 @@ public class MemoryReader {
    }
 
    private MemoryReader(UInt32 ProcessID, IntPtr BaseAddress) {
-      File.AppendAllText(@"./output", $"Constructor - Process Id: {ProcessID}\r\n");
-      File.AppendAllText(@"./output", $"Constructor - BaseAddress: {BaseAddress}\r\n");
       m_pid = ProcessID;
       m_hbase = BaseAddress;
       m_hpid = OpenProcess(ProcessAccess.PROCESS_VM_READ | ProcessAccess.PROCESS_QUERY_INFORMATION, 1, ProcessID);
