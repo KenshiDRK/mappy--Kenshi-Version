@@ -239,7 +239,7 @@ namespace mappy
                 if (ppZoneShortNames != IntPtr.Zero)
                     pZoneShortNames = (IntPtr)reader.ReadStruct<Int32>(ppZoneShortNames);
                 if (ppInstanceID != IntPtr.Zero)
-                    pInstanceID = (IntPtr)reader.ReadStruct<Int32>(ppInstanceID) + 0x3C2EA;
+                    pInstanceID = (IntPtr)reader.ReadStruct<Int32>(ppInstanceID) + 0x3C350;
 
 #if DEBUG
             //Quick grabbag of pointers for memory digging
