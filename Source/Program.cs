@@ -5,6 +5,7 @@ using System.Text;
 using System.Resources;
 using System.Reflection;
 using System.Diagnostics;
+using System.Runtime.InteropServices;
 
 namespace mappy {
    static class Program {
@@ -17,11 +18,15 @@ namespace mappy {
       public static readonly string[] ProcessName = {"pol", "xiloader", "wingsloader", "edenxi", "horizon-loader"};
       public static readonly string ModuleName = "FFXiMain.dll";
 
+      [DllImport("user32.dll")]
+        private static extern bool SetProcessDPIAware();
+
       /// <summary>
       /// The main entry point for the application.
       /// </summary>
       [STAThread]
       static void Main() {
+         SetProcessDPIAware();
          Application.EnableVisualStyles();
          Application.SetCompatibleTextRenderingDefault(false);
 

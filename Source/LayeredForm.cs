@@ -460,22 +460,32 @@ namespace System.Windows.Forms {
       protected override void WndProc(ref Message m) {
          if (m.Msg == WM_NCHITTEST) {
             //decode the mouse coordinates
-            int lp = (int)m.LParam;
-            int x = lp & 0xffff;
-            int y = (lp >> 16) & 0xffff;
+            Point p = new Point(
+                (short)(m.LParam.ToInt32() & 0xFFFF),
+                (short)((m.LParam.ToInt32() >> 16) & 0xFFFF)
+            );
 
             //inform the o/s where the hit test landed
-            if (m_layered && m_resizable && x >= Bounds.Left && x <= Bounds.Left + m_resizeThreshold) {
-               m.Result = (IntPtr)HTLEFT;
-            } else if (m_layered && m_resizable && x >= Bounds.Right - m_resizeThreshold && x <= Bounds.Right) {
-               m.Result = (IntPtr)HTRIGHT;
-            } else if (m_layered && m_resizable && y >= Bounds.Top && y <= Bounds.Top + m_resizeThreshold) {
-               m.Result = (IntPtr)HTTOP;
-            } else if (m_layered && m_resizable && y >= Bounds.Bottom - m_resizeThreshold && y <= Bounds.Bottom) {
-               m.Result = (IntPtr)HTBOTTOM;
-            } else {
-               base.WndProc(ref m);
+            if (m_layered && m_resizable) {
+                if (p.X >= Bounds.Left && p.X <= Bounds.Left + m_resizeThreshold)
+                    m.Result = (IntPtr)HTLEFT;
+
+                else if (p.X >= Bounds.Right - m_resizeThreshold && p.X <= Bounds.Right)
+                    m.Result = (IntPtr)HTRIGHT;
+
+                else if (p.Y >= Bounds.Top && p.Y <= Bounds.Top + m_resizeThreshold)
+                    m.Result = (IntPtr)HTTOP;
+
+                else if (p.Y >= Bounds.Bottom - m_resizeThreshold && p.Y <= Bounds.Bottom)
+                    m.Result = (IntPtr)HTBOTTOM;
+
+                else
+                    base.WndProc(ref m);
             }
+        else
+        {
+            base.WndProc(ref m);
+        }
          } else if (m.Msg == WM_LBUTTONDOWN) {
            var isCtrlDown = (Form.ModifierKeys == Keys.Control);
            if ((m_draggable && !isCtrlDown) || (!m_draggable && isCtrlDown)) {
